@@ -8,7 +8,14 @@ module.exports = {
       colors: {
         'primary': '#E31114',
         'secondery': '#BEBEBE'
+      },
+
+      fontFamily: {
+        'Greycliff-CF': ['Greycliff CF', 'sans, serif'],
+        'Greycliff-CF-extrabold': ['Greycliff CF Extra', 'sans, serif']
       }
+
+      
     },
   },
   plugins: [],
