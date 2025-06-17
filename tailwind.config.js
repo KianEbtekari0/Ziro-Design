@@ -11,11 +11,11 @@ module.exports = {
       },
 
       fontFamily: {
-        'Greycliff-CF': ['Greycliff CF', 'sans, serif'],
-        'Greycliff-CF-extrabold': ['Greycliff CF Extra', 'sans, serif']
+        'Neue-Montreal-Light': ['Neue Montreal Light'],
+        'Neue-Montreal-Regular': ['Neue Montreal Regular'],
+        'Neue-Montreal-Medium': ['Neue Montreal Medium'],
+        'Neue-Montreal-Bold': ['Neue Montreal Bold']
       }
-
-      
     },
   },
   plugins: [],

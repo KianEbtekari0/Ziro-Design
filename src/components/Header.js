@@ -1,19 +1,23 @@
 import React from 'react'
+import dotsImg from '../assets/images/dots.png'
 
 export default function Header() {
   return (
-    <header className='flex relative z-30 items-center justify-between font-Greycliff-CF px-14 mt-5'>
+    <header className='flex relative z-30 items-center justify-between font-Greycliff-CF-bold px-14 mt-5'>
       <div>
         <h1 className='text-white'>LOGO</h1>
       </div>
       <ul className='flex items-center gap-3 justify-center'>
-        <a href="#" className='text-lg cursor-pointer text-white font-bold'>HOME <span className='text-primary'>.</span></a>
-        <a href="#" className='text-lg cursor-pointer text-secondery font-bold'>PROJECTS.</a>
-        <a href="#" className='text-lg cursor-pointer text-secondery font-bold'>ABOUT US.</a>
-        <a href="#" className='text-lg cursor-pointer text-secondery font-bold'>CONTACT US.</a>
+        <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-white'>HOME<span className='text-primary'>.</span></a>
+        <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>PROJECTS<span className='text-secondery'>.</span></a>
+        <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>ABOUT US<span className='text-secondery'>.</span></a>
+        <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>CONTACT US<span className='text-secondery'>.</span></a>
       </ul>
       <div>
-        <button className='py-2 px-6 backdrop-blur-[42px] cursor-pointer text-white rounded-3xl'>English</button>
+        <button className='flex items-center justify-center gap-2 tracking-wide font-Neue-Montreal-Bold py-2 px-6 backdrop-blur-[42px] cursor-pointer text-white rounded-3xl'>
+          English
+          <img src={dotsImg} alt="" />
+        </button>
       </div>
     </header>
   )
