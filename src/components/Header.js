@@ -3,7 +3,7 @@ import dotsImg from '../assets/images/dots.png'
 
 export default function Header() {
   return (
-    <header className='flex relative z-30 items-center justify-between font-Greycliff-CF-bold px-14 mt-5'>
+    <header className='absolute top-0 left-0 w-full flex items-center justify-between z-30 font-Greycliff-CF-bold px-14 mt-5'>
       <div>
         <h1 className='text-white'>LOGO</h1>
       </div>

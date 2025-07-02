@@ -4,8 +4,8 @@ import playImg from '../assets/images/play.png'
 
 export default function Home() {
   return (
-    <div className='h-[90vh]'>
-        <video autoPlay muted loop playsInline className='absolute top-0 left-0 w-full h-full object-cover z-0' src={bgVideo}>
+    <div className='relative h-screen w-full overflow-hidden bg-black z-10'>
+        <video autoPlay muted loop playsInline className='absolute top-0 left-0 w-full object-cover -z-10' src={bgVideo}>
             <source src={bgVideo} type='video/mp4' />
         </video>
 

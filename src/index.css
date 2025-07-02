@@ -8,6 +8,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        background-color: black;
     }
 
     @font-face {
@@ -37,6 +38,38 @@
     @font-face {
         font-family: 'Neue Montreal Bold';
         src: url('./assets/fonts/NeueMontreal/NeueMontreal-Bold.woff2') format('woff2');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
+
+        @font-face {
+        font-family: "Manrope Light", sans-serif;
+        src: url('./assets/fonts/Manrope/Manrope-Light.ttf') format('ttf');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Manrope Regular", sans-serif;
+        src: url('./assets/fonts/Manrope/Manrope-Regular.ttf') format('ttf');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Manrope Medium", sans-serif;
+        src: url('./assets/fonts/Manrope/Manrope-Medium.ttf') format('ttf');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Manrope Bold", sans-serif;
+        src: url('./assets/fonts/Manrope/Manrope-Bold.ttf') format('ttf');
         font-weight: bold;
         font-style: normal;
         font-display: swap;
