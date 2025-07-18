@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-
     body {
         margin: 0;
         padding: 0;
@@ -73,5 +72,34 @@
         font-weight: bold;
         font-style: normal;
         font-display: swap;
+    }
+
+    .videoBox, .glassBtn, .glassCard {
+        background: rgba(20, 20, 20, 0.6);
+        border-radius: 2rem;
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 0 0.5px rgba(255, 255, 255, 0.2),
+                    0 8px 20px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .glassBtn::before, .videoBox::before, .glassCard::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        -webkit-mask-composite: xor;
+        box-shadow:
+                    inset 9px 9px 3px -13px #fff,   /* بالا چپ */
+                    inset -9px -9px 3px -13px #fff; /* پایین راست */
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .model {
+        background-image: url(./assets/images/modelImg.png);
     }
 }

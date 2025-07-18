@@ -1,7 +1,9 @@
 import Header from './components/Header';
 import Home from './pages/Home';
-import './index.css'
 import AboutUs from './pages/AboutUs';
+import Projects from './pages/Projects';
+import Products from './pages/Products';
+import './index.css'
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <div>
         <Home />
         <AboutUs />
+        <Projects />
+        <Products />
       </div>
     </>
   );
