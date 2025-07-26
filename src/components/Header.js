@@ -1,4 +1,3 @@
-import React from 'react'
 import dotsImg from '../assets/images/dots.png'
 
 export default function Header() {
@@ -11,6 +10,7 @@ export default function Header() {
         <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-white'>HOME<span className='text-primary'>.</span></a>
         <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>PROJECTS<span className='text-secondery'>.</span></a>
         <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>ABOUT US<span className='text-secondery'>.</span></a>
+        <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>SHOP<span className='text-primary'>.</span></a>
         <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>CONTACT US<span className='text-secondery'>.</span></a>
       </ul>
       <div>
@@ -19,6 +19,7 @@ export default function Header() {
           <img src={dotsImg} alt="" />
         </button>
       </div>
+
     </header>
   )
 }

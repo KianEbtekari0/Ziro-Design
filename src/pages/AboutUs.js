@@ -66,7 +66,7 @@ export default function AboutUs() {
             </div>
             <div className='glassCard flex flex-col items-center text-center justify-center gap-8 rounded-3xl px-16 '>
                 <h1 className='font-Neue-Montreal-Bold text-white text-4xl'>Do you want to Start a project together</h1>
-                <button className='glassBtn flex items-center justify-center font-Neue-Montreal-Regular gap-2 py-2.5 px-5 text-[#BFBFBF]'>
+                <button className='glassBtn flex items-center justify-center font-Neue-Montreal-Regular gap-2 py-2.5 px-5 text-[#BFBFBF] rounded-3xl'>
                     <img src={copyIcon} alt="copy image" />
                     Copy my email address
                 </button>
