@@ -3,6 +3,7 @@ import projectsFilm1 from '../assets/images/projectsFilm/projectsFilm1.mp4';
 import projectsFilm2 from '../assets/images/bg-video.mp4';
 import gsap from 'gsap';
 import '../index.css';
+import { Link } from 'react-router';
 
 export default function Projects() {
   const items = [
@@ -96,7 +97,6 @@ export default function Projects() {
     setActive(item);
     setHovered(true);
     gsap.to(e.target, {
-      scale: 1.05,
       transformOrigin: 'left center',
       duration: 0.3,
       ease: 'power2.out',
@@ -115,56 +115,14 @@ export default function Projects() {
   };
 
   return (
-    <div className="relative">
-      <div className="container flex py-24">
-        <video
-          key={active.src}
-          src={active.src}
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          className="absolute inset-0 w-full h-full object-cover -z-10 transition-opacity duration-500"
-        />
-
-        <div className="flex justify-center relative">
-          <div className="flex relative justify-center flex-col">
-            {items.map((item) => (
-              <div key={item.name}>
-                <a
-                  href="#"
-                  className={`text-secondery relative text-9xl font-Neue-Montreal-Bold transition-opacity ${
-                    active.name === item.name ? 'text-white' : 'text-secondery'
-                  }`}
-                  onMouseEnter={(e) => handleHover(item, e)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {item.name}
-                </a>
-                <br />
-              </div>
-            ))}
-            <a
-              href="#"
-              className="text-secondery relative text-7xl font-Neue-Montreal-Bold transition-opacity"
-            >
-              SEE ALL PROJECTS
-            </a>
-          </div>
-          <div className="glassCard left-[1000px] bottom-10 absolute p-5 max-w-sm leading-relaxed rounded-3xl w-full self-end flex flex-col justify-end gap-1">
-            <h1
-              className="text-white font-Neue-Montreal-Bold text-2xl"
-              ref={descRef}
-            >
-              {active.description}
-            </h1>
-          </div>
-        </div>
-      </div>
-
-      {/* Custom Cursor */}
-      <div ref={cursorRef} className="custom-cursor glassCard font-Neue-Montreal-Bold rounded-full">
-        VIEW
+    <div className='container bg-[#121B24] rounded-[32px] py-[70px] relative'>
+      <p className='uppercase font-Neue-Montreal-Bold text-white absolute top-[45%]' style={{writingMode: 'vertical-lr', textOrientation: 'mixed'}}>hover on title</p>
+      <div className='text-white flex items-center justify-center flex-col gap-4 text-center'>
+        <Link to='/' className='sm:text-7xl lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold'>VFX VISUAL EFFECTS</Link>
+        <Link to='/' className='sm:text-7xl lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold uppercase'>Cinematic Filming</Link>
+        <Link to='/' className='sm:text-7xl lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold uppercase'>design logo motion</Link>
+        <Link to='/' className='sm:text-7xl lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold uppercase'>3D animation</Link>
+        <Link to='/' className='sm:text-7xl lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold uppercase'>SEE ALL PROJECT</Link>
       </div>
     </div>
   );

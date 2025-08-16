@@ -102,41 +102,49 @@
         z-index: 9999;
     }
 
-            .glassDiv {
-            position: absolute;
-            width: 300px;
-            height: 200px;
-            border-radius: 28px;
-            cursor: move;
-            isolation: isolate;
-            touch-action: none;
-            /* enable pointer dragging on touch */
-            box-shadow: 0px 6px var(--outer-shadow-blur) rgba(0, 0, 0, 0.2);
-        }
+/* Main glass card */
+.ios26-glass-card {
+  position: relative;
+  width: 320px;
+  padding: 1.5rem 2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-        .glassDiv::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            border-radius: 28px;
-            box-shadow:
-                inset var(--shadow-offset) var(--shadow-offset) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
-            background-color: rgba(var(--tint-color), var(--tint-opacity));
-        }
+/* Internal shine/light gradient */
+.ios26-glass-shine {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 70%);
+  border-radius: 28px;
+  pointer-events: none;
+  z-index: 0;
+}
 
-        .glassDiv::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            border-radius: 28px;
-            backdrop-filter: blur(var(--frost-blur));
-            filter: url(#glass-distortion);
-            isolation: isolate;
-            -webkit-backdrop-filter: blur(var(--frost-blur));
-            -webkit-filter: url("#glass-distortion");
-        }
+/* Content sits above the shine */
+.ios26-glass-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+.fade-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* adjust height of fade */
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+  pointer-events: none; /* allows clicking button underneath */
+}
 
 
 }

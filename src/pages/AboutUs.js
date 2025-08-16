@@ -70,7 +70,7 @@ export default function AboutUs() {
                     <img src={copyIcon} alt="copy image" />
                     Copy my email address
                 </button>
-            </div>
+            </div>            
         </div>
         <div className='mt-16'>
             <p className='bg-[#1A1A1A] text-white text-sm font-Neue-Montreal-Bold py-1 px-2 rounded-md inline-block'>AVAILABLE FOR YOUR PROJECT</p>
