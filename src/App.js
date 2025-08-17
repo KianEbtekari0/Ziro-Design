@@ -3,6 +3,7 @@ import Main from './pages/Main';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductDetails from './components/ProductDetails';
+import AllProjects from './pages/AllProjects';
 import './index.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/allprojects" element={<AllProjects />} />
         </Routes>
       </div>
       <Footer />

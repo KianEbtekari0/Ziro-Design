@@ -6,10 +6,10 @@ import Products from "./Products"
 export default function Main() {
   return (
     <main>
-        <Home />
-        {/* <AboutUs /> */}
-        <Projects />
-        <Products />
+      <Home />
+      {/* <AboutUs /> */}
+      <Projects />
+      <Products />
     </main>
   )
 }

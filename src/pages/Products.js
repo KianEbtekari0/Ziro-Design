@@ -56,7 +56,7 @@ export default function Products() {
 
   return (
     <div className='container flex flex-col items-center justify-center'>
-        <div>
+        <div className='self-start'>
             <h1 className='text-white font-Neue-Montreal-Bold uppercase mt-14 sm:text-6xl xl:text-8xl'>Step Into More Dimensions</h1>
             <p className='text-white max-w-7xl mt-7 text-sm sm:text-xl xl:text-3xl font-Neue-Montreal-Bold'>Take a look at my other projects and dive deeper into the world of creativity. From experimental ideas <span className='text-secondery'>to polished designs, there’s so much more waiting to be explored</span></p>
         </div>
