@@ -102,49 +102,101 @@
         z-index: 9999;
     }
 
-/* Main glass card */
-.ios26-glass-card {
+    .ios26-glass-card {
+        position: relative;
+        width: 320px;
+        padding: 1.5rem 2rem;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        color: white;
+    }
+
+    .ios26-glass-shine {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 70%);
+        border-radius: 28px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .ios26-glass-content {
+        position: relative;
+        z-index: 1;
+    }
+
+
+    .fade-shadow {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px; /* adjust height of fade */
+        background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+        pointer-events: none; /* allows clicking button underneath */
+    }
+
+    .grid-container {
   position: relative;
-  width: 320px;
-  padding: 1.5rem 2rem;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  background: #1e1e1e;
+  min-height: 100vh;
   overflow: hidden;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Internal shine/light gradient */
-.ios26-glass-shine {
-  content: '';
+.project-list {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.project-item {
+  font-size: 2rem;
+  color: #bebebe;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.preview-wrapper {
+  pointer-events: none;
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 70%);
-  border-radius: 28px;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.preview-wrapper img {
+  max-width: 60%;
+  border-radius: 20px;
+}
+
+.preview-title {
+  position: absolute;
+  font-size: 4vw;
+  font-weight: bold;
+  color: #f5d6c6;
+}
+
+.bg-titles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 8vw;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
   z-index: 0;
 }
-
-/* Content sits above the shine */
-.ios26-glass-content {
-  position: relative;
-  z-index: 1;
-}
-
-
-.fade-shadow {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; /* adjust height of fade */
-  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
-  pointer-events: none; /* allows clicking button underneath */
-}
-
 
 }

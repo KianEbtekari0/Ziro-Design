@@ -75,26 +75,32 @@ export default function Projects() {
     }
   }, [hovered]);
 
-  const handleHover = (e, item) => {
+  const handleHover = (e) => {
     setHovered(true);
 
     hideCall.current?.kill?.();
 
-    gsap.to(e.target, {
+    gsap.from(e.target, {
       transformOrigin: "left center",
       duration: 0.3,
       ease: "power2.out",
       color: "#fff",
       zIndex: 40,
       overwrite: "auto",
+      yoyo: true,
+      stagger: 0.1,
+      repeat: 1,
     });
 
-    gsap.set(previewRef.current, { display: "block", pointerEvents: "none" });
-    gsap.to(previewRef.current, {
+    gsap.set(previewRef.current, { display: "block" });
+    gsap.from(previewRef.current, {
       opacity: 1,
       duration: 0.3,
       overwrite: "auto",
       ease: "power2.out",
+      yoyo: true,
+      repeat: 1,
+      pointerEvents: 'none'
     });
   };
 
@@ -113,8 +119,8 @@ export default function Projects() {
     hideCall.current = gsap.delayedCall(0.08, () => {
       gsap.to(previewRef.current, {
         opacity: 0,
-      ease: "power2.out",
-        duration: 0.3,
+        ease: "power2.out",
+        duration: 0.4,
         overwrite: "auto",
         onComplete: () => {
           gsap.set(previewRef.current, { display: "none" });
@@ -128,8 +134,8 @@ export default function Projects() {
       <p className='uppercase font-Neue-Montreal-Bold text-white absolute top-[45%]' style={{writingMode: 'vertical-lr', textOrientation: 'mixed'}}>hover on title</p>
       <div className='text-secondery flex items-center justify-center flex-col gap-4 text-center'>
         {items.map(item => (
-          <Link to='/' className='sm:text-7xl z-0 lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold' onMouseMove={(e) => handleHover(e)} onMouseLeave={(e) => handleMouseLeave(e)}>{item.name}</Link>
-        ))} 
+          <Link to='/' className='inline-block sm:text-7xl z-0 lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold' onMouseMove={(e) => handleHover(e)} onMouseLeave={(e) => handleMouseLeave(e)}>{item.name}</Link>
+        ))}
         <img src={projectImg} alt='preview' className='absolute z-10 w-[1000px] pointer-events-none rounded-3xl hidden' ref={previewRef} />
       </div>
       <div className='glassBtn custom-cursor rounded-full' ref={cursorRef}>VIEW</div>
