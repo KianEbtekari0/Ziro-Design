@@ -55,7 +55,7 @@ export default function Products() {
     });
 
   return (
-    <div className='container flex flex-col items-center justify-center'>
+    <div className='container flex flex-col relative items-center justify-center'>
         <div className='self-start'>
             <h1 className='text-white font-Neue-Montreal-Bold uppercase mt-14 sm:text-6xl xl:text-8xl'>Step Into More Dimensions</h1>
             <p className='text-white max-w-7xl mt-7 text-sm sm:text-xl xl:text-3xl font-Neue-Montreal-Bold'>Take a look at my other projects and dive deeper into the world of creativity. From experimental ideas <span className='text-secondery'>to polished designs, there’s so much more waiting to be explored</span></p>
@@ -81,8 +81,8 @@ export default function Products() {
 
         {products.length > 6 && !showAll && (
             <>
-                <div className='fade-shadow z-50'></div>
-                <button className='glassBtn py-2 lg:py-3 text-sm lg:text-base font-Neue-Montreal-Regular px-4 lg:px-6 flex items-center justify-center gap-1.5 cursor-pointer text-white rounded-3xl'>
+                <div className='fade-shadow z-20'></div>
+                <button className='glassBtn py-2 mt-10 z-50 lg:py-3 text-sm lg:text-base font-Neue-Montreal-Regular px-4 lg:px-6 flex items-center justify-center gap-1.5 cursor-pointer text-white rounded-3xl'>
                     More Products
                     <img src={trendUp} alt="trend up button" className='mt-0.5' />
                 </button>

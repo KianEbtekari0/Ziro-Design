@@ -9,11 +9,6 @@ export default function Home() {
   const [isExpanded, setIsExpanded] = useState(false);
 
    const toggleVideo = () => {
-    gsap.to('.rightSide', {
-      zIndex: 30,
-      display: 'none',
-    });
-
     if (isExpanded) {
       gsap.to(['.videoBox'], {
         width: "320px",
@@ -49,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className='h-screen w-full'>
+    <div className='min-h-screen'>
       <img
         className="absolute top-0 left-0 w-full h-full object-cover"
         src={bgVideo}
@@ -64,7 +59,7 @@ export default function Home() {
 
       <div className='videoBox absolute flex justify-between right-5 bottom-5 p-1.5 w-[250px] lg:w-[320px] rounded-3xl cursor-pointer z-40' onClick={() => toggleVideo()}>
         <img className='video w-[150px] lg:w-[206px] rounded-2xl' src={bgVideo}></img>
-        <div className='rightSide flex justify-between flex-col items-end'>
+        <div className={`flex justify-between flex-col items-end ${isExpanded === true ? 'hidden' : 'flex'}`}>
             <p className='ml-3 text-xl text-white font-Neue-Montreal-Medium'>Discover full video</p>
             <button className='mr-2 bg-black flex items-center justify-center w-8 h-8 rounded-full'>
                 <img src={playImg} alt="" /> 
