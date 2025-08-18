@@ -199,4 +199,17 @@
   z-index: 0;
 }
 
+.logoAnimation {
+  animation: slide 10s linear infinite;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% / 2));
+    }
+}
+
 }

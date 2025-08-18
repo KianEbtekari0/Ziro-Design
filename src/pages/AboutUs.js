@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef, useEffect } from 'react'
 import company2 from '../assets/images/company2.png';
 import company3 from '../assets/images/company3.png';
 import company4 from '../assets/images/company4.png';
@@ -10,21 +10,69 @@ import star2 from '../assets/images/star2.png';
 import arrowIcon from '../assets/images/arrow-right.png';
 import copyIcon from '../assets/images/tabler_copy.png'
 import boxIcon from '../assets/images/boxIcon.png'
+import gsap from 'gsap'
 
 export default function AboutUs() {
+  
+    const logos = [
+        { src: company2, alt: "Company 2" },
+        { src: company3, alt: "Company 3" },
+        { src: company4, alt: "Company 4" },
+        { src: company5, alt: "Company 5" },
+        { src: company7, alt: "Company 7" },
+        { src: company8, alt: "Company 8" },
+    ]
+    const trackRef = useRef(null);
+    const duplicated = [...logos, ...logos];
+    const direction = 'left'
+    const isRight = direction === "right";
+
+    useEffect(() => {
+        if (!trackRef.current) return;
+
+        const totalWidth = trackRef.current.scrollWidth / 2;
+        const distance = isRight ? totalWidth : -totalWidth;
+
+        const tween = gsap.to(trackRef.current, {
+            x: distance,
+            duration: 30,
+            ease: "linear",
+            repeat: -1,
+        });
+
+        if (true) {
+            const el = trackRef.current.closest(".marquee-outer");
+            el.addEventListener("mouseenter", () => tween.pause());
+            el.addEventListener("mouseleave", () => tween.resume());
+        }
+
+        return () => tween.kill();
+    }, [30, isRight, true]);
+
   return (
     <div className='container bg-black py-16'>
-        <div className='flex items-center justify-center gap-20'>
-            <img src={star1} alt="star1" />
-            <div className='flex items-center justify-between w-full'>
-                <img src={company2} alt="company image" />
-                <img src={company3} alt="company image" />
-                <img src={company4} alt="company image" />
-                <img src={company5} alt="company image" />
-                <img src={company7} alt="company image" />
-                <img src={company8} alt="company image" />
+        <div className='flex relative items-center justify-center overflow-hidden whitespace-nowrap marquee-outer'>
+            <div className='bg-gradient-to-l z-10 from-black from-50% to-transparent absolute right-0 top-0 w-32 h-full'></div>
+            {star1 && <img src={star1} alt="star1" className='z-30' />}
+            
+            <div
+            ref={trackRef}
+            className='logoAnimation inline-flex'
+            style={{ gap: `${80}px`, willChange: "transform" }}
+            >
+            {duplicated.map((logo, i) => (
+                <img
+                key={i}
+                src={logo.src}
+                alt={`company-${i}`}
+                className="w-auto object-contain duration-200"
+                draggable={false}
+                />
+            ))}
             </div>
-            <img src={star2} alt="star2" />
+
+            {star2 && <img src={star2} alt="star2" className='z-30' />}
+            <div className='bg-gradient-to-r from-black from-50% to-transparent absolute left-0 top-0 w-32 h-full'></div>
         </div>
         <div>
             <h1 className='text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-Neue-Montreal-Bold mt-10'>SAFARPOOR – 3D & VIDEO CREATOR CONVERGE</h1>

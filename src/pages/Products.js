@@ -60,11 +60,11 @@ export default function Products() {
             <h1 className='text-white font-Neue-Montreal-Bold uppercase mt-14 sm:text-6xl xl:text-8xl'>Step Into More Dimensions</h1>
             <p className='text-white max-w-7xl mt-7 text-sm sm:text-xl xl:text-3xl font-Neue-Montreal-Bold'>Take a look at my other projects and dive deeper into the world of creativity. From experimental ideas <span className='text-secondery'>to polished designs, there’s so much more waiting to be explored</span></p>
         </div>
-        <div className='grid sm:grid-cols-2 xl:grid-cols-3 mt-10 gap-10 relative overflow-hidden z-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mt-10 gap-40 relative overflow-hidden z-10'>
             {visibale.map(product => (
                 <a href={`/product/${product.id}`} key={product.id}>
                     <div className='flex model w-[550px] h-[350px] rounded-[50px] p-3 bg-cover' style={{ backgroundImage: `url(${product.preview_url})` }}>
-                        <div className='flex self-end flex-col w-full rounded-[40px] px-5 py-4'>
+                        <div className='flex self-end glassCard flex-col w-full rounded-[40px] px-5 py-4'>
                             <h1 className='text-white text-2xl font-Neue-Montreal-Bold'>{product.name}</h1>
                             <div className='flex items-center justify-between'>
                                 <p className='text-white text-lg font-Neue-Montreal-Bold'>{product.price}<span className='text-white/50 ml-2 font-Neue-Montreal-Regular text-lg'>DOLLAR</span></p>
