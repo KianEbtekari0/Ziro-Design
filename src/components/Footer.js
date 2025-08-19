@@ -3,8 +3,8 @@ import { GlassElement } from './GlassElement/GlassElement'
 
 export default function Footer() {
   return (
-    <div>
-        <footer className='flex items-center z-0 relative justify-between px-52 py-20'>
+    <div className='flex flex-col items-center justify-center'>
+        <footer className='flex items-center z-0 relative justify-between px-10 w-full max-w-7xl py-20'>
             <div className='text-center'>
                 <h1 className='text-white font-Neue-Montreal-Bold text-2xl'>FAQ</h1>
                 <div className='mt-2 flex flex-col w-[320px]'>
@@ -95,7 +95,6 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <h1 className='absolute -z-10 text-[300px] left-0 font-Neue-Montreal-Bold -bottom-[180px] text-[#B2B2B2]'>ZIRO DESIGN</h1>
         </footer>
         <div className='flex z-10 relative bg-black items-center justify-between p-10'>
             <h1 className='text-white font-Neue-Montreal-Bold text-8xl'>BOOK A TIME FOR YOUR WORK</h1>

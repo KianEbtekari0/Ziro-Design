@@ -3,7 +3,7 @@ import { APIError, errorMessages } from '../Errors'
 import { Link } from 'react-router';
 import dotIcon from '../assets/images/redDotIcon.svg'
 import trendUp from '../assets/images/trend-up-02.svg'
-import productImage from '../assets/images/8b008977f4e1e4ee0c3e8d6a34532e7d.jpg'
+import productImage from '../assets/images/car.png'
 import { GlassElement } from '../components/GlassElement/GlassElement'
 import '../index.css'
 
@@ -64,15 +64,15 @@ export default function Products() {
         <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 w-full mt-10 gap-8 relative overflow-hidden z-10'>
             {visibale.map(product => (
                 <a href={`/product/${product.id}`} key={product.id}>
-                    <div className='flex model w-full h-[350px] rounded-[50px] p-3 bg-cover' style={{ backgroundImage: `url(${product.preview_url})` }}>
+                    <div className='flex model w-full h-[350px] rounded-[50px] p-3 bg-cover object-cover' style={{ backgroundImage: `url(${product.preview_url})` }}>
                         <div className='flex self-end flex-col w-full'>
                             <GlassElement
                                 width={'100%'}
                                 height={100}
                                 radius={40}
-                                depth={10}
-                                blur={3}
-                                chromaticAberration={5}
+                                depth={0}
+                                blur={4}
+                                chromaticAberration={0}
                             >
                                 <div className='px-5 py-4'>
                                     <h1 className='text-white text-2xl font-Neue-Montreal-Bold'>{product.name}</h1>
