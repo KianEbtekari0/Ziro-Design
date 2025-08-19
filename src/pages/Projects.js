@@ -27,6 +27,7 @@ export default function Projects() {
     {
       name: 'SEE ALL PROJECT',
       src: projectsFilm1,
+      link: '/allprojects'
     },
   ];
 
@@ -134,11 +135,11 @@ export default function Projects() {
       <p className='uppercase font-Neue-Montreal-Bold text-white absolute top-[45%]' style={{writingMode: 'vertical-lr', textOrientation: 'mixed'}}>hover on title</p>
       <div className='text-secondery flex items-center justify-center flex-col gap-4 text-center'>
         {items.map(item => (
-          <Link to='/' className='inline-block sm:text-7xl z-0 lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold' onMouseMove={(e) => handleHover(e)} onMouseLeave={(e) => handleMouseLeave(e)}>{item.name}</Link>
+          <Link to={item.link} className='inline-block sm:text-7xl z-0 lg:text-8xl xl:text-9xl font-Neue-Montreal-Bold' onMouseMove={(e) => handleHover(e)} onMouseLeave={(e) => handleMouseLeave(e)}>{item.name}</Link>
         ))}
         <img src={projectImg} alt='preview' className='absolute z-10 w-[1000px] pointer-events-none rounded-3xl hidden' ref={previewRef} />
       </div>
-      <div className='glassBtn custom-cursor rounded-full' ref={cursorRef}>VIEW</div>
+      <div className='custom-cursor rounded-full' ref={cursorRef}>VIEW</div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import arrowRight from '../assets/images/arrow-right.png'
+import { GlassElement } from './GlassElement/GlassElement'
 
 export default function Footer() {
   return (
@@ -17,9 +18,19 @@ export default function Footer() {
                 <h1 className='font-Neue-Montreal-Bold text-white mt-2 text-2xl'>BOOK A TIME!</h1>
                 <div className='flex items-center justify-between flex-col gap-5 mt-2'>
                     <input type="email" className='glassCard text-white w-[320px] p-3 h-[40px] rounded-3xl font-Neue-Montreal-Bold' />
-                    <a href='#' className='glassBtn flex items-center gap-1.5 text-white text-sm font-Neue-Montreal-Medium w-[100px] h-[40px] px-5 py-3 rounded-full'>
-                        Send
-                        <img src={arrowRight} alt="arrow right" />
+                    <a href='#' className='flex items-center gap-1.5 text-white text-sm font-Neue-Montreal-Medium'>
+                        <GlassElement
+                            width={100}
+                            height={40}
+                            radius={100}
+                            depth={10}
+                            blur={3}
+                            center={'flex'}
+                            chromaticAberration={5}
+                        >
+                            Send
+                            <img src={arrowRight} alt="arrow right" />
+                        </GlassElement>
                     </a>
                 </div>
             </div>
@@ -29,17 +40,57 @@ export default function Footer() {
                     <p className='text-secondery font-Neue-Montreal-Regular'>09129212525</p>
                     <p className='text-secondery max-w-[200px] font-Neue-Montreal-Regular'>3785 Blackwell Street City Cordova State Province</p>
                     <div className='flex justify-center gap-2 mt-3'>
-                        <a href='#' className='glassBtn rounded-full flex items-center justify-center w-11 h-11'>
-                            <img src="" alt="" className='' />
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
                         </a>
-                        <a href='#' className='glassBtn rounded-full flex items-center justify-center w-11 h-11'>
-                            <img src="" alt="" className='' />
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
                         </a>
-                        <a href='#' className='glassBtn rounded-full flex items-center justify-center w-11 h-11'>
-                            <img src="" alt="" className='' />
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
                         </a>
-                        <a href='#' className='glassBtn rounded-full flex items-center justify-center w-11 h-11'>
-                            <img src="" alt="" className='' />
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
                         </a>
                     </div>
                 </div>
