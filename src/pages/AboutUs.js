@@ -50,7 +50,7 @@ export default function AboutUs() {
     }, [30, isRight, true]);
 
   return (
-    <div className='container bg-black py-16'>
+    <div className='container bg-black pb-16'>
         <div className='flex relative items-center justify-center overflow-hidden whitespace-nowrap marquee-outer'>
             <div className='bg-gradient-to-l z-10 from-black from-50% to-transparent absolute right-0 top-0 w-32 h-full'></div>
             {star1 && <img src={star1} alt="star1" className='z-30' />}

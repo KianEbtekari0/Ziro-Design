@@ -50,7 +50,7 @@ export default function Home() {
         className="absolute top-0 left-0 w-full h-full object-cover"
         src={bgVideo}
       />
-      <div className='relative z-10 flex items-center text-center justify-center flex-col mt-[250px] gap-10'>
+      <div className='relative min-h-screen z-10 flex items-center text-center justify-center flex-col gap-10'>
         <h1 className='text-3xl sm:text-5xl lg:text-6xl xl:text-8xl text-white font-Neue-Montreal-Bold'>Design<span className='text-primary'>.</span> Animate<span className='text-primary'>.</span> Impact<span className='text-primary'>.</span><br /> ZIRODESIGN<span className='text-primary'>.</span></h1>
         <GlassElement
           width={164}
@@ -67,28 +67,28 @@ export default function Home() {
           </button>
         </GlassElement>
       </div>
-
-    <div className='videoBox absolute flex justify-between right-5 bottom-5' onClick={() => toggleVideo()}>
-      <GlassElement
-        width={320}
-        height={125}
-        radius={38}
-        depth={10}
-        center={'flex'}
-        blur={3}
-        chromaticAberration={5}
-      >
-        <div className='flex justify-between px-2 cursor-pointer z-40'>
-          <img className='video w-[150px] lg:w-[206px] rounded-[30px]' src={bgVideo}></img>
-          <div className={`flex justify-between flex-col items-end ${isExpanded === true ? 'hidden' : 'flex'}`}>
-            <p className='ml-3 text-xl text-white font-Neue-Montreal-Medium'>Discover full video</p>
-            <button className='mr-2 bg-black flex items-center justify-center w-8 h-8 rounded-full'>
-                <img src={playImg} alt="" /> 
-            </button>
+      
+      <div className='videoBox absolute flex justify-between right-5 bottom-5' onClick={() => toggleVideo()}>
+        <GlassElement
+          width={320}
+          height={125}
+          radius={38}
+          depth={10}
+          center={'flex'}
+          blur={3}
+          chromaticAberration={5}
+        >
+          <div className='flex justify-between px-2 cursor-pointer z-40'>
+            <img className='video w-[150px] lg:w-[206px] rounded-[30px]' src={bgVideo}></img>
+            <div className={`flex justify-between flex-col items-end ${isExpanded === true ? 'hidden' : 'flex'}`}>
+              <p className='ml-3 text-xl text-white font-Neue-Montreal-Medium'>Discover full video</p>
+              <button className='mr-2 bg-black flex items-center justify-center w-8 h-8 rounded-full'>
+                  <img src={playImg} alt="" /> 
+              </button>
+            </div>
           </div>
-        </div>
-      </GlassElement>
-    </div>
+        </GlassElement>
+      </div>
     </div>
   )
 }

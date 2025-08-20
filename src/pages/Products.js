@@ -64,7 +64,7 @@ export default function Products() {
         <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 w-full mt-10 gap-8 relative overflow-hidden z-10'>
             {visibale.map(product => (
                 <a href={`/product/${product.id}`} key={product.id}>
-                    <div className='flex model w-full h-[350px] rounded-[50px] p-3 bg-cover object-cover' style={{ backgroundImage: `url(${product.preview_url})` }}>
+                    <div className='flex model w-full h-[350px] rounded-[50px] p-3 bg-cover bg-center' style={{ backgroundImage: `url(${product.preview_url})` }}>
                         <div className='flex self-end flex-col w-full'>
                             <GlassElement
                                 width={'100%'}
@@ -72,7 +72,7 @@ export default function Products() {
                                 radius={40}
                                 depth={0}
                                 blur={4}
-                                chromaticAberration={0}
+                                chromaticAberration={3}
                             >
                                 <div className='px-5 py-4'>
                                     <h1 className='text-white text-2xl font-Neue-Montreal-Bold'>{product.name}</h1>
