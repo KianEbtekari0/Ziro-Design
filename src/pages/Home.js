@@ -68,19 +68,19 @@ export default function Home() {
         </GlassElement>
       </div>
       
-      <div className='videoBox absolute flex justify-between right-5 bottom-5' onClick={() => toggleVideo()}>
+      <div className='videoBox absolute z-40 h-[105px] w-[190px] xl:h-[125px] xl:w-[320px] flex justify-between right-5 bottom-5' onClick={() => toggleVideo()}>
         <GlassElement
           width={320}
-          height={125}
+          height={''}
           radius={38}
           depth={10}
           center={'flex'}
           blur={3}
           chromaticAberration={5}
         >
-          <div className='flex justify-between px-2 cursor-pointer z-40'>
-            <img className='video w-[150px] lg:w-[206px] rounded-[30px]' src={bgVideo}></img>
-            <div className={`flex justify-between flex-col items-end ${isExpanded === true ? 'hidden' : 'flex'}`}>
+          <div className='flex justify-between px-2 cursor-pointer'>
+            <img className='video w-[180px] xl:w-[206px] rounded-[30px]' src={bgVideo}></img>
+            <div className={`hidden xl:flex justify-between flex-col items-end ${isExpanded === true ? 'hidden' : 'flex'}`}>
               <p className='ml-3 text-xl text-white font-Neue-Montreal-Medium'>Discover full video</p>
               <button className='mr-2 bg-black flex items-center justify-center w-8 h-8 rounded-full'>
                   <img src={playImg} alt="" /> 

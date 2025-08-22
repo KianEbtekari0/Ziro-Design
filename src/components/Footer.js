@@ -4,17 +4,17 @@ import { GlassElement } from './GlassElement/GlassElement'
 export default function Footer() {
   return (
     <div className='flex flex-col items-center justify-center'>
-        <footer className='flex items-center z-0 relative justify-between px-10 w-full max-w-7xl py-20'>
-            <div className='text-center'>
+        <footer className='flex items-center z-0 relative justify-center max-w-7xl px-10 w-full py-20'>
+            <div className='text-center absolute left-0 pl-10'>
                 <h1 className='text-white font-Neue-Montreal-Bold text-2xl'>FAQ</h1>
-                <div className='mt-2 flex flex-col w-[320px]'>
+                <div className='mt-2 flex flex-col'>
                     <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Company</a>
                     <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Employment</a>
                     <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Order History</a>
                     <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Terms & Services</a>
                 </div>
             </div>
-            <div className='text-center w-[320px]'>
+            <div className='text-center'>
                 <h1 className='font-Neue-Montreal-Bold text-white mt-2 text-2xl'>BOOK A TIME!</h1>
                 <div className='flex items-center justify-between flex-col gap-5 mt-2'>
                     <input type="email" className='glassCard text-white w-[320px] p-3 h-[40px] rounded-3xl font-Neue-Montreal-Bold' />
@@ -34,7 +34,7 @@ export default function Footer() {
                     </a>
                 </div>
             </div>
-            <div>
+            <div className='absolute right-0 pr-7'>
                 <h1 className='text-white font-Neue-Montreal-Bold text-2xl'>CONTACT US INFORMATION</h1>
                 <div className='mt-2 flex items-center text-center flex-col'>
                     <p className='text-secondery font-Neue-Montreal-Regular'>09129212525</p>
@@ -96,9 +96,9 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
-        <div className='flex z-10 relative bg-black items-center justify-between p-10'>
-            <h1 className='text-white font-Neue-Montreal-Bold text-8xl'>BOOK A TIME FOR YOUR WORK</h1>
-            <p className='text-secondery font-Neue-Montreal-Regular max-w-sm'>The opportunity to work with us is open — just drop your work email to take the first step toward joining a creative and passionate team.</p>
+        <div className='flex z-10 relative bg-black items-center justify-between w-full p-10'>
+            <h1 className='text-white font-Neue-Montreal-Bold lg:text-5xl xl:text-8xl'>BOOK A TIME FOR YOUR WORK</h1>
+            <p className='text-secondery text-sm xl:text-base font-Neue-Montreal-Regular lg:max-w-xs xl:max-w-sm'>The opportunity to work with us is open — just drop your work email to take the first step toward joining a creative and passionate team.</p>
         </div>
     </div>
   )

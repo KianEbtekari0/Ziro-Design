@@ -21,6 +21,10 @@ export default function AboutUs() {
         { src: company5, alt: "Company 5" },
         { src: company7, alt: "Company 7" },
         { src: company8, alt: "Company 8" },
+        { src: company3, alt: "Company 3" },
+        { src: company4, alt: "Company 4" },
+        { src: company5, alt: "Company 5" },
+        { src: company7, alt: "Company 7" },
     ]
     const trackRef = useRef(null);
     const duplicated = [...logos, ...logos];
