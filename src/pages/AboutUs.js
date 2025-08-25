@@ -1,41 +1,17 @@
-import { useRef, useEffect } from 'react'
 import company1 from '../assets/images/company2.png'
 import company2 from '../assets/images/company3.png'
 import company3 from '../assets/images/company4.png'
 import company4 from '../assets/images/company5.png'
 import company5 from '../assets/images/company7.png'
-import company6 from '../assets/images/company8.png'
 import star1 from '../assets/images/star1.png'
 import star2 from '../assets/images/star2.png'
 import arrowIcon from '../assets/images/arrow-right.png'
 import copyIcon from '../assets/images/tabler_copy.png'
 import boxIcon from '../assets/images/boxIcon.png'
-import gsap from 'gsap'
 
 export default function AboutUs() {
   return (
     <div className="container bg-black pb-16">
-      {/* <div className="overflow-hidden px-8 whitespace-nowrap relative">
-        {' '}
-
-        <div
-          className="logoAnimation flex"
-          style={{ gap: '80px', willChange: 'transform' }}
-        >
-          {' '}
-          <img src={company1} alt={'company-1'} draggable={false} />{' '}
-          <img src={company2} alt={'company-1'} draggable={false} />{' '}
-          <img src={company3} alt={'company-1'} draggable={false} />{' '}
-          <img src={company4} alt={'company-1'} draggable={false} />{' '}
-          <img src={company5} alt={'company-1'} draggable={false} />{' '}
-          <img src={company1} alt={'company-1'} draggable={false} />{' '}
-          <img src={company2} alt={'company-1'} draggable={false} />{' '}
-          <img src={company3} alt={'company-1'} draggable={false} />{' '}
-          <img src={company4} alt={'company-1'} draggable={false} />{' '}
-          <img src={company5} alt={'company-1'} draggable={false} />{' '}
-        </div>{' '}
-
-      </div> */}
       <div className="flex overflow-hidden px-8 whitespace-nowrap relative">
         <div className="bg-gradient-to-l z-10 from-black from-50% to-transparent absolute right-0 top-0 w-32 h-full"></div> 
         <img src={star1} alt="star1" className="z-30 absolute left-0" />
@@ -43,39 +19,39 @@ export default function AboutUs() {
         <div>
             <div className="inline-flex logoAnimation">
                 <img src={company1} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company2} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company3} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company4} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company5} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company2} alt={'company-2'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company3} alt={'company-3'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company4} alt={'company-4'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company5} alt={'company-5'} className='max-h-[50px] mx-10' draggable={false} />
                 <img src={company1} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company2} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company3} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company4} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
-                <img src={company5} alt={'company-1'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company2} alt={'company-2'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company3} alt={'company-3'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company4} alt={'company-4'} className='max-h-[50px] mx-10' draggable={false} />
+                <img src={company5} alt={'company-5'} className='max-h-[50px] mx-10' draggable={false} />
             </div>
             <div className="inline-flex logoAnimation">
                 <img src={company1} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company2} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company3} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company4} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company5} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company2} alt={'company-2'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company3} alt={'company-3'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company4} alt={'company-4'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company5} alt={'company-5'} className='max-h-[50px] block mx-10' draggable={false} />
                 <img src={company1} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company2} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company3} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company4} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company5} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company2} alt={'company-2'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company3} alt={'company-3'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company4} alt={'company-4'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company5} alt={'company-5'} className='max-h-[50px] block mx-10' draggable={false} />
             </div>
             <div className="inline-flex logoAnimation">
                 <img src={company1} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company2} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company3} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company4} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company5} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company2} alt={'company-2'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company3} alt={'company-3'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company4} alt={'company-4'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company5} alt={'company-5'} className='max-h-[50px] block mx-10' draggable={false} />
                 <img src={company1} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company2} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company3} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company4} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
-                <img src={company5} alt={'company-1'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company2} alt={'company-2'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company3} alt={'company-3'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company4} alt={'company-4'} className='max-h-[50px] block mx-10' draggable={false} />
+                <img src={company5} alt={'company-5'} className='max-h-[50px] block mx-10' draggable={false} />
             </div>
         </div>
         
@@ -97,18 +73,13 @@ export default function AboutUs() {
               312k
             </h1>
             <p className="mt-3 text-secondery font-Neue-Montreal-Regular">
-              3D object on 3D design platform{' '}
+              3D object on 3D design platform
             </p>
             <a
-              href="#"
+              href="/"
               className="flex items-center mt-3 font-Manrope-Medium gap-3 text-primary"
             >
-              <div
-                href="#"
-                className="flex items-center justify-center bg-primary text-white rounded-full"
-              >
-                <img src={arrowIcon} alt="arrow icon" className="w-6" />
-              </div>
+              <img src={arrowIcon} alt="arrow icon" className="w-6" />
               GO TO MY PROFILE
             </a>
           </div>
@@ -159,7 +130,7 @@ export default function AboutUs() {
             Do you want to Start a project together
           </h1>
           <button className="glassBtn flex items-center justify-center font-Neue-Montreal-Regular gap-2 py-2.5 px-5 text-[#BFBFBF] rounded-3xl">
-            <img src={copyIcon} alt="copy image" />
+            <img src={copyIcon} alt="copy" />
             Copy my email address
           </button>
         </div>

@@ -18,20 +18,18 @@ export default function Header() {
         >
           <nav className='flex items-center justify-center rounded-full'>
             <ul className='flex items-center gap-3 justify-center'>
-              <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-white'>HOME<span className='text-primary'>.</span></a>
-              <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>ABOUT US<span className='text-secondery'>.</span></a>
-              <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>PROJECTS<span className='text-secondery'>.</span></a>
-              <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>SHOP<span className='text-secondery'>.</span></a>
-              <a href="#" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>CONTACT US<span className='text-secondery'>.</span></a>
+              <a href="/" className='text-base font-Neue-Montreal-Regular cursor-pointer text-white'>HOME<span className='text-primary'>.</span></a>
+              <a href="/" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>ABOUT US<span className='text-secondery'>.</span></a>
+              <a href="/" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>PROJECTS<span className='text-secondery'>.</span></a>
+              <a href="/" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>SHOP<span className='text-secondery'>.</span></a>
+              <a href="/" className='text-base font-Neue-Montreal-Regular cursor-pointer text-secondery'>CONTACT US<span className='text-secondery'>.</span></a>
             </ul>
-            <div>
-            </div>
           </nav>
         </GlassElement>
-      <button className='glassBtn flex items-center justify-center gap-2 tracking-wide font-Neue-Montreal-Bold py-2 px-6 backdrop-blur-[42px] cursor-pointer text-white rounded-3xl'>
-        English
-        <img src={dotsImg} alt="" />
-      </button>
+        <button className='glassBtn flex items-center justify-center gap-2 tracking-wide font-Neue-Montreal-Bold py-2 px-6 backdrop-blur-[42px] cursor-pointer text-white rounded-3xl'>
+          English
+          <img src={dotsImg} alt="dots" />
+        </button>
     </header>
   )
 }

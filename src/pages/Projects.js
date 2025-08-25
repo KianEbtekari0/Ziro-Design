@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router'
-import gsap from 'gsap'
 import projectImg from '../assets/images/magas 2.png'
 import projectImg2 from '../assets/images/8b008977f4e1e4ee0c3e8d6a34532e7d.jpg'
 import projectImg3 from '../assets/images/l5r_cover2-1920x1200.webp'
 import projectImg4 from '../assets/images/wolverine-web-cover-1920x1042.webp'
 import projectImg5 from '../assets/images/loewe-couv-1920x1277.webp'
+import gsap from 'gsap'
 import '../index.css'
 
 export default function Projects() {

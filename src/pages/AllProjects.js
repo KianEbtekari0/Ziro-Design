@@ -52,7 +52,6 @@ export default function AllProjects() {
               key={c.id}
               className="mb-4 rounded-xl shadow overflow-hidden [break-inside:avoid]"
             >
-              {/* تصویر با نسبت طبیعی خودش */}
               <img
                 src={c.preview_url}
                 alt={c.title}

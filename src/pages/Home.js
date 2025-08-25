@@ -109,12 +109,13 @@ export default function Home() {
       {/* Background image for visual depth */}
       <img
         className="absolute top-0 left-0 w-full h-full object-cover"
+        alt="Background video"
         src={bgVideo}
       />
 
       {/* Hero section: communicates brand values with bold typography */}
-      <div className="relative min-h-screen z-10 flex items-center text-center justify-center flex-col gap-10">
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-8xl text-white font-Neue-Montreal-Bold">
+      <div className="relative z-10 flex items-center text-center justify-center flex-col gap-10">
+        <h1 className="text-3xl mt-60 sm:text-5xl lg:text-6xl xl:text-8xl text-white font-Neue-Montreal-Bold">
           Design<span className="text-primary">.</span> Animate
           <span className="text-primary">.</span> Impact
           <span className="text-primary">.</span>
@@ -158,6 +159,7 @@ export default function Home() {
               ref={videoRef}
               className="video w-[180px] xl:w-[206px] rounded-[30px]"
               src={bgVideo}
+              alt="popup Background video"
             />
 
             {/* Supplemental content: only relevant on desktop */}
@@ -169,7 +171,7 @@ export default function Home() {
                 Discover full video
               </p>
               <button className="absolute right-2 bottom-1 bg-black flex w-8 h-8 rounded-full">
-                <img src={playImg} alt="" />
+                <img src={playImg} alt="play" />
               </button>
             </div>
           </div>
