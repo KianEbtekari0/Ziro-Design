@@ -124,20 +124,20 @@ export default function Home() {
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-        <GlassElement
-          width={164}
-          height={50}
-          radius={50}
-          depth={10}
-          blur={3}
-          center={'flex'}
-          chromaticAberration={5}
-        >
-          <button className="py-2 lg:py-3 text-sm lg:text-base font-Neue-Montreal-Regular px-4 lg:px-6 flex items-center justify-center gap-1.5 cursor-pointer text-white rounded-3xl">
+        <button className="h-[36px] xl:h-[46px] text-sm xl:text-base font-Neue-Montreal-Regular w-[135px] lg:w-[153px] flex items-center justify-center gap-1.5 cursor-pointer text-white rounded-3xl">
+          <GlassElement
+            width={164}
+            height={50}
+            radius={50}
+            depth={10}
+            blur={3}
+            center={'flex'}
+            chromaticAberration={5}
+          >
             Explore now
             <img src={trendUp} alt="trend up button" className="mt-0.5" />
-          </button>
-        </GlassElement>
+          </GlassElement>
+        </button>
       </div>
 
       {/* Video preview box: starts small, expands when clicked */}

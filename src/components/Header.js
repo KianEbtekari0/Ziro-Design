@@ -1,35 +1,72 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import dotsImg from '../assets/images/dots.png'
 import { GlassElement } from './GlassElement/GlassElement'
+import { SplitText } from "gsap/all";
 import gsap from 'gsap'
 
 export default function Header() {
-  const [subMenu, setSubMenu] = useState(false)
 
+  gsap.registerPlugin(SplitText)
+
+  const [subMenu, setSubMenu] = useState(false)
+  const iconRef = useRef(null)
+  
   const handlePointerEnter = (e) => {
     setSubMenu(true)
+    gsap.to(iconRef.current, {
+      rotate: 90,
+      duration: 0.4,
+    })
+
     gsap.to(e.currentTarget, {
       height: 145, // expand only downward
       width: 170,
       top: 5,
       right: 0,
       zIndex: 30,
-      ease: 'power1.out',
-      duration: 0.5,
+      ease: 'power3.out',
+      duration: 0.4,
+    })
+
+    document.fonts.ready.then(() => {
+      gsap.set('.languageText', { opacity: 1 });
+  
+      let split;
+      SplitText.create('.languageText', {
+        type: "words,lines",
+        linesClass: "line",
+        autoSplit: true,
+        mask: "lines",
+        onSplit: (self) => {
+          split = gsap.from(self.lines, {
+            duration: 0.8,
+            yPercent: 100,
+            opacity: 0,
+            stagger: 0.1  ,
+            ease: "expo.out",
+          });
+          return split;
+        }
+      });
     })
   }
 
   const handlePointerLeave = (e) => {
-    setSubMenu(false)
+    gsap.to(iconRef.current, {
+      rotate: 0,
+      duration: 0.4,
+    })
+
     gsap.to(e.currentTarget, {
       height: 50, // back to original height
       width: 110,
       top: 5,
       right: 0,
       zIndex: 30,
-      ease: 'power1.out',
-      duration: 0.5,
+      ease: 'power3.out',
+      duration: 0.4,
     })
+    setSubMenu(false)
   }
 
   return (
@@ -86,17 +123,19 @@ export default function Header() {
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
       >
-        <div className="flex px-5 gap-2 items-center justify-between">
+        <div className="flex px-4 items-center justify-between">
           English
-          <img src={dotsImg} alt="dots" />
+          <img src={dotsImg} alt="dots" ref={iconRef} />
         </div>
         {/* Sub Menu */}
-        <div className={`relative px-2 w-full ${!subMenu ? 'hidden' : 'block'}`}>
+        <div
+          className={`relative px-2 w-full ${!subMenu ? 'hidden' : 'block'}`}
+        >
           <div className="flex flex-col w-full mt-5">
-            <a href="/" className="hover:bg-[#796c6563] px-3 py-2 rounded-xl">
+            <a href="/" className="languageText hover:bg-[#796c6563] px-3 py-2 rounded-xl">
               <span>Persion</span>
             </a>
-            <a href="/" className="hover:bg-[#796c6563] px-3 py-2 rounded-xl">
+            <a href="/" className="languageText hover:bg-[#796c6563] px-3 py-2 rounded-xl">
               <span>Arabic</span>
             </a>
           </div>

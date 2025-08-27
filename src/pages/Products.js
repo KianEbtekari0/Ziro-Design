@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { APIError, errorMessages } from '../Errors'
+import { SplitText } from 'gsap/all'
+import gsap from 'gsap'
 import { Link } from 'react-router'
 import dotIcon from '../assets/images/redDotIcon.svg'
 import cube from '../assets/images/cube.png'
@@ -9,17 +11,20 @@ import { GlassElement } from '../components/GlassElement/GlassElement'
 import '../index.css'
 
 export default function Products() {
+
+  gsap.registerPlugin(SplitText)
+
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN
   const [products, setProducts] = useState([
-    { id: 1, name: 'products1', price: 122, preview_url: productImage },
-    { id: 2, name: 'products1', price: 122, preview_url: productImage },
-    { id: 3, name: 'products1', price: 122, preview_url: productImage },
-    { id: 4, name: 'products1', price: 122, preview_url: productImage },
-    { id: 5, name: 'products1', price: 122, preview_url: productImage },
-    { id: 6, name: 'products1', price: 122, preview_url: productImage },
-    { id: 7, name: 'products1', price: 122, preview_url: productImage },
-    { id: 8, name: 'products1', price: 122, preview_url: productImage },
-    { id: 9, name: 'products1', price: 122, preview_url: productImage },
+    { id: 1, name: 'Batman 3D Charachter', price: 1234, preview_url: productImage },
+    { id: 2, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 3, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 4, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 5, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 6, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 7, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 8, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 9, name: 'products1', price: 1234, preview_url: productImage },
   ])
   const [, setError] = useState(null)
   const [showAll] = useState(false)
@@ -61,17 +66,39 @@ export default function Products() {
       setError(err.message)
     })
 
+  document.fonts.ready.then(() => {
+    gsap.set('.languageText', { opacity: 1 })
+
+    let split
+    SplitText.create('.languageText', {
+      type: 'words,lines',
+      linesClass: 'line',
+      autoSplit: true,
+      mask: 'lines',
+      onSplit: (self) => {
+        split = gsap.from(self.lines, {
+          duration: 0.8,
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.1,
+          ease: 'expo.out',
+        })
+        return split
+      },
+    })
+  })
+
   return (
     <div className="container flex flex-col relative items-center">
       <div className="flex items-center w-full mt-14">
         <div className="relative w-full bg-[#666666] rounded-tr-[50px] rounded-tl-[50px] rounded-bl-[50px] overflow-hidden">
           <div className="py-10 px-9">
-            <h1 className="text-white font-Neue-Montreal-Bold uppercase lg:text-6xl xl:text-8xl">
+            <h1 className="languageText text-white font-Neue-Montreal-Bold uppercase lg:text-6xl xl:text-8xl">
               Step Into More Dimensions
             </h1>
             <p className="text-white max-w-7xl mt-7 leading-relaxed text-sm lg:text-xl xl:text-3xl font-Neue-Montreal-Bold">
               Take a look at my other projects and dive deeper into the world of
-              creativity. From experimental ideas{' '}
+              creativity. From experimental ideas
               <span className="text-secondery">
                 to polished designs, there’s so much more waiting to be explored
               </span>
@@ -91,32 +118,32 @@ export default function Products() {
         {visibale.map((product) => (
           <Link to={`/product/${product.id}`} key={product.id}>
             <div
-              className="flex model w-full h-[350px] rounded-[50px] p-3 bg-cover bg-center"
+              className="flex model w-full h-[350px] max-w-[590px] rounded-[48px] p-2 bg-cover bg-center"
               style={{ backgroundImage: `url(${product.preview_url})` }}
             >
               <div className="flex self-end flex-col w-full">
                 <GlassElement
                   width={'100%'}
-                  height={'100%'}
-                  radius={40}
+                  height={'100px'}
+                  radius={38}
                   depth={0}
                   blur={4}
                   chromaticAberration={3}
                 >
-                  <div className="px-4 py-3">
+                  <div className="px-[21px] py-[14px]">
                     <h1 className="text-white text-2xl font-Neue-Montreal-Bold">
                       {product.name}
                     </h1>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mt-1">
                       <p className="text-white text-lg font-Neue-Montreal-Bold">
                         {product.price}
-                        <span className="text-white/50 ml-2 font-Neue-Montreal-Regular text-lg">
+                        <span className="text-white/50 ml-2 font-Neue-Montreal-Regular text-base">
                           DOLLAR
                         </span>
                       </p>
                       <Link
                         to="#"
-                        className="flex items-center gap-1.5 bg-white text-[#262626] text-sm font-Neue-Montreal-Bold px-5 py-2.5 rounded-3xl"
+                        className="flex items-center justify-center gap-1.5 bg-white text-[#262626] text-sm font-Neue-Montreal-Bold w-[95px] h-[40px] rounded-3xl"
                       >
                         <img src={dotIcon} alt="Dot Icon" />
                         PRICE
@@ -134,21 +161,20 @@ export default function Products() {
         <>
           <div className="fade-shadow z-20"></div>
           <div className="z-40 mt-20">
-            <GlassElement
-              width={165}
-              height={50}
-              radius={40}
-              depth={10}
-              blur={3}
-              center={'flex'}
-              chromaticAberration={5}
-            >
-              <button className="text-sm lg:text-base font-Neue-Montreal-Regular flex items-center justify-center gap-1.5 cursor-pointer text-white rounded-3xl">
+            <button className="h-[36px] xl:h-[46px] text-sm xl:text-base font-Neue-Montreal-Regular w-[135px] lg:w-[160px] flex items-center justify-center gap-2 cursor-pointer text-white rounded-3xl">
+              <GlassElement
+                width={165}
+                height={50}
+                radius={40}
+                depth={10}
+                blur={3}
+                center={'flex'}
+                chromaticAberration={5}
+              >
                 More Products
                 <img src={trendUp} alt="trend up button" className="mt-0.5" />
-              </button>
-            </GlassElement>
-            `
+              </GlassElement>
+            </button>
           </div>
         </>
       )}
