@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router"
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -31,5 +31,5 @@ export default function ProductDetails() {
       <h1 className="text-white">{product.name}</h1>
       <p className="text-white">{product.description || 'No description available'}</p>
     </section>
-  )
+  );
 }

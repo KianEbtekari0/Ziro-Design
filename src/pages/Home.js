@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from 'react'
-import bgVideo from '../assets/images/magas 2.png'
-import playImg from '../assets/images/playBtn.png'
-import gsap from 'gsap'
-import trendUp from '../assets/images/trend-up-02.svg'
-import { GlassElement } from '../components/GlassElement/GlassElement'
+import { useState, useRef } from 'react';
+import bgVideo from '../assets/images/magas 2.png';
+import playImg from '../assets/images/playBtn.png';
+import gsap from 'gsap';
+import trendUp from '../assets/images/trend-up-02.svg';
+import { GlassElement } from '../components/GlassElement/GlassElement';
 
 export default function Home() {
-  const [isExpanded, setIsExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(true);
 
-  const videoBoxRef = useRef(null)
-  const videoRef = useRef(null)
-  const rightSideRef = useRef(null)
+  const videoBoxRef = useRef(null);
+  const videoRef = useRef(null);
+  const rightSideRef = useRef(null);
 
   // We use GSAP’s matchMedia so our animations adapt to Tailwind breakpoints.
   // This ensures that our motion logic is as responsive as our layout.
@@ -24,7 +24,7 @@ export default function Home() {
   // A default layout is set in the tailwind properties for the animated objects.
   // The reason behind this is that the animated objects responsiveness is handled
   // after the item is clicked, so a default value is necessary.
-  const mm = gsap.matchMedia()
+  const mm = gsap.matchMedia();
 
   const toggleVideo = () => {
     if (!isExpanded) {
@@ -40,7 +40,7 @@ export default function Home() {
           xl: '(min-width: 1280px)',
         },
         (context) => {
-          let { xl } = context.conditions
+          let { xl } = context.conditions;
 
           gsap.to(videoBoxRef.current, {
             width: xl ? '320px' : '175px',
@@ -56,9 +56,9 @@ export default function Home() {
               gsap.set(rightSideRef.current, {
                 zIndex: 30,
                 display: xl ? 'block' : 'none',
-              })
+              });
             },
-          })
+          });
 
           gsap.to(videoRef.current, {
             // Video preview scales with the container so it doesn’t feel oversized.
@@ -67,9 +67,9 @@ export default function Home() {
             zIndex: 30,
             duration: 0.5,
             ease: 'power2.inOut',
-          })
+          });
         }
-      )
+      );
     } else {
       // When expanding, the video should feel immersive.
       // We use percentages instead of fixed pixels so it naturally adapts to any screen size.
@@ -81,7 +81,7 @@ export default function Home() {
         zIndex: 30,
         duration: 0.5,
         ease: 'power2.inOut',
-      })
+      });
 
       gsap.to(videoRef.current, {
         width: '100%',
@@ -89,33 +89,28 @@ export default function Home() {
         zIndex: 30,
         duration: 0.5,
         ease: 'power2.inOut',
-      })
+      });
 
       // The right-side content doesn’t belong in fullscreen mode.
       // It would distract from the video, so we remove it immediately.
-      gsap.set(rightSideRef.current, { display: 'none' })
+      gsap.set(rightSideRef.current, { display: 'none' });
     }
 
-    setIsExpanded(!isExpanded)
-  }
-
-  useEffect(() => {
-    // Ensure we clean up matchMedia listeners so they don’t stack over time.
-    return () => mm.revert()
-  }, [])
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div className="min-h-screen">
       {/* Background image for visual depth */}
       <img
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute left-0 top-0 h-full w-full object-cover"
         alt="Background video"
         src={bgVideo}
       />
 
       {/* Hero section: communicates brand values with bold typography */}
-      <div className="relative z-10 flex items-center text-center justify-center flex-col gap-10">
-        <h1 className="text-3xl mt-60 sm:text-5xl lg:text-6xl xl:text-8xl text-white font-Neue-Montreal-Bold">
+      <div className="relative z-10 flex flex-col items-center justify-center gap-10 text-center">
+        <h1 className="mt-60 font-Neue-Montreal-Bold text-3xl text-white sm:text-5xl lg:text-6xl xl:text-8xl">
           Design<span className="text-primary">.</span> Animate
           <span className="text-primary">.</span> Impact
           <span className="text-primary">.</span>
@@ -124,7 +119,7 @@ export default function Home() {
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-        <button className="h-[36px] xl:h-[46px] text-sm xl:text-base font-Neue-Montreal-Regular w-[135px] lg:w-[153px] flex items-center justify-center gap-1.5 cursor-pointer text-white rounded-3xl">
+        <button className="flex h-[36px] w-[135px] cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[153px] xl:h-[46px] xl:text-base">
           <GlassElement
             width={164}
             height={50}
@@ -143,21 +138,15 @@ export default function Home() {
       {/* Video preview box: starts small, expands when clicked */}
       <div
         ref={videoBoxRef}
-        className="absolute flex justify-between right-5 bottom-5 z-30 h-[105px] w-[175px] xl:w-[320px] xl:h-[125px]"
+        className="absolute bottom-5 right-5 z-30 flex h-[105px] w-[175px] justify-between xl:h-[125px] xl:w-[320px]"
         onClick={toggleVideo}
       >
-        <GlassElement
-          radius={38}
-          depth={10}
-          center={'flex'}
-          blur={3}
-          chromaticAberration={5}
-        >
-          <div className="flex justify-between p-2 cursor-pointer">
+        <GlassElement radius={38} depth={10} center={'flex'} blur={3} chromaticAberration={5}>
+          <div className="flex cursor-pointer justify-between p-2">
             {/* Video thumbnail scales with the container */}
             <img
               ref={videoRef}
-              className="video w-[180px] xl:w-[206px] rounded-[30px]"
+              className="video w-[180px] rounded-[30px] xl:w-[206px]"
               src={bgVideo}
               alt="popup Background video"
             />
@@ -165,12 +154,10 @@ export default function Home() {
             {/* Supplemental content: only relevant on desktop */}
             <div
               ref={rightSideRef}
-              className="hidden xl:flex justify-between relative flex-col px-2"
+              className="relative hidden flex-col justify-between px-2 xl:flex"
             >
-              <p className="text-xl text-white font-Neue-Montreal-Medium">
-                Discover full video
-              </p>
-              <button className="absolute right-2 bottom-1 bg-black flex w-8 h-8 rounded-full">
+              <p className="font-Neue-Montreal-Medium text-xl text-white">Discover full video</p>
+              <button className="absolute bottom-1 right-2 flex h-8 w-8 rounded-full bg-black">
                 <img src={playImg} alt="play" />
               </button>
             </div>
@@ -178,5 +165,5 @@ export default function Home() {
         </GlassElement>
       </div>
     </div>
-  )
+  );
 }

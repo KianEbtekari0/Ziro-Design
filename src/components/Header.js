@@ -1,22 +1,21 @@
-import { useState, useRef } from 'react'
-import dotsImg from '../assets/images/dots.png'
-import { GlassElement } from './GlassElement/GlassElement'
-import { SplitText } from "gsap/all";
-import gsap from 'gsap'
+import { useState, useRef } from 'react';
+import dotsImg from '../assets/images/dots.png';
+import { GlassElement } from './GlassElement/GlassElement';
+import { SplitText } from 'gsap/all';
+import gsap from 'gsap';
 
 export default function Header() {
+  gsap.registerPlugin(SplitText);
 
-  gsap.registerPlugin(SplitText)
+  const [subMenu, setSubMenu] = useState(false);
+  const iconRef = useRef(null);
 
-  const [subMenu, setSubMenu] = useState(false)
-  const iconRef = useRef(null)
-  
   const handlePointerEnter = (e) => {
-    setSubMenu(true)
+    setSubMenu(true);
     gsap.to(iconRef.current, {
       rotate: 90,
       duration: 0.4,
-    })
+    });
 
     gsap.to(e.currentTarget, {
       height: 145, // expand only downward
@@ -26,36 +25,36 @@ export default function Header() {
       zIndex: 30,
       ease: 'power3.out',
       duration: 0.4,
-    })
+    });
 
     document.fonts.ready.then(() => {
       gsap.set('.languageText', { opacity: 1 });
-  
+
       let split;
       SplitText.create('.languageText', {
-        type: "words,lines",
-        linesClass: "line",
+        type: 'words,lines',
+        linesClass: 'line',
         autoSplit: true,
-        mask: "lines",
+        mask: 'lines',
         onSplit: (self) => {
           split = gsap.from(self.lines, {
-            duration: 0.8,
+            duration: 1,
             yPercent: 100,
             opacity: 0,
-            stagger: 0.1  ,
-            ease: "expo.out",
+            stagger: 0.1,
+            ease: 'expo.out',
           });
           return split;
-        }
+        },
       });
-    })
-  }
+    });
+  };
 
   const handlePointerLeave = (e) => {
     gsap.to(iconRef.current, {
       rotate: 0,
       duration: 0.4,
-    })
+    });
 
     gsap.to(e.currentTarget, {
       height: 50, // back to original height
@@ -65,14 +64,14 @@ export default function Header() {
       zIndex: 30,
       ease: 'power3.out',
       duration: 0.4,
-    })
-    setSubMenu(false)
-  }
+    });
+    setSubMenu(false);
+  };
 
   return (
-    <header className="flex items-center justify-center relative z-30 font-Greycliff-CF-bold mt-5">
+    <header className="font-Greycliff-CF-bold relative z-30 mt-5 flex items-center justify-center">
       <div className="absolute left-0 ml-14">
-        <h1 className="text-white w-[111px]">LOGO</h1>
+        <h1 className="w-[111px] text-white">LOGO</h1>
       </div>
       <GlassElement
         width={460}
@@ -84,34 +83,31 @@ export default function Header() {
         chromaticAberration={5}
       >
         <nav className="flex items-center justify-center rounded-full">
-          <ul className="flex items-center gap-3 justify-center">
-            <a
-              href="/"
-              className="text-base font-Neue-Montreal-Regular cursor-pointer text-white"
-            >
+          <ul className="flex items-center justify-center gap-3">
+            <a href="/" className="cursor-pointer font-Neue-Montreal-Regular text-base text-white">
               HOME<span className="text-primary">.</span>
             </a>
             <a
               href="/"
-              className="text-base font-Neue-Montreal-Regular cursor-pointer text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
             >
               ABOUT US<span className="text-secondery">.</span>
             </a>
             <a
               href="/"
-              className="text-base font-Neue-Montreal-Regular cursor-pointer text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
             >
               PROJECTS<span className="text-secondery">.</span>
             </a>
             <a
               href="/"
-              className="text-base font-Neue-Montreal-Regular cursor-pointer text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
             >
               SHOP<span className="text-secondery">.</span>
             </a>
             <a
               href="/"
-              className="text-base font-Neue-Montreal-Regular cursor-pointer text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
             >
               CONTACT US<span className="text-secondery">.</span>
             </a>
@@ -119,28 +115,26 @@ export default function Header() {
         </nav>
       </GlassElement>
       <div
-        className="glassBtn py-[12px] absolute right-0 mr-14 tracking-wide font-Neue-Montreal-Bold w-[110px] cursor-pointer h-[50px] backdrop-blur-[42px] text-white rounded-3xl overflow-hidden "
+        className="glassBtn absolute right-0 mr-14 h-[50px] w-[110px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px]"
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
       >
-        <div className="flex px-4 items-center justify-between">
+        <div className="flex items-center justify-between px-4">
           English
           <img src={dotsImg} alt="dots" ref={iconRef} />
         </div>
         {/* Sub Menu */}
-        <div
-          className={`relative px-2 w-full ${!subMenu ? 'hidden' : 'block'}`}
-        >
-          <div className="flex flex-col w-full mt-5">
-            <a href="/" className="languageText hover:bg-[#796c6563] px-3 py-2 rounded-xl">
+        <div className={`relative w-full px-2 ${!subMenu ? 'hidden' : 'block'}`}>
+          <div className="mt-5 flex w-full flex-col">
+            <a href="/" className="languageText rounded-xl px-3 py-2 hover:bg-[#796c6563]">
               <span>Persion</span>
             </a>
-            <a href="/" className="languageText hover:bg-[#796c6563] px-3 py-2 rounded-xl">
+            <a href="/" className="languageText rounded-xl px-3 py-2 hover:bg-[#796c6563]">
               <span>Arabic</span>
             </a>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -1,106 +1,133 @@
-import arrowRight from '../assets/images/arrow-right.png'
-import { GlassElement } from './GlassElement/GlassElement'
+import arrowRight from '../assets/images/arrow-right.png';
+import { GlassElement } from './GlassElement/GlassElement';
+import { Link } from 'react-router';
 
 export default function Footer() {
   return (
-    <div className='flex flex-col items-center relative justify-center'>
-        <footer className='flex items-center z-0 justify-center max-w-7xl px-10 w-full py-20'>
-            <div className='text-center absolute left-0 pl-10'>
-                <h1 className='text-white font-Neue-Montreal-Bold text-2xl'>FAQ</h1>
-                <div className='mt-2 flex flex-col'>
-                    <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Company</a>
-                    <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Employment</a>
-                    <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Order History</a>
-                    <a href='#' className='text-secondery font-Neue-Montreal-Regular'>Terms & Services</a>
-                </div>
-            </div>
-            <div className='text-center'>
-                <h1 className='font-Neue-Montreal-Bold text-white mt-2 text-2xl'>BOOK A TIME!</h1>
-                <div className='flex items-center justify-between flex-col gap-5 mt-2'>
-                    <input type="email" className='glassCard text-white w-[320px] p-3 h-[40px] rounded-3xl font-Neue-Montreal-Bold' />
-                    <a href='#' className='flex items-center gap-1.5 text-white text-sm font-Neue-Montreal-Medium'>
-                        <GlassElement
-                            width={100}
-                            height={40}
-                            radius={100}
-                            depth={10}
-                            blur={3}
-                            center={'flex'}
-                            chromaticAberration={5}
-                        >
-                            Send
-                            <img src={arrowRight} alt="arrow right" />
-                        </GlassElement>
-                    </a>
-                </div>
-            </div>
-            <div className='absolute right-0 pr-7'>
-                <h1 className='text-white font-Neue-Montreal-Bold text-2xl'>CONTACT US INFORMATION</h1>
-                <div className='mt-2 flex items-center text-center flex-col'>
-                    <p className='text-secondery font-Neue-Montreal-Regular'>09129212525</p>
-                    <p className='text-secondery max-w-[200px] font-Neue-Montreal-Regular'>3785 Blackwell Street City Cordova State Province</p>
-                    <div className='flex justify-center gap-2 mt-3'>
-                        <a href='#' className='rounded-full flex items-center justify-center'>
-                            <GlassElement
-                                width={44}
-                                height={44}
-                                radius={100}
-                                depth={10}
-                                blur={3}
-                                center={'flex'}
-                                chromaticAberration={5}
-                            >
-                                <img src="" alt="" className='' />
-                            </GlassElement>
-                        </a>
-                        <a href='#' className='rounded-full flex items-center justify-center'>
-                            <GlassElement
-                                width={44}
-                                height={44}
-                                radius={100}
-                                depth={10}
-                                blur={3}
-                                center={'flex'}
-                                chromaticAberration={5}
-                            >
-                                <img src="" alt="" className='' />
-                            </GlassElement>
-                        </a>
-                        <a href='#' className='rounded-full flex items-center justify-center'>
-                            <GlassElement
-                                width={44}
-                                height={44}
-                                radius={100}
-                                depth={10}
-                                blur={3}
-                                center={'flex'}
-                                chromaticAberration={5}
-                            >
-                                <img src="" alt="" className='' />
-                            </GlassElement>
-                        </a>
-                        <a href='#' className='rounded-full flex items-center justify-center'>
-                            <GlassElement
-                                width={44}
-                                height={44}
-                                radius={100}
-                                depth={10}
-                                blur={3}
-                                center={'flex'}
-                                chromaticAberration={5}
-                            >
-                                <img src="" alt="" className='' />
-                            </GlassElement>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <h1 className='absolute text-secondery left-0 bottom-40 md:bottom-36 lg:bottom-40 xl:bottom-40 leading-3 -z-10 w-full text-center font-Neue-Montreal-Bold' style={{ 'font-size': '16vw'}}>ZIRO DESIGN</h1>
-        </footer>
-        <div className='flex z-10 relative bg-black items-center justify-between w-full px-10 py-8 xl:py-10'>
-            <h1 className='text-white font-Neue-Montreal-Bold text-[3vw] lg:text-5xl xl:text-[4vw] pr-2'>BOOK A TIME FOR YOUR WORK</h1>
-            <p className='text-secondery text-xs xl:text-base font-Neue-Montreal-Regular max-w-[250px] sm:max-w-xs xl:max-w-sm'>The opportunity to work with us is open — just drop your work email to take the first step toward joining a creative and passionate team.</p>
+    <div className="relative flex flex-col items-center justify-center">
+      <footer className="z-0 flex w-full max-w-7xl items-center justify-center px-10 py-20">
+        <div className="absolute left-0 pl-10 text-center">
+          <h1 className="font-Neue-Montreal-Bold text-2xl text-white">FAQ</h1>
+          <div className="mt-2 flex flex-col">
+            <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
+              Company
+            </Link>
+            <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
+              Employment
+            </Link>
+            <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
+              Order History
+            </Link>
+            <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
+              Terms & Services
+            </Link>
+          </div>
         </div>
+        <div className="text-center">
+          <h1 className="mt-2 font-Neue-Montreal-Bold text-2xl text-white">BOOK A TIME!</h1>
+          <div className="mt-2 flex flex-col items-center justify-between gap-5">
+            <input
+              type="email"
+              className="glassCard h-[40px] w-[320px] rounded-3xl p-3 font-Neue-Montreal-Bold text-white"
+            />
+            <Link
+              to="/"
+              className="flex items-center gap-1.5 font-Neue-Montreal-Medium text-sm text-white"
+            >
+              <GlassElement
+                width={100}
+                height={40}
+                radius={100}
+                depth={10}
+                blur={3}
+                center={'flex'}
+                chromaticAberration={5}
+              >
+                Send
+                <img src={arrowRight} alt="arrow right" />
+              </GlassElement>
+            </Link>
+          </div>
+        </div>
+        <div className="absolute right-0 pr-7">
+          <h1 className="font-Neue-Montreal-Bold text-2xl text-white">CONTACT US INFORMATION</h1>
+          <div className="mt-2 flex flex-col items-center text-center">
+            <p className="font-Neue-Montreal-Regular text-secondery">09129212525</p>
+            <p className="max-w-[200px] font-Neue-Montreal-Regular text-secondery">
+              3785 Blackwell Street City Cordova State Province
+            </p>
+            {/* <div className='flex justify-center gap-2 mt-3'>
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
+                        </a>
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
+                        </a>
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
+                        </a>
+                        <a href='#' className='rounded-full flex items-center justify-center'>
+                            <GlassElement
+                                width={44}
+                                height={44}
+                                radius={100}
+                                depth={10}
+                                blur={3}
+                                center={'flex'}
+                                chromaticAberration={5}
+                            >
+                                <img src="" alt="" className='' />
+                            </GlassElement>
+                        </a>
+                    </div> */}
+          </div>
+        </div>
+        <h1
+          className="absolute bottom-40 left-0 -z-10 w-full text-center font-Neue-Montreal-Bold leading-3 text-secondery md:bottom-36 lg:bottom-40 xl:bottom-40"
+          style={{ fontSize: '16vw' }}
+        >
+          ZIRO DESIGN
+        </h1>
+      </footer>
+      <div className="relative z-10 flex w-full items-center justify-between bg-black px-10 py-8 xl:py-10">
+        <h1 className="pr-2 font-Neue-Montreal-Bold text-[3vw] text-white lg:text-5xl xl:text-[4vw]">
+          BOOK A TIME FOR YOUR WORK
+        </h1>
+        <p className="max-w-[250px] font-Neue-Montreal-Regular text-xs text-secondery sm:max-w-xs xl:max-w-sm xl:text-base">
+          The opportunity to work with us is open — just drop your work email to take the first step
+          toward joining a creative and passionate team.
+        </p>
+      </div>
     </div>
-  )
+  );
 }

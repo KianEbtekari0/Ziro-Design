@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router'
-import projectImg from '../assets/images/magas 2.png'
-import projectImg2 from '../assets/images/8b008977f4e1e4ee0c3e8d6a34532e7d.jpg'
-import projectImg3 from '../assets/images/l5r_cover2-1920x1200.webp'
-import projectImg4 from '../assets/images/wolverine-web-cover-1920x1042.webp'
-import projectImg5 from '../assets/images/loewe-couv-1920x1277.webp'
-import gsap from 'gsap'
-import '../index.css'
+import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router';
+import projectImg from '../assets/images/magas 2.png';
+import projectImg2 from '../assets/images/8b008977f4e1e4ee0c3e8d6a34532e7d.jpg';
+import projectImg3 from '../assets/images/l5r_cover2-1920x1200.webp';
+import projectImg4 from '../assets/images/wolverine-web-cover-1920x1042.webp';
+import projectImg5 from '../assets/images/loewe-couv-1920x1277.webp';
+import gsap from 'gsap';
+import '../index.css';
 
 export default function Projects() {
   const items = [
@@ -41,11 +41,11 @@ export default function Projects() {
       backgroundColor: '#002440',
       link: '/allprojects',
     },
-  ]
+  ];
 
-  const [activeItem, setActiveItem] = useState(null)
-  const previewRef = useRef(null)
-  const containerRef = useRef(null)
+  const [activeItem, setActiveItem] = useState(null);
+  const previewRef = useRef(null);
+  const containerRef = useRef(null);
 
   // We use GSAP’s matchMedia so our animations adapt to Tailwind breakpoints.
   // This ensures that our motion logic is as responsive as our layout.
@@ -63,54 +63,54 @@ export default function Projects() {
   // Note: In this case we are not handling responsiveness of the animated objects
   // since they are static. But we are handling the availability of anmiations
   // based on the screen sizes(mobile and tablet) for responsiveness in this case.
-  const mm = useRef(null)
-  
+  const mm = useRef(null);
+
   const togglePreview = (item, isActive, e) => {
     if (isActive) {
-      setActiveItem(item)
+      setActiveItem(item);
       // Highlight the project title to indicate focus and guide user attention
       gsap.to(e.target, {
         color: item.foregroundColor,
         duration: 0.3,
         ease: 'power2.out',
-      })
+      });
     } else {
-      setActiveItem(null)
+      setActiveItem(null);
       // Reset color when no longer active to maintain visual hierarchy
-      gsap.to(e.target, { color: '#bebebe', duration: 0.3, ease: 'power2.out' })
+      gsap.to(e.target, { color: '#bebebe', duration: 0.3, ease: 'power2.out' });
     }
-  }
+  };
 
   // Animates the preview image when the active item changes
   // Only runs if the container is visible (desktop)
   // Purpose: provide visual feedback and preview of the selected project
   useEffect(() => {
-    const img = previewRef.current
-    const container = containerRef.current
-    if (!img || !container) return
+    const img = previewRef.current;
+    const container = containerRef.current;
+    if (!img || !container) return;
 
     if (activeItem && gsap.getProperty(container, 'display') !== 'none') {
-      img.src = activeItem.src
-      gsap.killTweensOf(img)
-      gsap.set(img, { display: 'block', opacity: 0, scale: 2 }) // start from hidden and scaled up
+      img.src = activeItem.src;
+      gsap.killTweensOf(img);
+      gsap.set(img, { display: 'block', opacity: 0, scale: 2 }); // start from hidden and scaled up
       gsap.to(img, {
         opacity: 1,
         scale: 1.9,
         duration: 0.6,
         ease: 'power2.out',
-      }) // fade-in and scale animation
+      }); // fade-in and scale animation
     } else {
       // Hide preview when no item is active or on smaller screens
-      gsap.killTweensOf(img)
+      gsap.killTweensOf(img);
       gsap.to(img, {
         scale: 1.9,
         opacity: 0,
         duration: 0.3,
         ease: 'power2.out',
         onComplete: () => gsap.set(img, { display: 'none' }),
-      })
+      });
     }
-  }, [activeItem])
+  }, [activeItem]);
 
   // Animate the background and text colors to match the active project
   // Provides a contextual visual cue to the user for immersive experience
@@ -120,13 +120,13 @@ export default function Projects() {
       color: activeItem ? activeItem.foregroundColor : '#bebebe',
       duration: 0.5,
       ease: 'power2.out',
-    })
-  }, [activeItem])
+    });
+  }, [activeItem]);
 
   // Use GSAP matchMedia to handle responsive behavior
   // Purpose: hide the preview container on smaller screens to reduce clutter and improve UX
   useEffect(() => {
-    mm.current = gsap.matchMedia()
+    mm.current = gsap.matchMedia();
 
     mm.current.add(
       {
@@ -134,42 +134,42 @@ export default function Projects() {
         showPreviewOnDesktop: '(min-width: 1024px)', // show on desktop for richer experience
       },
       (context) => {
-        const { hidePreviewOnMobile, showPreviewOnDesktop } = context.conditions
-        const container = containerRef.current
+        const { hidePreviewOnMobile, showPreviewOnDesktop } = context.conditions;
+        const container = containerRef.current;
 
         if (hidePreviewOnMobile) {
           // Completely remove the preview to avoid unnecessary animations and DOM clutter
-          gsap.set(container, { display: 'none' })
+          gsap.set(container, { display: 'none' });
         }
 
         if (showPreviewOnDesktop) {
           // Ensure the preview container is visible on desktop where space allows
-          gsap.set(container, { display: 'block' })
+          gsap.set(container, { display: 'block' });
         }
       }
-    )
+    );
 
     // Clean up matchMedia listeners on unmount
-    return () => mm.current.revert()
-  }, [])
+    return () => mm.current.revert();
+  }, []);
 
   return (
     <div className="container">
-      <div className="bg-container px-5 rounded-[32px] py-[70px] relative z-0">
+      <div className="bg-container relative z-0 rounded-[32px] px-5 py-[70px]">
         {/* Vertical instruction to guide the user */}
         <p
-          className="uppercase font-Neue-Montreal-Bold text-white absolute top-[45%]"
+          className="absolute top-[45%] font-Neue-Montreal-Bold uppercase text-white"
           style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
         >
           hover on title
         </p>
 
-        <div className="text-secondery flex items-center justify-center flex-col gap-4 text-center">
+        <div className="flex flex-col items-center justify-center gap-4 text-center text-secondery">
           {items.map((item) => (
             <Link
               key={item.name}
               to={item.link}
-              className="inline-block z-0 lg:text-7xl xl:text-9xl font-Neue-Montreal-Bold text-secondery"
+              className="z-0 inline-block font-Neue-Montreal-Bold text-secondery lg:text-7xl xl:text-9xl"
               onPointerEnter={(e) => togglePreview(item, true, e)}
               onPointerLeave={(e) => togglePreview(item, false, e)}
             >
@@ -181,17 +181,12 @@ export default function Projects() {
           {/* Hidden on mobile to simplify UI; only visible on desktop */}
           <div
             ref={containerRef}
-            className="preview-container absolute z-10 rounded-3xl overflow-hidden pointer-events-none w-[800px] h-[500px]"
+            className="preview-container pointer-events-none absolute z-10 h-[500px] w-[800px] overflow-hidden rounded-3xl"
           >
-            <img
-              ref={previewRef}
-              src=""
-              alt="preview"
-              className="w-full h-full object-cover opacity-0"
-            />
+            <img ref={previewRef} alt="preview" className="h-full w-full object-cover opacity-0" />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
