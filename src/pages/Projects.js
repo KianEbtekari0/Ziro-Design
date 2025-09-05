@@ -169,7 +169,7 @@ export default function Projects() {
             <Link
               key={item.name}
               to={item.link}
-              className="z-0 inline-block font-Neue-Montreal-Bold text-secondery lg:text-7xl xl:text-9xl"
+              className="tracking-3pct z-0 inline-block font-Neue-Montreal-Bold text-secondery lg:text-7xl xl:text-9xl"
               onPointerEnter={(e) => togglePreview(item, true, e)}
               onPointerLeave={(e) => togglePreview(item, false, e)}
             >

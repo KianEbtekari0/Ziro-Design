@@ -71,20 +71,17 @@ export default function Products() {
     });
 
   return (
-    <div className="container relative flex flex-col items-center">
+    <div className="container relative flex flex-col items-center mb-20">
       <div className="mt-14 flex w-full items-stretch">
         {/* Left rectangle */}
-        <div className="relative flex-1 overflow-hidden rounded-bl-[50px] rounded-tl-[50px] rounded-tr-[50px] bg-[#666666]">
+        <div className="relative flex-1 overflow-hidden rounded-bl-[50px] rounded-tl-[50px] rounded-tr-[50px] bg-[#0F0F0F]">
           <div className="px-9 py-10">
-            <h1 className="languageText font-Neue-Montreal-Bold uppercase text-white lg:text-6xl xl:text-8xl">
+            <h1 className="tracking-3pct font-Neue-Montreal-Bold uppercase text-white lg:text-6xl xl:text-8xl">
               Step Into More Dimensions
             </h1>
-            <p className="mt-7 max-w-7xl font-Neue-Montreal-Bold text-sm leading-relaxed text-white lg:text-xl xl:text-3xl">
+            <p className="mt-7 max-w-7xl tracking-3pct font-Neue-Montreal-Bold text-sm leading-relaxed text-white lg:text-xl xl:text-3xl">
               Take a look at my other projects and dive deeper into the world of creativity. From
-              experimental ideas
-              <span className="text-secondery">
-                to polished designs, there’s so much more waiting to be explored
-              </span>
+              experimental ideas <span className="text-secondery">to polished designs, there’s so much more waiting to be explored</span>
             </p>
           </div>
         </div>
@@ -97,8 +94,8 @@ export default function Products() {
             className="absolute left-5 top-2 w-1/2 lg:left-5 lg:top-5 lg:w-2/3"
           />
           <div className="rounded-bl-[50px] bg-black"></div>
-          <div className="rounded-br-[50px] rounded-tr-[50px] bg-[#666666]"></div>
-          <div className="absolute left-0 top-0 -z-20 h-full w-16 rounded-br-[50px] rounded-tr-3xl bg-[#666666]"></div>
+          <div className="rounded-br-[50px] rounded-tr-[50px] bg-[#0F0F0F]"></div>
+          <div className="absolute left-0 top-0 -z-20 h-full w-16 rounded-br-[50px] rounded-tr-3xl bg-[#0F0F0F]"></div>
         </div>
       </div>
 

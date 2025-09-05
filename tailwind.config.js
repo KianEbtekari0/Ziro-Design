@@ -1,13 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        'primary': '#E31114',
-        'secondery': '#BEBEBE'
+        primary: '#E31114',
+        secondery: '#BEBEBE',
+      },
+
+      letterSpacing: {
+        '3pct': '-0.03em',
       },
 
       fontFamily: {
@@ -18,29 +20,29 @@ module.exports = {
         'Manrope-Light': ['Manrope Light', 'sans-serif'],
         'Manrope-Regular': ['Manrope Regular', 'sans-serif'],
         'Manrope-Medium': ['Manrope Medium', 'sans-serif'],
-        'Manrope-Bold': ['Manrope Bold', 'sans-serif']
-      }
+        'Manrope-Bold': ['Manrope Bold', 'sans-serif'],
+      },
     },
-    
+
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        sm: "1rem",
-        lg: "2rem",
-        xl: "3rem",
-        "2xl": "4rem",
+        DEFAULT: '1rem',
+        sm: '1rem',
+        lg: '2rem',
+        xl: '3rem',
+        '2xl': '4rem',
       },
       screens: {
-        '3xs': '800px',
+        '3xs': '900px',
         '2xs': '1100px',
-        'xs': '1200px',
-        'sm': '1400px',
-        'md': '1600px',
-        'lg': '1800px',
-        'xl': '1900px',
+        xs: '1200px',
+        sm: '1400px',
+        md: '1600px',
+        lg: '1800px',
+        xl: '1900px',
       },
     },
   },
   plugins: [],
-}
+};

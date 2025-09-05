@@ -110,12 +110,8 @@ export default function Home() {
 
       {/* Hero section: communicates brand values with bold typography */}
       <div className="relative z-10 flex flex-col items-center justify-center gap-10 text-center">
-        <h1 className="mt-60 font-Neue-Montreal-Bold text-3xl text-white sm:text-5xl lg:text-6xl xl:text-8xl">
-          Design<span className="text-primary">.</span> Animate
-          <span className="text-primary">.</span> Impact
-          <span className="text-primary">.</span>
-          <br />
-          ZIRODESIGN<span className="text-primary">.</span>
+        <h1 className="mt-60 uppercase tracking-3pct max-w-5xl font-Neue-Montreal-Bold text-3xl text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+          Safarpoor 3D & film ARTIST Designer
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}

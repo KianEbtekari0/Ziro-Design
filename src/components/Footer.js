@@ -113,17 +113,17 @@ export default function Footer() {
           </div>
         </div>
         <h1
-          className="absolute bottom-40 left-0 -z-10 w-full text-center font-Neue-Montreal-Bold leading-3 text-secondery md:bottom-36 lg:bottom-40 xl:bottom-40"
+          className="absolute bottom-40 left-0 -z-50 w-full text-center font-Neue-Montreal-Bold leading-3 text-white md:bottom-36 lg:bottom-40 xl:bottom-40"
           style={{ fontSize: '16vw' }}
         >
           ZIRO DESIGN
         </h1>
       </footer>
-      <div className="relative z-10 flex w-full items-center justify-between bg-black px-10 py-8 xl:py-10">
+      <div className="tracking-3pct relative z-10 flex w-full items-center justify-between bg-black px-10 py-8 xl:py-10">
         <h1 className="pr-2 font-Neue-Montreal-Bold text-[3vw] text-white lg:text-5xl xl:text-[4vw]">
           BOOK A TIME FOR YOUR WORK
         </h1>
-        <p className="max-w-[250px] font-Neue-Montreal-Regular text-xs text-secondery sm:max-w-xs xl:max-w-sm xl:text-base">
+        <p className="tracking-3pct max-w-[250px] font-Neue-Montreal-Regular text-xs text-secondery sm:max-w-xs xl:max-w-sm xl:text-base">
           The opportunity to work with us is open — just drop your work email to take the first step
           toward joining a creative and passionate team.
         </p>
