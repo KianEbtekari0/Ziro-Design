@@ -115,7 +115,7 @@ export default function Home() {
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-        <button className="flex h-[36px] w-[135px] cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[153px] xl:h-[46px] xl:text-base">
+        <button className="flex h-[36px] w-[135px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[153px] xl:h-[46px] xl:text-base">
           <GlassElement
             width={164}
             height={50}
@@ -126,7 +126,7 @@ export default function Home() {
             chromaticAberration={5}
           >
             Explore now
-            <img src={trendUp} alt="trend up button" className="mt-0.5" />
+            <img src={trendUp} alt="trend up button" className="mt-0.5 ml-1" />
           </GlassElement>
         </button>
       </div>

@@ -15,7 +15,7 @@ import star2 from '../assets/images/star2.png';
 
 export default function AboutUs() {
   return (
-    <div className="container bg-black pb-16">
+    <div className="container bg-black pb-10">
       <div className="relative flex overflow-hidden whitespace-nowrap px-8">
         <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-black from-50% to-transparent"></div>
         <img src={star1} alt="star1" className="absolute left-0 z-30" />
@@ -258,8 +258,8 @@ export default function AboutUs() {
               className="relative h-[760px] rounded-[30px] bg-cover bg-center"
               style={{ backgroundImage: `url(${projectImg3})` }}
             >
-              <h1 className="tracking-3pct absolute bottom-12 left-12 max-w-md font-Neue-Montreal-Bold text-5xl text-white">
-                The best projects that won awards
+              <h1 className="tracking-3pct absolute bottom-12 left-12 max-w-md font-Neue-Montreal-Bold text-[40px] leading-10 text-white">
+                You Can See All Of My Project In Gallery
               </h1>
             </div>
           </div>
@@ -270,7 +270,7 @@ export default function AboutUs() {
               style={{ backgroundImage: `url(${projectImg2})` }}
             >
               <div className="absolute bottom-6 left-6">
-                <h1 className="tracking-3pct mb-5 max-w-md font-Neue-Montreal-Bold text-5xl text-white">
+                <h1 className="tracking-3pct mb-5 max-w-sm font-Neue-Montreal-Bold text-[40px] leading-10 text-white">
                   The best projects that won awards
                 </h1>
                 <button className="flex h-[36px] w-[135px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[120px] xl:h-[40px] xl:text-base">

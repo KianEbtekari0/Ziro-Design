@@ -4,9 +4,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductDetails from './components/ProductDetails';
 import AllProjects from './pages/AllProjects';
-import './index.css'
+import './index.css';
 
-function App() {
+export default function App() {
+
   return (
     <>
       <Header />
@@ -21,5 +22,3 @@ function App() {
     </>
   );
 }
-
-export default App;

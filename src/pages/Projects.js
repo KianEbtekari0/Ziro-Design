@@ -158,7 +158,7 @@ export default function Projects() {
       <div className="bg-container relative z-0 rounded-[32px] px-5 py-[70px]">
         {/* Vertical instruction to guide the user */}
         <p
-          className="absolute top-[45%] font-Neue-Montreal-Bold uppercase text-white"
+          className="absolute top-1/2 -translate-y-1/2 rotate-180 font-Neue-Montreal-Bold uppercase text-white"
           style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
         >
           hover on title
@@ -169,7 +169,7 @@ export default function Projects() {
             <Link
               key={item.name}
               to={item.link}
-              className="tracking-3pct z-0 inline-block font-Neue-Montreal-Bold text-secondery lg:text-7xl xl:text-9xl"
+              className="tracking-3pct z-0 inline-block font-Neue-Montreal-Bold text-[6.5vw] leading-[6.5vw] text-secondery"
               onPointerEnter={(e) => togglePreview(item, true, e)}
               onPointerLeave={(e) => togglePreview(item, false, e)}
             >

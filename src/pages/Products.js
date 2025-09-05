@@ -33,7 +33,7 @@ export default function Products() {
   const [, setError] = useState(null);
   const [showAll] = useState(false);
 
-  const visible = showAll ? products : products.slice(0, 6);
+  const visible = showAll ? products : products.slice(0, 3);
 
   fetch('https://api.gumroad.com/v2/products', {
     headers: {
@@ -71,8 +71,8 @@ export default function Products() {
     });
 
   return (
-    <div className="container relative mb-20 flex flex-col items-center">
-      <div className="relative mt-14 w-full">
+    <div className="container relative mb-28 flex flex-col items-center">
+      <div className="relative mt-10 w-full">
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
             <div className="px-9 py-10">
