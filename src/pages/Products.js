@@ -71,7 +71,7 @@ export default function Products() {
     });
 
   return (
-    <div className="container relative mb-28 flex flex-col items-center">
+    <div className="container relative mb-28 flex flex-col items-center" id="shop">
       <div className="relative mt-10 w-full">
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">

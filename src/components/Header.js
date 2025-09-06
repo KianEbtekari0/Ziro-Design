@@ -90,25 +90,25 @@ export default function Header() {
               HOME<span className="text-primary">.</span>
             </a>
             <a
-              href="/"
+              href="#aboutus"
               className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               ABOUT US<span className="text-secondery">.</span>
             </a>
             <a
-              href="/"
+              href="#projects"
               className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               PROJECTS<span className="text-secondery">.</span>
             </a>
             <a
-              href="/"
+              href="#shop"
               className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               SHOP<span className="text-secondery">.</span>
             </a>
             <a
-              href="/"
+              href="#contactus"
               className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               CONTACT US<span className="text-secondery">.</span>

@@ -75,7 +75,7 @@ export default function AboutUs() {
   };
 
   return (
-    <div className="container bg-black pb-10">
+    <div className="container bg-black pb-10" id="aboutus">
       <div className="relative flex overflow-hidden whitespace-nowrap px-8">
         <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-black from-50% to-transparent"></div>
         <img src={star1} alt="star1" className="absolute left-0 z-30" />

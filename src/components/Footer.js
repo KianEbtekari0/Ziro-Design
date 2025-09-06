@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 export default function Footer() {
   return (
-    <div className="relative flex flex-col items-center justify-center">
+    <div className="relative flex flex-col items-center justify-center" id='contactus'>
       <footer className="relative z-10 flex w-full max-w-[1500px] items-center justify-center px-10 py-20">
         <div className="absolute left-0 pl-10 text-center">
           <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">FAQ</h1>

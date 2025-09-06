@@ -154,7 +154,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container" id='projects'>
       <div className="bg-container relative z-0 rounded-[32px] px-5 py-[70px]">
         {/* Vertical instruction to guide the user */}
         <p
