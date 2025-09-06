@@ -73,49 +73,51 @@ export default function Header() {
       <div className="absolute left-0 ml-14">
         <h1 className="w-[111px] text-white">LOGO</h1>
       </div>
-      <GlassElement
-        width={460}
-        height={57}
-        radius={50}
-        depth={10}
-        blur={3}
-        center={'flex'}
-        chromaticAberration={5}
-      >
-        <nav className="flex items-center justify-center rounded-full">
+      <nav className="flex items-center justify-center rounded-full lg:h-[50px] lg:w-[410px] xl:h-[57px] xl:w-[460px]">
+        <GlassElement
+          width={100}
+          height={100}
+          radius={50}
+          blur={4}
+          center={'flex'}
+          chromaticAberration={2}
+        >
           <ul className="flex items-center justify-center gap-3">
-            <a href="/" className="cursor-pointer font-Neue-Montreal-Regular text-base text-white">
+            <a
+              href="/"
+              className="cursor-pointer font-Neue-Montreal-Regular text-white lg:text-sm xl:text-base"
+            >
               HOME<span className="text-primary">.</span>
             </a>
             <a
               href="/"
-              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               ABOUT US<span className="text-secondery">.</span>
             </a>
             <a
               href="/"
-              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               PROJECTS<span className="text-secondery">.</span>
             </a>
             <a
               href="/"
-              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               SHOP<span className="text-secondery">.</span>
             </a>
             <a
               href="/"
-              className="cursor-pointer font-Neue-Montreal-Regular text-base text-secondery"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
             >
               CONTACT US<span className="text-secondery">.</span>
             </a>
           </ul>
-        </nav>
-      </GlassElement>
+        </GlassElement>
+      </nav>
       <div
-        className="glassBtn absolute right-0 mr-14 h-[50px] w-[110px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px]"
+        className="glassBtn absolute right-0 mr-14 h-[51px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px]"
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
       >

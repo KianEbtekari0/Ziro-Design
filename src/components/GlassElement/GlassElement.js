@@ -18,8 +18,8 @@ export const GlassElement = ({
   let depth = baseDepth
 
   const style = {
-    height: `${height}px`,
-    width: `${width}px`,
+    height: `${height}%`,
+    width: `${width}%`,
     borderRadius: `${radius}px`,
     display: center,
     backdropFilter: `blur(${blur / 2}px) url('${getDisplacementFilter({

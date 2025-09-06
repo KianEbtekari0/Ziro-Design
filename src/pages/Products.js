@@ -76,10 +76,10 @@ export default function Products() {
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
             <div className="px-9 py-10">
-              <h1 className="tracking-3pct font-Neue-Montreal-Bold text-4xl uppercase text-white lg:text-6xl xl:text-8xl">
+              <h1 className="font-Neue-Montreal-Bold text-6xl uppercase tracking-3pct text-white lg:text-6xl xl:text-8xl">
                 Step Into More Dimensions
               </h1>
-              <p className="tracking-3pct mt-7 max-w-2xl font-Neue-Montreal-Bold text-sm leading-relaxed text-white lg:text-xl xl:max-w-7xl xl:text-3xl">
+              <p className="mt-7 max-w-2xl font-Neue-Montreal-Bold text-sm leading-relaxed tracking-3pct text-white lg:text-xl xl:max-w-7xl xl:text-3xl">
                 Take a look at my other projects and dive deeper into the world of creativity. From
                 experimental ideas{' '}
                 <span className="text-secondery">
@@ -101,7 +101,7 @@ export default function Products() {
         {visible.map((product) => (
           <Link to={`/product/${product.id}`} key={product.id}>
             <div
-              className="model flex h-[350px] w-full max-w-[590px] rounded-[48px] bg-cover bg-center p-2"
+              className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2"
               style={{ backgroundImage: `url(${product.preview_url})` }}
             >
               <div className="flex w-full flex-col self-end">
@@ -139,19 +139,9 @@ export default function Products() {
         <>
           <div className="fade-shadow z-20"></div>
           <div className="z-40 mt-20">
-            <button className="flex h-[36px] w-[135px] cursor-pointer items-center justify-center gap-2 rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[160px] xl:h-[46px] xl:text-base">
-              <GlassElement
-                width={165}
-                height={50}
-                radius={40}
-                depth={10}
-                blur={3}
-                center={'flex'}
-                chromaticAberration={5}
-              >
-                More Products
-                <img src={trendUp} alt="trend up button" className="mt-0.5" />
-              </GlassElement>
+            <button className="glassBtn flex h-[45px] w-[145px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm tracking-3pct text-white xl:h-[46px] xl:text-base">
+              More Products
+              <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
             </button>
           </div>
         </>

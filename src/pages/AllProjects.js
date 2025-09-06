@@ -38,8 +38,10 @@ export default function AllProjects() {
 
   return (
     <div className="container mt-40">
-      <h1 className="font-Neue-Montreal-Bold text-8xl text-white">Gallery Of My Projects</h1>
-      <p className="mb-4 mt-6 max-w-5xl font-Neue-Montreal-Bold text-3xl text-white">
+      <h1 className="font-Neue-Montreal-Bold text-6xl text-white xl:text-8xl">
+        Gallery Of My Projects
+      </h1>
+      <p className="mb-4 mt-6 font-Neue-Montreal-Bold text-xl text-white lg:max-w-3xl xl:max-w-5xl xl:text-3xl">
         A versatile designer skilled in 2D design, 3D modeling, motion graphics, and Blender. With a
         strong creative vision and mastery of design principles, they
         <span className="text-secondery">
@@ -47,20 +49,20 @@ export default function AllProjects() {
           art is a fusion of beauty, motion, and storytelling.
         </span>
       </p>
-      <GlassElement
-        width={140}
-        height={45}
-        radius={50}
-        depth={10}
-        blur={3}
-        center={'flex'}
-        chromaticAberration={5}
-      >
-        <button className="flex cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:text-base">
+      <button className="flex h-[46px] w-[138px] cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:text-base">
+        <GlassElement
+          width={100}
+          height={100}
+          radius={50}
+          depth={10}
+          blur={3}
+          center={'flex'}
+          chromaticAberration={5}
+        >
           Let's See
           <img src={rightArrow} alt="trend up button" className="mt-0.5 w-5" />
-        </button>
-      </GlassElement>
+        </GlassElement>
+      </button>
       <Box className="mt-14">
         <Masonry columns={{ xs: 2, sm: 2, md: 3 }} spacing={1}>
           {projects.map((item) => (
@@ -75,10 +77,10 @@ export default function AllProjects() {
                 loading="lazy"
               />
               {/* Projects Tag */}
-              <button className="absolute bottom-4 left-4 flex h-[46px] w-[90px] cursor-pointer items-center justify-center gap-1.5 font-Neue-Montreal-Regular text-base text-white">
+              <button className="absolute bottom-4 left-4 flex h-[35px] w-[70px] cursor-pointer items-center justify-center gap-1.5 font-Neue-Montreal-Regular text-sm text-white xl:h-[46px] xl:w-[90px] xl:text-base">
                 <GlassElement
-                  width={90}
-                  height={46}
+                  width={100}
+                  height={100}
                   radius={38}
                   depth={10}
                   blur={3}

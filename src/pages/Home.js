@@ -110,15 +110,15 @@ export default function Home() {
 
       {/* Hero section: communicates brand values with bold typography */}
       <div className="relative z-10 flex flex-col items-center justify-center gap-10 text-center">
-        <h1 className="mt-60 uppercase tracking-3pct max-w-5xl font-Neue-Montreal-Bold text-3xl text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+        <h1 className="mt-60 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:max-w-2xl lg:text-6xl xl:max-w-5xl xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-        <button className="flex h-[36px] w-[135px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[153px] xl:h-[46px] xl:text-base">
+        <button className="flex h-[43px] w-[135px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white xl:h-[53px] xl:w-[157px] xl:text-base">
           <GlassElement
-            width={164}
-            height={50}
+            width={100}
+            height={100}
             radius={50}
             depth={10}
             blur={3}
@@ -126,7 +126,7 @@ export default function Home() {
             chromaticAberration={5}
           >
             Explore now
-            <img src={trendUp} alt="trend up button" className="mt-0.5 ml-1" />
+            <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
           </GlassElement>
         </button>
       </div>
@@ -134,10 +134,18 @@ export default function Home() {
       {/* Video preview box: starts small, expands when clicked */}
       <div
         ref={videoBoxRef}
-        className="absolute bottom-5 right-5 z-30 flex h-[105px] w-[175px] justify-between xl:h-[125px] xl:w-[320px]"
+        className="absolute bottom-5 right-5 z-30 flex w-[176px] justify-between xl:w-[318px]"
         onClick={toggleVideo}
       >
-        <GlassElement radius={38} depth={10} center={'flex'} blur={3} chromaticAberration={5}>
+        <GlassElement
+          height={100}
+          width={100}
+          radius={38}
+          depth={10}
+          center={'flex'}
+          blur={4}
+          chromaticAberration={2}
+        >
           <div className="flex cursor-pointer justify-between p-2">
             {/* Video thumbnail scales with the container */}
             <img

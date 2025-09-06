@@ -34,7 +34,7 @@ module.exports = {
         '2xl': '4rem',
       },
       screens: {
-        '3xs': '900px',
+        '3xs': '1000px',
         '2xs': '1100px',
         xs: '1200px',
         sm: '1400px',
