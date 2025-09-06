@@ -129,7 +129,7 @@ export default function Header() {
         <div className={`relative w-full px-2 ${!subMenu ? 'hidden' : 'block'}`}>
           <div className="mt-5 flex w-full flex-col">
             <a href="/" className="languageText rounded-xl px-3 py-2 hover:bg-[#796c6563]">
-              <span>Persion</span>
+              <span>Persian</span>
             </a>
             <a href="/" className="languageText rounded-xl px-3 py-2 hover:bg-[#796c6563]">
               <span>Arabic</span>
