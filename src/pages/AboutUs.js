@@ -305,6 +305,7 @@ export default function AboutUs() {
             </div>
             <div
               className="relative col-span-4 h-[550px] rounded-[30px] bg-cover bg-center xl:h-[760px]"
+              loading="lazy"
               style={{ backgroundImage: `url(${projectImg3})` }}
             >
               <button className="absolute right-6 top-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full xl:h-[50px] xl:w-[50px]">
@@ -320,6 +321,7 @@ export default function AboutUs() {
                   <img
                     src={trendUp}
                     alt="trend up button"
+                    loading="lazy"
                     className="w-6 -rotate-[105deg] xl:w-8"
                   />
                 </GlassElement>
@@ -371,6 +373,7 @@ export default function AboutUs() {
             <div
               className="relative order-2 col-span-2 col-start-2 row-span-2 h-full w-full rounded-[30px] bg-cover bg-center xl:order-1 xl:col-span-1 xl:col-start-1 xl:row-span-1"
               style={{ backgroundImage: `url(${projectImg2})` }}
+              loading='lazy'
             >
               <div className="absolute bottom-6 left-6">
                 <h1 className="mb-5 max-w-sm font-Neue-Montreal-Bold text-3xl leading-10 tracking-3pct text-white xl:text-[40px]">

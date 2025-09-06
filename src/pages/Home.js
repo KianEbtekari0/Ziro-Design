@@ -105,6 +105,7 @@ export default function Home() {
       <img
         className="absolute left-0 top-0 h-full w-full object-cover"
         alt="Background video"
+        loading="lazy"
         src={bgVideo}
       />
 
@@ -153,6 +154,7 @@ export default function Home() {
               className="video w-[180px] rounded-[30px] xl:w-[206px]"
               src={bgVideo}
               alt="popup Background video"
+              loading="lazy"
             />
 
             {/* Supplemental content: only relevant on desktop */}

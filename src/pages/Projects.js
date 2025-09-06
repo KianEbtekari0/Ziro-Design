@@ -154,7 +154,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="container" id='projects'>
+    <div className="container" id="projects">
       <div className="bg-container relative z-0 rounded-[32px] px-5 py-[70px]">
         {/* Vertical instruction to guide the user */}
         <p
@@ -169,8 +169,9 @@ export default function Projects() {
             <Link
               key={item.name}
               to={item.link}
-              className="tracking-3pct z-0 inline-block font-Neue-Montreal-Bold text-[6.5vw] leading-[6.5vw] text-secondery"
+              className="z-0 inline-block font-Neue-Montreal-Bold text-[6.5vw] leading-[6.5vw] tracking-3pct text-secondery"
               onPointerEnter={(e) => togglePreview(item, true, e)}
+              loading="lazy"
               onPointerLeave={(e) => togglePreview(item, false, e)}
             >
               {item.name}
@@ -183,7 +184,7 @@ export default function Projects() {
             ref={containerRef}
             className="preview-container pointer-events-none absolute z-10 h-[500px] w-[800px] overflow-hidden rounded-3xl"
           >
-            <img ref={previewRef} alt="preview" className="h-full w-full object-cover opacity-0" />
+            <img ref={previewRef} alt="preview" loading='lazy' className="h-full w-full object-cover opacity-0" />
           </div>
         </div>
       </div>

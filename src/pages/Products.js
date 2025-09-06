@@ -92,6 +92,7 @@ export default function Products() {
 
         <img
           src={cube}
+          loading="lazy"
           alt="cube"
           className="absolute right-6 top-4 z-20 w-[65px] lg:right-10 lg:top-8 lg:w-[80px]"
         />
@@ -123,7 +124,7 @@ export default function Products() {
                         </span>
                       </p>
                       <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
-                        <img src={dotIcon} alt="Dot Icon" />
+                        <img src={dotIcon} alt="Dot Icon" loading="lazy" />
                         PRICE
                       </button>
                     </div>
