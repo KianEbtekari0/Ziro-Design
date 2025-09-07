@@ -45,7 +45,7 @@ export default function Home() {
           gsap.to(videoBoxRef.current, {
             width: xl ? '320px' : '175px',
             height: xl ? '125px' : '105px',
-            bottom: 20,
+            bottom: 330,
             right: 20,
             zIndex: 30,
             duration: 0.5,
@@ -135,7 +135,7 @@ export default function Home() {
       {/* Video preview box: starts small, expands when clicked */}
       <div
         ref={videoBoxRef}
-        className="absolute bottom-[390px] right-5 z-30 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
+        className="absolute bottom-[330px] right-5 z-30 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
         onClick={toggleVideo}
       >
         <GlassElement
