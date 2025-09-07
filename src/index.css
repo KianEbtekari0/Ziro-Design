@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -43,41 +44,9 @@
     font-display: swap;
   }
 
-  @font-face {
-    font-family: 'Manrope Light', sans-serif;
-    src: url('./assets/fonts/Manrope/Manrope-Light.ttf') format('ttf');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Manrope Regular', sans-serif;
-    src: url('./assets/fonts/Manrope/Manrope-Regular.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Manrope Medium', sans-serif;
-    src: url('./assets/fonts/Manrope/Manrope-Medium.ttf') format('ttf');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Manrope Bold', sans-serif;
-    src: url('./assets/fonts/Manrope/Manrope-Bold.ttf') format('ttf');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
-
   .glassBtn,
   .glassCard {
-    background: #0F0F0F;
+    background: #0f0f0f;
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
@@ -147,10 +116,19 @@
     mask-repeat: no-repeat;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1280px) {
     .inverted-radius {
       --r: 40px; /* the radius */
       --s: 40px; /* size of inner curve */
+      --x: 30px; /* horizontal offset (no percentage) */
+      --y: 20px; /* vertical offset (no percentage) */
+    }
+  }
+
+  @media (max-width: 640px) {
+    .inverted-radius {
+      --r: 20px; /* the radius */
+      --s: 20px; /* size of inner curve */
       --x: 30px; /* horizontal offset (no percentage) */
       --y: 20px; /* vertical offset (no percentage) */
     }

@@ -69,11 +69,11 @@ export default function Header() {
   };
 
   return (
-    <header className="font-Greycliff-CF-bold relative z-30 mt-5 flex items-center justify-center">
+    <header className="font-Greycliff-CF-bold relative z-30 mt-10 lg:mt-5 flex items-center justify-center">
       <div className="absolute left-0 ml-14">
         <h1 className="w-[111px] text-white">LOGO</h1>
       </div>
-      <nav className="flex items-center justify-center rounded-full lg:h-[50px] lg:w-[410px] xl:h-[57px] xl:w-[460px]">
+      <nav className="hidden lg:flex items-center justify-center rounded-full lg:h-[50px] lg:w-[410px] xl:h-[57px] xl:w-[460px]">
         <GlassElement
           width={100}
           height={100}

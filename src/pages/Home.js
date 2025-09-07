@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import bgVideo from '../assets/images/magas 2.png';
 import playImg from '../assets/images/playBtn.png';
 import gsap from 'gsap';
-import trendUp from '../assets/images/trend-up-02.svg';
+import trendUp from '../assets/images/icons/trend-up.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 
 export default function Home() {
@@ -100,23 +100,23 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="h-[60vh] sm:h-screen">
       {/* Background image for visual depth */}
       <img
-        className="absolute left-0 top-0 h-full w-full object-cover"
+        className="absolute left-0 top-0 h-[60vh] w-full object-cover sm:h-screen"
         alt="Background video"
         loading="lazy"
         src={bgVideo}
       />
 
       {/* Hero section: communicates brand values with bold typography */}
-      <div className="relative z-10 flex flex-col items-center justify-center gap-10 text-center">
-        <h1 className="mt-60 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:max-w-2xl lg:text-6xl xl:max-w-5xl xl:text-8xl">
+      <div className="relative z-10 flex h-[60vh] flex-col items-center justify-center gap-4 text-center sm:h-screen sm:gap-10">
+        <h1 className="px-5 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-        <button className="flex h-[43px] w-[135px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white xl:h-[53px] xl:w-[157px] xl:text-base">
+        <button className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">
           <GlassElement
             width={100}
             height={100}
@@ -127,7 +127,7 @@ export default function Home() {
             chromaticAberration={5}
           >
             Explore now
-            <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
+            <img src={trendUp} className="ml-1 mt-0.5" alt="trend up" />
           </GlassElement>
         </button>
       </div>
@@ -135,7 +135,7 @@ export default function Home() {
       {/* Video preview box: starts small, expands when clicked */}
       <div
         ref={videoBoxRef}
-        className="absolute bottom-5 right-5 z-30 flex w-[176px] justify-between xl:w-[318px]"
+        className="absolute bottom-[390px] right-5 z-30 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
         onClick={toggleVideo}
       >
         <GlassElement
@@ -147,7 +147,7 @@ export default function Home() {
           blur={4}
           chromaticAberration={2}
         >
-          <div className="flex cursor-pointer justify-between p-2">
+          <div className="flex cursor-pointer justify-between p-1.5 sm:p-2">
             {/* Video thumbnail scales with the container */}
             <img
               ref={videoRef}

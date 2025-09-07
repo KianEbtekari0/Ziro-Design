@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 import projectImg from '../assets/images/magas 2.png';
-import projectImg2 from '../assets/images/8b008977f4e1e4ee0c3e8d6a34532e7d.jpg';
-import projectImg3 from '../assets/images/l5r_cover2-1920x1200.webp';
-import projectImg4 from '../assets/images/wolverine-web-cover-1920x1042.webp';
-import projectImg5 from '../assets/images/loewe-couv-1920x1277.webp';
+import projectImg2 from '../assets/images/projects/8b008977f4e1e4ee0c3e8d6a34532e7d.webp';
+import projectImg3 from '../assets/images/projects/l5r_cover2-1920x1200.webp';
+import projectImg4 from '../assets/images/projects/wolverine-web-cover-1920x1042.webp';
+import projectImg5 from '../assets/images/projects/loewe-couv-1920x1277.webp';
 import gsap from 'gsap';
 import '../index.css';
 
@@ -155,10 +155,10 @@ export default function Projects() {
 
   return (
     <div className="container" id="projects">
-      <div className="bg-container relative z-0 rounded-[32px] px-5 py-[70px]">
+      <div className="bg-container relative z-0 rounded-[32px] px-5 py-9 sm:py-16">
         {/* Vertical instruction to guide the user */}
         <p
-          className="absolute top-1/2 -translate-y-1/2 rotate-180 font-Neue-Montreal-Bold uppercase text-white"
+          className="absolute hidden sm:block top-1/2 -translate-y-1/2 text-xs sm:text-base rotate-180 font-Neue-Montreal-Bold uppercase text-white"
           style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}
         >
           hover on title

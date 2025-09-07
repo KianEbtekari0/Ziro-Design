@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import rightArrow from '../assets/images/rightArrow.png';
 import { GlassElement } from '../components/GlassElement/GlassElement';
-import projectsImg from '../assets/images/projects/modelImg.png';
-import projectsImg1 from '../assets/images/projects/12.png';
-import projectsImg3 from '../assets/images/projects/testy.png';
-import projectsImg4 from '../assets/images/projects/C==.png';
-import projectsImg5 from '../assets/images/projects/Logo.png';
-import projectsImg6 from '../assets/images/projects/final 3k.png';
-import projectsImg7 from '../assets/images/projects/Rain-022.1038.png';
-import projectsImg8 from '../assets/images/projects/keycap.png';
-import projectsImg9 from '../assets/images/projects/hamsaye saqf.png';
+import projectsImg from '../assets/images/projects/modelImg.webp';
+import projectsImg1 from '../assets/images/projects/12.webp';
+import projectsImg3 from '../assets/images/projects/testy.webp';
+import projectsImg4 from '../assets/images/projects/C==.webp';
+import projectsImg5 from '../assets/images/projects/Logo.webp';
+import projectsImg6 from '../assets/images/projects/final 3k.webp';
+import projectsImg7 from '../assets/images/projects/Rain-022.1038.webp';
+import projectsImg8 from '../assets/images/projects/keycap.webp';
+import projectsImg9 from '../assets/images/projects/hamsaye saqf.webp';
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
 

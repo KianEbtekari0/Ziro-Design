@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { APIError, errorMessages } from '../Errors';
 import { SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import { Link } from 'react-router';
+import { GlassElement } from '../components/GlassElement/GlassElement';
+import productImage from '../assets/images/projects/loewe-couv-1920x1277.webp';
 import dotIcon from '../assets/images/redDotIcon.svg';
 import cube from '../assets/images/cube.png';
-import trendUp from '../assets/images/trend-up-02.svg';
-import productImage from '../assets/images/car.png';
-import { GlassElement } from '../components/GlassElement/GlassElement';
+import trendUp from '../assets/images/icons/trend-up.svg';
 import '../index.css';
 
 export default function Products() {
@@ -35,51 +35,53 @@ export default function Products() {
 
   const visible = showAll ? products : products.slice(0, 3);
 
-  fetch('https://api.gumroad.com/v2/products', {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        switch (response.status) {
-          case 401:
-            throw new APIError(errorMessages.UNAUTHORIZED, 401);
-          case 403:
-            throw new APIError(errorMessages.FORBIDDEN, 403);
-          case 429:
-            throw new APIError(errorMessages.RATE_LIMIT, 429);
-          default:
-            throw new APIError(
-              `${errorMessages.UNKNOWN} (HTTP ${response.status})`,
-              response.status
-            );
+  useEffect(() => {
+    fetch('https://api.gumroad.com/v2/products', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          switch (response.status) {
+            case 401:
+              throw new APIError(errorMessages.UNAUTHORIZED, 401);
+            case 403:
+              throw new APIError(errorMessages.FORBIDDEN, 403);
+            case 429:
+              throw new APIError(errorMessages.RATE_LIMIT, 429);
+            default:
+              throw new APIError(
+                `${errorMessages.UNKNOWN} (HTTP ${response.status})`,
+                response.status
+              );
+          }
         }
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (!data.success || !data.products || data.products.length === 0) {
-        throw new APIError(errorMessages.NO_PRODUCTS, 200);
-      }
+        return response.json();
+      })
+      .then((data) => {
+        if (!data.success || !data.products || data.products.length === 0) {
+          throw new APIError(errorMessages.NO_PRODUCTS, 200);
+        }
 
-      setProducts(data.products);
-    })
-    .catch((err) => {
-      console.error('Error:', err.message);
-      setError(err.message);
-    });
+        setProducts(data.products);
+      })
+      .catch((err) => {
+        console.error('Error:', err.message);
+        setError(err.message);
+      });
+  });
 
   return (
     <div className="container relative mb-28 flex flex-col items-center" id="shop">
       <div className="relative mt-10 w-full">
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
-            <div className="px-9 py-10">
-              <h1 className="font-Neue-Montreal-Bold text-6xl uppercase tracking-3pct text-white lg:text-6xl xl:text-8xl">
+            <div className="px-5 py-5 sm:px-9 sm:py-10">
+              <h1 className="font-Neue-Montreal-Bold text-2xl uppercase pr-14 tracking-3pct text-white sm:text-5xl xl:text-8xl">
                 Step Into More Dimensions
               </h1>
-              <p className="mt-7 max-w-2xl font-Neue-Montreal-Bold text-sm leading-relaxed tracking-3pct text-white lg:text-xl xl:max-w-7xl xl:text-3xl">
+              <p className="mt-4 max-w-2xl font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct sm:pr-12 text-white sm:mt-5 lg:mt-7 sm:text-sm xl:max-w-7xl xl:text-3xl">
                 Take a look at my other projects and dive deeper into the world of creativity. From
                 experimental ideas{' '}
                 <span className="text-secondery">
@@ -94,7 +96,7 @@ export default function Products() {
           src={cube}
           loading="lazy"
           alt="cube"
-          className="absolute right-6 top-4 z-20 w-[65px] lg:right-10 lg:top-8 lg:w-[80px]"
+          className="absolute right-5 top-2 z-20 w-10 sm:right-6 sm:top-4 sm:w-16 xl:right-10 xl:top-8 xl:w-[80px]"
         />
       </div>
 
@@ -114,12 +116,12 @@ export default function Products() {
                   blur={4}
                   chromaticAberration={3}
                 >
-                  <div className="px-[21px] py-[14px]">
-                    <h1 className="font-Neue-Montreal-Bold text-2xl text-white">{product.name}</h1>
-                    <div className="mt-1 flex items-center justify-between">
-                      <p className="font-Neue-Montreal-Bold text-lg text-white">
+                  <div className="px-4 sm:px-[21px] py-3 sm:py-[14px]">
+                    <h1 className="font-Neue-Montreal-Bold text-xl sm:text-2xl text-white">{product.name}</h1>
+                    <div className="sm:mt-1 flex items-center justify-between">
+                      <p className="font-Neue-Montreal-Bold text-base sm:text-lg text-white">
                         {product.price}
-                        <span className="ml-2 font-Neue-Montreal-Regular text-base text-white/50">
+                        <span className="ml-2 font-Neue-Montreal-Regular text-sm sm:text-base text-white/50">
                           DOLLAR
                         </span>
                       </p>
