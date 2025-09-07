@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 export default function Footer() {
   return (
     <div className="relative flex flex-col items-center justify-center" id='contactus'>
-      <footer className="relative z-10 flex w-full max-w-[1500px] items-center justify-center px-10 py-20">
-        <div className="absolute left-0 pl-10 text-center">
+      <footer className="z-10 flex w-full max-w-[1500px] items-center flex-wrap justify-between px-10 py-20">
+        <div className="w-[200px] text-center">
           <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">FAQ</h1>
           <div className="mt-2 flex flex-col text-sm xl:text-base">
             <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
@@ -23,7 +23,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center px-10">
           <h1 className="mt-2 font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">
             BOOK A TIME!
           </h1>
@@ -51,9 +51,9 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="absolute right-0 pr-7">
-          <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">
-            CONTACT US INFORMATION
+        <div className="">
+          <h1 className="font-Neue-Montreal-Bold text-xl text-center text-white xl:text-2xl">
+            CONTACT US
           </h1>
           <div className="mt-2 flex flex-col items-center text-center">
             <p className="font-Neue-Montreal-Regular text-sm text-secondery xl:text-base">
