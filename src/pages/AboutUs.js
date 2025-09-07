@@ -340,7 +340,7 @@ export default function AboutUs() {
               <h1 className="text-center font-Neue-Montreal-Bold text-[7vw] tracking-3pct sm:text-3xl lg:text-4xl xl:text-5xl">
                 Vision to Dimension
               </h1>
-              <div className="flex w-full max-w-xs items-center justify-between gap-9 sm:max-w-lg xl:max-w-xl">
+              <div className="flex w-full max-w-xs items-center justify-between gap-9 sm:max-w-sm sm:flex-row xl:max-w-lg">
                 <h1
                   className="w-24 font-Neue-Montreal-Bold text-5xl tracking-3pct sm:text-6xl xl:text-8xl"
                   ref={counter1Ref}
@@ -356,7 +356,7 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-              <div className="flex w-full max-w-xs items-center justify-between gap-9 sm:max-w-lg sm:flex-row xl:max-w-xl">
+              <div className="flex w-full max-w-xs items-center justify-between gap-9 sm:max-w-sm sm:flex-row xl:max-w-lg">
                 <h1
                   className="w-24 font-Neue-Montreal-Bold text-5xl tracking-3pct sm:text-6xl xl:text-8xl"
                   ref={counter2Ref}
