@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { Link } from 'react-router';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import productImage from '../assets/images/projects/loewe-couv-1920x1277.webp';
-import dotIcon from '../assets/images/redDotIcon.svg';
+import dotIcon from '../assets/images/icons/redDot.svg';
 import cube from '../assets/images/cube.png';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import '../index.css';

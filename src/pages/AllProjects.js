@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import rightArrow from '../assets/images/rightArrow.png';
+import rightArrow from '../assets/images/icons/right-arrow.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import projectsImg from '../assets/images/projects/modelImg.webp';
 import projectsImg1 from '../assets/images/projects/12.webp';
@@ -60,7 +60,7 @@ export default function AllProjects() {
           chromaticAberration={5}
         >
           Let's See
-          <img src={rightArrow} alt="trend up button" className="mt-0.5 w-5" />
+          <img src={rightArrow} alt="trend up button" className="ml-1.5 mt-0.5 w-3.5" />
         </GlassElement>
       </button>
       <Box className="mt-14">

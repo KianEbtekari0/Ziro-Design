@@ -12,8 +12,8 @@ import projectImg2 from '../assets/images/projects/Rain-022.1038.webp';
 import projectImg3 from '../assets/images/projects/C==.webp';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import copyIcon from '../assets/images/icons/copy.svg';
-import star from '../assets/images/star1.png';
-import rightArrow from '../assets/images/rightArrow.png';
+import star from '../assets/images/icons/star.svg';
+import rightArrow from '../assets/images/icons/right-arrow.svg';
 import checkIcon from '../assets/images/checkIcon.png';
 
 export default function AboutUs() {
@@ -30,7 +30,7 @@ export default function AboutUs() {
       snap: { textContent: 1 },
       scrollTrigger: {
         trigger: '.aboutSection',
-        start: 'top 80%',
+        start: 'top 70%',
         toggleActions: 'play none none none',
       },
     });
@@ -43,7 +43,7 @@ export default function AboutUs() {
       snap: { textContent: 1 },
       scrollTrigger: {
         trigger: '.aboutSection',
-        start: 'top 70%',
+        start: 'top 60%',
         toggleActions: 'play none none none',
       },
     });
@@ -272,7 +272,7 @@ export default function AboutUs() {
         <div className="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black from-50% to-transparent"></div>
       </div>
       <div>
-        <div className="aboutSection mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
+        <div className="mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
           <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-4xl lg:max-w-3xl lg:text-6xl xl:max-w-max xl:text-[85px]">
             Safarpoor 3D ARTIST Designer
           </h1>
@@ -294,7 +294,7 @@ export default function AboutUs() {
               >
                 <span ref={iconRef} className="flex h-5 w-5 items-center justify-center">
                   {copied ? (
-                    <img src={checkIcon} alt="check icon" className="mr-3 mt-0.5" />
+                    <img src={checkIcon} alt="check icon" className="mr-3 w-4 sm:w-full" />
                   ) : (
                     <img
                       src={copyIcon}
@@ -307,7 +307,7 @@ export default function AboutUs() {
               </button>
             </div>
             <div
-              className="relative col-span-4 h-[550px] rounded-[30px] bg-cover bg-center xl:h-[760px]"
+              className="aboutSection relative col-span-4 h-[550px] rounded-[30px] bg-cover bg-center xl:h-[760px]"
               loading="lazy"
               style={{ backgroundImage: `url(${projectImg3})` }}
             >
@@ -393,7 +393,7 @@ export default function AboutUs() {
                     chromaticAberration={5}
                   >
                     Let's See
-                    <img src={rightArrow} alt="right arrow button" className="ml-0.5 mt-0.5 w-5" />
+                    <img src={rightArrow} alt="right arrow button" className="ml-1.5 mt-0.5 w-3.5" />
                   </GlassElement>
                 </button>
               </div>

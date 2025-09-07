@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import dotsImg from '../assets/images/dots.png';
+import dotsImg from '../assets/images/icons/dots.svg';
 import { GlassElement } from './GlassElement/GlassElement';
 import { SplitText } from 'gsap/all';
 import gsap from 'gsap';

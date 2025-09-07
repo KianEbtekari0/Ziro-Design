@@ -1,4 +1,4 @@
-import arrowRight from '../assets/images/arrow-right.png';
+import arrowRight from '../assets/images/icons/right-arrow.svg';
 import { GlassElement } from './GlassElement/GlassElement';
 import { Link } from 'react-router';
 
@@ -46,7 +46,7 @@ export default function Footer() {
                 chromaticAberration={4}
               >
                 Send
-                <img src={arrowRight} alt="arrow right" />
+                <img src={arrowRight} alt="arrow right" className='ml-1.5 w-3.5' />
               </GlassElement>
             </Link>
           </div>
