@@ -38,7 +38,7 @@ export default function Header() {
         mask: 'lines',
         onSplit: (self) => {
           split = gsap.from(self.lines, {
-            duration: 1,
+            duration: 0.7,
             yPercent: 100,
             opacity: 0,
             stagger: 0.1,

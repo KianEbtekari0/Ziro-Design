@@ -70,7 +70,7 @@ export default function Products() {
         console.error('Error:', err.message);
         setError(err.message);
       });
-  });
+  }, []);
 
   return (
     <div className="container relative mb-28 flex flex-col items-center" id="shop">
@@ -78,10 +78,10 @@ export default function Products() {
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
             <div className="px-5 py-5 sm:px-9 sm:py-10">
-              <h1 className="font-Neue-Montreal-Bold text-2xl uppercase pr-14 tracking-3pct text-white sm:text-5xl xl:text-8xl">
+              <h1 className="pr-14 font-Neue-Montreal-Bold text-2xl uppercase tracking-3pct text-white sm:text-5xl xl:text-8xl">
                 Step Into More Dimensions
               </h1>
-              <p className="mt-4 max-w-2xl font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct sm:pr-12 text-white sm:mt-5 lg:mt-7 sm:text-sm xl:max-w-7xl xl:text-3xl">
+              <p className="mt-4 max-w-2xl font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct text-white sm:mt-5 sm:pr-12 sm:text-sm lg:mt-7 xl:max-w-7xl xl:text-3xl">
                 Take a look at my other projects and dive deeper into the world of creativity. From
                 experimental ideas{' '}
                 <span className="text-secondery">
@@ -116,12 +116,14 @@ export default function Products() {
                   blur={4}
                   chromaticAberration={3}
                 >
-                  <div className="px-4 sm:px-[21px] py-3 sm:py-[14px]">
-                    <h1 className="font-Neue-Montreal-Bold text-xl sm:text-2xl text-white">{product.name}</h1>
-                    <div className="sm:mt-1 flex items-center justify-between">
-                      <p className="font-Neue-Montreal-Bold text-base sm:text-lg text-white">
+                  <div className="px-4 py-3 sm:px-[21px] sm:py-[14px]">
+                    <h1 className="font-Neue-Montreal-Bold text-xl text-white sm:text-2xl">
+                      {product.name}
+                    </h1>
+                    <div className="flex items-center justify-between sm:mt-1">
+                      <p className="font-Neue-Montreal-Bold text-base text-white sm:text-lg">
                         {product.price}
-                        <span className="ml-2 font-Neue-Montreal-Regular text-sm sm:text-base text-white/50">
+                        <span className="ml-2 font-Neue-Montreal-Regular text-sm text-white/50 sm:text-base">
                           DOLLAR
                         </span>
                       </p>
@@ -142,10 +144,13 @@ export default function Products() {
         <>
           <div className="fade-shadow z-20"></div>
           <div className="z-40 mt-20">
-            <button className="glassBtn flex h-[45px] w-[145px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm tracking-3pct text-white xl:h-[46px] xl:text-base">
+            <Link
+              to="/allproducts"
+              className="glassBtn flex h-[45px] w-[145px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
+            >
               More Products
               <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
-            </button>
+            </Link>
           </div>
         </>
       )}

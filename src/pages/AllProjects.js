@@ -49,7 +49,7 @@ export default function AllProjects() {
           art is a fusion of beauty, motion, and storytelling.
         </span>
       </p>
-      <button className="flex h-[46px] w-[138px] cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:text-base">
+      <button className="flex h-9 w-28 cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[46px] sm:w-[138px] sm:text-sm lg:text-base">
         <GlassElement
           width={100}
           height={100}
@@ -64,11 +64,11 @@ export default function AllProjects() {
         </GlassElement>
       </button>
       <Box className="mt-14">
-        <Masonry columns={{ xs: 2, sm: 2, md: 3 }} spacing={1}>
+        <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={1}>
           {projects.map((item) => (
             <div
               key={item.id}
-              className="relative aspect-auto overflow-hidden rounded-xl shadow [break-inside:avoid]"
+              className="relative aspect-auto max-h-[700px] overflow-hidden rounded-xl shadow [break-inside:avoid] sm:max-h-max"
             >
               <img
                 src={item.preview_url}

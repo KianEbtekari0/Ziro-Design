@@ -16,11 +16,7 @@ module.exports = {
         'Neue-Montreal-Light': ['Neue Montreal Light'],
         'Neue-Montreal-Regular': ['Neue Montreal Regular'],
         'Neue-Montreal-Medium': ['Neue Montreal Medium'],
-        'Neue-Montreal-Bold': ['Neue Montreal Bold'],
-        'Manrope-Light': ['Manrope Light', 'sans-serif'],
-        'Manrope-Regular': ['Manrope Regular', 'sans-serif'],
-        'Manrope-Medium': ['Manrope Medium', 'sans-serif'],
-        'Manrope-Bold': ['Manrope Bold', 'sans-serif'],
+        'Neue-Montreal-Bold': ['Neue Montreal Bold']
       },
     },
 

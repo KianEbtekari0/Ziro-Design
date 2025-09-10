@@ -393,7 +393,11 @@ export default function AboutUs() {
                     chromaticAberration={5}
                   >
                     Let's See
-                    <img src={rightArrow} alt="right arrow button" className="ml-1.5 mt-0.5 w-3.5" />
+                    <img
+                      src={rightArrow}
+                      alt="right arrow button"
+                      className="ml-1.5 mt-0.5 w-3.5"
+                    />
                   </GlassElement>
                 </button>
               </div>
