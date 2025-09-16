@@ -336,7 +336,7 @@ export default function AboutUs() {
           </div>
 
           <div className="col-span-3 flex w-full flex-col items-center justify-between gap-4 sm:flex-row xl:col-span-1 xl:grid-cols-1 xl:grid-rows-2 xl:flex-col">
-            <div className="order-1 flex w-full flex-col items-center justify-center gap-6 rounded-[30px] bg-[#0F0F0F] px-7 py-12 text-white sm:max-w-[500px] xl:order-2 xl:gap-12">
+            <div className="order-1 flex w-full flex-col items-center justify-center gap-6 rounded-[30px] bg-[#0F0F0F] px-7 py-8 sm:py-12 text-white sm:max-w-[500px] xl:order-2 xl:gap-12">
               <h1 className="text-center font-Neue-Montreal-Bold text-[7vw] tracking-3pct sm:text-3xl lg:text-4xl xl:text-5xl">
                 Vision to Dimension
               </h1>

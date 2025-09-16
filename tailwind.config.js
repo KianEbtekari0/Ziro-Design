@@ -16,8 +16,17 @@ module.exports = {
         'Neue-Montreal-Light': ['Neue Montreal Light'],
         'Neue-Montreal-Regular': ['Neue Montreal Regular'],
         'Neue-Montreal-Medium': ['Neue Montreal Medium'],
-        'Neue-Montreal-Bold': ['Neue Montreal Bold']
+        'Neue-Montreal-Bold': ['Neue Montreal Bold'],
       },
+    },
+
+    screens: {
+      xs: '480px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
     },
 
     container: {
