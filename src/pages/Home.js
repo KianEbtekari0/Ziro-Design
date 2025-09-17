@@ -26,78 +26,76 @@ export default function Home() {
   // after the item is clicked, so a default value is necessary.
   const mm = gsap.matchMedia();
 
-  const toggleVideo = () => {
-    if (!isExpanded) {
-      // When collapsing, the video should shrink into a “preview card”.
-      // This state is intentionally smaller so it doesn’t dominate the screen.
-      // On desktop (xl), we give it more presence with larger dimensions.
-      // On mobile/tablet, it shrinks further so it feels lightweight.
-      mm.add(
-        {
-          sm: '(min-width: 640px)',
-          md: '(min-width: 768px)',
-          lg: '(min-width: 1024px)',
-          xl: '(min-width: 1280px)',
-        },
-        (context) => {
-          let { xl } = context.conditions;
+const toggleVideo = () => {
+  if (!isExpanded) {
+    // حالت کوچک
+    mm.add(
+      {
+        sm: '(min-width: 640px)',
+        md: '(min-width: 768px)',
+        lg: '(min-width: 1024px)',
+        xl: '(min-width: 1280px)',
+      },
+      (context) => {
+        let { xl } = context.conditions;
 
-          gsap.to(videoBoxRef.current, {
-            width: xl ? '320px' : '175px',
-            height: xl ? '125px' : '105px',
-            bottom: 20,
-            right: 20,
-            zIndex: 30,
-            duration: 0.5,
-            ease: 'power2.inOut',
-            onComplete: () => {
-              // Right-side play text and button is only useful on large screens.
-              // On smaller devices, it’s hidden to avoid clutter.
-              gsap.set(rightSideRef.current, {
-                zIndex: 30,
-                display: xl ? 'block' : 'none',
-              });
-            },
-          });
+        gsap.to(videoBoxRef.current, {
+          width: xl ? '320px' : '175px',
+          height: xl ? '125px' : '105px',
+          bottom: 20,
+          right: 20,
+          zIndex: 30,
+          duration: 0.5,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            gsap.set(rightSideRef.current, {
+              zIndex: 30,
+              display: xl ? 'block' : 'none',
+            });
+          },
+        });
 
-          gsap.to(videoRef.current, {
-            // Video preview scales with the container so it doesn’t feel oversized.
-            width: xl ? '206px' : '180px',
-            height: '100%',
-            zIndex: 30,
-            duration: 0.5,
-            ease: 'power2.inOut',
-          });
-        }
-      );
-    } else {
-      // When expanding, the video should feel immersive.
-      // We use percentages instead of fixed pixels so it naturally adapts to any screen size.
-      gsap.to(videoBoxRef.current, {
-        width: '70%',
-        height: '80%',
-        bottom: 0,
-        right: 0,
-        zIndex: 30,
-        duration: 0.5,
-        ease: 'power2.inOut',
-      });
+        gsap.to(videoRef.current, {
+          width: xl ? '206px' : '180px',
+          height: '100%',
+          zIndex: 30,
+          duration: 0.5,
+          ease: 'power2.inOut',
+        });
+      }
+    );
 
-      gsap.to(videoRef.current, {
-        width: '100%',
-        height: '100%',
-        zIndex: 30,
-        duration: 0.5,
-        ease: 'power2.inOut',
-      });
+    // برگردوندن ناوبار
+    gsap.to("header", { autoAlpha: 1, duration: 0.3 });
+  } else {
+    // حالت فول‌اسکرین
+    gsap.to(videoBoxRef.current, {
+      width: '100%',
+      height: '100%',
+      bottom: 0,
+      right: 0,
+      zIndex: 9999, // بالاتر از ناوبار
+      duration: 0.5,
+      ease: 'power2.inOut',
+    });
 
-      // The right-side content doesn’t belong in fullscreen mode.
-      // It would distract from the video, so we remove it immediately.
-      gsap.set(rightSideRef.current, { display: 'none' });
-    }
+    gsap.to(videoRef.current, {
+      width: '100%',
+      height: '100%',
+      zIndex: 9999,
+      duration: 0.5,
+      ease: 'power2.inOut',
+    });
 
-    setIsExpanded(!isExpanded);
-  };
+    // مخفی کردن ناوبار
+    gsap.to("header", { autoAlpha: 0, duration: 0.3 });
+
+    gsap.set(rightSideRef.current, { display: 'none' });
+  }
+
+  setIsExpanded(!isExpanded);
+};
+
 
   return (
     <div className="h-[60vh] sm:h-screen">
@@ -110,7 +108,7 @@ export default function Home() {
       />
 
       {/* Hero section: communicates brand values with bold typography */}
-      <div className="relative z-10 flex h-[60vh] flex-col items-center justify-center gap-4 text-center sm:h-screen sm:gap-10">
+      <div className="absolute top-0 z-10 flex h-[60vh] w-full flex-col items-center justify-center gap-4 text-center sm:h-screen sm:gap-10">
         <h1 className="px-5 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
@@ -130,45 +128,44 @@ export default function Home() {
             <img src={trendUp} className="ml-1 mt-0.5" alt="trend up" />
           </GlassElement>
         </button>
-      </div>
-
-      {/* Video preview box: starts small, expands when clicked */}
-      <div
-        ref={videoBoxRef}
-        className="absolute bottom-[340px] right-5 z-30 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
-        onClick={toggleVideo}
-      >
-        <GlassElement
-          height={100}
-          width={100}
-          radius={38}
-          depth={10}
-          center={'flex'}
-          blur={4}
-          chromaticAberration={2}
+        {/* Video preview box: starts small, expands when clicked */}
+        <div
+          ref={videoBoxRef}
+          className="absolute bottom-5 right-5 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
+          onClick={toggleVideo}
         >
-          <div className="flex cursor-pointer justify-between p-1.5 sm:p-2">
-            {/* Video thumbnail scales with the container */}
-            <img
-              ref={videoRef}
-              className="video w-[180px] rounded-[30px] xl:w-[206px]"
-              src={bgVideo}
-              alt="popup Background video"
-              loading="lazy"
-            />
+          <GlassElement
+            height={100}
+            width={100}
+            radius={38}
+            depth={10}
+            center={'flex'}
+            blur={4}
+            chromaticAberration={2}
+          >
+            <div className="flex cursor-pointer justify-between p-1.5 sm:p-2">
+              {/* Video thumbnail scales with the container */}
+              <img
+                ref={videoRef}
+                className="video w-[180px] rounded-[30px] xl:w-[206px]"
+                src={bgVideo}
+                alt="popup Background video"
+                loading="lazy"
+              />
 
-            {/* Supplemental content: only relevant on desktop */}
-            <div
-              ref={rightSideRef}
-              className="relative hidden flex-col justify-between px-2 xl:flex"
-            >
-              <p className="font-Neue-Montreal-Medium text-xl text-white">Discover full video</p>
-              <button className="absolute bottom-1 right-2 flex h-8 w-8 rounded-full bg-black">
-                <img src={playImg} alt="play" />
-              </button>
+              {/* Supplemental content: only relevant on desktop */}
+              <div
+                ref={rightSideRef}
+                className="relative hidden flex-col justify-between px-2 xl:flex"
+              >
+                <p className="font-Neue-Montreal-Medium text-xl text-white">Discover full video</p>
+                <button className="absolute bottom-1 right-2 flex h-8 w-8 rounded-full bg-black">
+                  <img src={playImg} alt="play" />
+                </button>
+              </div>
             </div>
-          </div>
-        </GlassElement>
+          </GlassElement>
+        </div>
       </div>
     </div>
   );
