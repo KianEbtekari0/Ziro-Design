@@ -30,6 +30,7 @@ export default function ProductDetails() {
     <section className="container">
       <h1 className="text-white">{product.name}</h1>
       <p className="text-white">{product.description || 'No description available'}</p>
+      <img src={product.preview_url} className='h-[500px]' alt="" />
     </section>
   );
 }

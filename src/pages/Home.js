@@ -26,76 +26,71 @@ export default function Home() {
   // after the item is clicked, so a default value is necessary.
   const mm = gsap.matchMedia();
 
-const toggleVideo = () => {
-  if (!isExpanded) {
-    // حالت کوچک
-    mm.add(
-      {
-        sm: '(min-width: 640px)',
-        md: '(min-width: 768px)',
-        lg: '(min-width: 1024px)',
-        xl: '(min-width: 1280px)',
-      },
-      (context) => {
-        let { xl } = context.conditions;
+  const toggleVideo = () => {
+    if (!isExpanded) {
+      mm.add(
+        {
+          sm: '(min-width: 640px)',
+          md: '(min-width: 768px)',
+          lg: '(min-width: 1024px)',
+          xl: '(min-width: 1280px)',
+        },
+        (context) => {
+          let { xl } = context.conditions;
 
-        gsap.to(videoBoxRef.current, {
-          width: xl ? '320px' : '175px',
-          height: xl ? '125px' : '105px',
-          bottom: 20,
-          right: 20,
-          zIndex: 30,
-          duration: 0.5,
-          ease: 'power2.inOut',
-          onComplete: () => {
-            gsap.set(rightSideRef.current, {
-              zIndex: 30,
-              display: xl ? 'block' : 'none',
-            });
-          },
-        });
+          gsap.to(videoBoxRef.current, {
+            width: xl ? '320px' : '175px',
+            height: xl ? '125px' : '105px',
+            bottom: 20,
+            right: 20,
+            zIndex: 30,
+            duration: 0.5,
+            ease: 'power2.inOut',
+            onComplete: () => {
+              gsap.set(rightSideRef.current, {
+                zIndex: 30,
+                display: xl ? 'block' : 'none',
+              });
+            },
+          });
 
-        gsap.to(videoRef.current, {
-          width: xl ? '206px' : '180px',
-          height: '100%',
-          zIndex: 30,
-          duration: 0.5,
-          ease: 'power2.inOut',
-        });
-      }
-    );
+          gsap.to(videoRef.current, {
+            width: xl ? '206px' : '180px',
+            height: '100%',
+            zIndex: 30,
+            duration: 0.5,
+            ease: 'power2.inOut',
+          });
+        }
+      );
 
-    // برگردوندن ناوبار
-    gsap.to("header", { autoAlpha: 1, duration: 0.3 });
-  } else {
-    // حالت فول‌اسکرین
-    gsap.to(videoBoxRef.current, {
-      width: '100%',
-      height: '100%',
-      bottom: 0,
-      right: 0,
-      zIndex: 9999, // بالاتر از ناوبار
-      duration: 0.5,
-      ease: 'power2.inOut',
-    });
+      gsap.to('header', { autoAlpha: 1, duration: 0.3 });
+    } else {
+      gsap.to(videoBoxRef.current, {
+        width: '100%',
+        height: '100%',
+        bottom: 0,
+        right: 0,
+        zIndex: 9999,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
 
-    gsap.to(videoRef.current, {
-      width: '100%',
-      height: '100%',
-      zIndex: 9999,
-      duration: 0.5,
-      ease: 'power2.inOut',
-    });
+      gsap.to(videoRef.current, {
+        width: '100%',
+        height: '100%',
+        zIndex: 9999,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
 
-    // مخفی کردن ناوبار
-    gsap.to("header", { autoAlpha: 0, duration: 0.3 });
+      gsap.to('header', { autoAlpha: 0, duration: 0.3 });
 
-    gsap.set(rightSideRef.current, { display: 'none' });
-  }
+      gsap.set(rightSideRef.current, { display: 'none' });
+    }
 
-  setIsExpanded(!isExpanded);
-};
-
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div className="h-[60vh] sm:h-screen">
