@@ -66,12 +66,12 @@ export default function Footer() {
         </div>
       </footer>
       <h1
-        className="absolute bottom-28 xs:bottom-36 left-0 z-0 w-full text-center font-Neue-Montreal-Bold leading-3 text-white md:bottom-28 lg:bottom-40 xl:bottom-44"
+        className="absolute bottom-28 xs:bottom-36 left-0 z-0 w-full text-center font-Neue-Montreal-Bold leading-3 text-white md:bottom-28 lg:bottom-40"
         style={{ fontSize: '15vw' }}
       >
         ZIRO DESIGN
       </h1>
-      <div className="relative z-10 flex w-full flex-col justify-between bg-black sm:px-10 px-5 py-5 sm:py-8 tracking-3pct sm:flex-row sm:items-center xl:py-10">
+      <div className="relative z-10 flex w-full flex-col justify-between bg-black sm:px-10 px-5 py-5 sm:py-5 tracking-3pct sm:flex-row sm:items-center">
         <h1 className="sm:pr-2 font-Neue-Montreal-Bold text-[5vw] text-white sm:text-[4vw]">
           BOOK A TIME FOR YOUR WORK
         </h1>

@@ -15,11 +15,20 @@ import copyIcon from '../assets/images/icons/copy.svg';
 import star from '../assets/images/icons/star.svg';
 import rightArrow from '../assets/images/icons/right-arrow.svg';
 import checkIcon from '../assets/images/checkIcon.png';
+import LogoLoop from '../components/LogoLoop';
 
 export default function AboutUs() {
   gsap.registerPlugin(ScrollTrigger);
   const counter1Ref = useRef();
   const counter2Ref = useRef();
+
+  const imageLogos = [
+    { src: company1, alt: 'Company 1', href: 'https://company1.com' },
+    { src: company2, alt: 'Company 2', href: 'https://company2.com' },
+    { src: company3, alt: 'Company 3', href: 'https://company3.com' },
+    { src: company4, alt: 'Company 3', href: 'https://company3.com' },
+    { src: company5, alt: 'Company 3', href: 'https://company3.com' },
+  ];
 
   useEffect(() => {
     gsap.to(counter1Ref.current, {
@@ -75,198 +84,19 @@ export default function AboutUs() {
 
   return (
     <div className="container bg-black pb-10" id="aboutus">
-      <div className="relative flex overflow-hidden whitespace-nowrap px-8">
+      <div className="relative flex items-center justify-center overflow-hidden whitespace-nowrap px-8">
         <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-black from-50% to-transparent"></div>
         <img src={star} alt="star" className="absolute left-0 z-30 w-7 sm:w-9" />
 
-        <div>
-          <div className="logoAnimation inline-flex">
-            <img
-              src={company1}
-              alt={'company-1'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company2}
-              alt={'company-2'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company3}
-              alt={'company-3'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company4}
-              alt={'company-4'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company5}
-              alt={'company-5'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company1}
-              alt={'company-1'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company2}
-              alt={'company-2'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company3}
-              alt={'company-3'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company4}
-              alt={'company-4'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company5}
-              alt={'company-5'}
-              className="mx-9 h-6 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-          </div>
-          <div className="logoAnimation inline-flex">
-            <img
-              src={company1}
-              alt={'company-1'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company2}
-              alt={'company-2'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company3}
-              alt={'company-3'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company4}
-              alt={'company-4'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company5}
-              alt={'company-5'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company1}
-              alt={'company-1'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company2}
-              alt={'company-2'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company3}
-              alt={'company-3'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company4}
-              alt={'company-4'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company5}
-              alt={'company-5'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-          </div>
-          <div className="logoAnimation inline-flex">
-            <img
-              src={company1}
-              alt={'company-1'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company2}
-              alt={'company-2'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company3}
-              alt={'company-3'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company4}
-              alt={'company-4'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company5}
-              alt={'company-5'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company1}
-              alt={'company-1'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company2}
-              alt={'company-2'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company3}
-              alt={'company-3'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company4}
-              alt={'company-4'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-            <img
-              src={company5}
-              alt={'company-5'}
-              className="bl6ck mx-9 h-5 sm:mx-10 sm:h-8"
-              draggable={false}
-            />
-          </div>
-        </div>
+        <LogoLoop
+          logos={imageLogos}
+          speed={120}
+          direction="left"
+          logoHeight={30}
+          gap={40}
+          pauseOnHover
+          ariaLabel="Technology partners"
+        />
 
         <img src={star} alt="star" className="absolute right-0 z-30 w-7 sm:w-9" />
         <div className="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black from-50% to-transparent"></div>
@@ -336,7 +166,7 @@ export default function AboutUs() {
           </div>
 
           <div className="col-span-3 flex w-full flex-col items-center justify-between gap-4 sm:flex-row xl:col-span-1 xl:grid-cols-1 xl:grid-rows-2 xl:flex-col">
-            <div className="order-1 flex w-full flex-col items-center justify-center gap-6 rounded-[30px] bg-[#0F0F0F] px-7 py-8 sm:py-12 text-white sm:max-w-[500px] xl:order-2 xl:gap-12">
+            <div className="order-1 flex w-full flex-col items-center justify-center gap-6 rounded-[30px] bg-[#0F0F0F] px-7 py-8 text-white sm:max-w-[500px] sm:py-12 xl:order-2 xl:gap-12">
               <h1 className="text-center font-Neue-Montreal-Bold text-[7vw] tracking-3pct sm:text-3xl lg:text-4xl xl:text-5xl">
                 Vision to Dimension
               </h1>

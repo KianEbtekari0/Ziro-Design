@@ -125,7 +125,7 @@ export default function AllProducts() {
           </p>
 
           {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-          <button className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">
+          <Link to='/products' className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">
             <GlassElement
               width={100}
               height={100}
@@ -138,7 +138,7 @@ export default function AllProducts() {
               Shop Now
               <img src={trendUp} className="ml-1 mt-0.5" alt="trend up" />
             </GlassElement>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="container">
@@ -158,7 +158,7 @@ export default function AllProducts() {
                   first step toward joining a creative
                 </p>
                 <Link
-                  to="/allproducts"
+                  to="/products"
                   className="glassBtn flex h-[45px] w-[145px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
                 >
                   More Products
@@ -185,15 +185,15 @@ export default function AllProducts() {
           </div>
         </div>
         {/* Best Selling Products */}
-        <div className='mt-16'>
-          <div className="flex items-center justify-between">
-            <div className="flex max-w-max">
-              <img src={star} alt="star" className="w-10 lg:w-14 xl:w-20" />
-              <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+        <div className="mt-16">
+          <div className="flex items-center justify-between flex-wrap">
+            <div className="flex max-w-max gap-1">
+              <img src={star} alt="star" className="w-7 sm:w-10 lg:w-14 xl:w-20" />
+              <h1 className="font-Neue-Montreal-Bold pr-5 lg:pr-0 text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
                 New Arrival
               </h1>
             </div>
-            <div className="flex flex-1 items-center px-10">
+            <div className="hidden flex-1 items-center px-10 lg:flex">
               <div className="h-4 w-4 rounded-full bg-white"></div>
 
               <div className="h-1 w-full bg-white text-white"></div>

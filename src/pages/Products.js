@@ -15,16 +15,36 @@ export default function Products() {
       price: 1234,
       preview_url: productImage,
     },
-    { id: 2, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 3, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 4, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 5, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 6, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 7, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 8, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 9, name: 'products1', price: 1234, preview_url: productImage },
+    { id: 2, name: 'products1', price: 1234, preview_url: productImage, tag: '3D object' },
+    { id: 3, name: 'products1', price: 1234, preview_url: productImage, tag: 'Bundles' },
+    { id: 4, name: 'products1', price: 1234, preview_url: productImage, tag: 'VFX Video' },
+    { id: 5, name: 'products1', price: 1234, preview_url: productImage, tag: 'Photos' },
+    { id: 6, name: 'products1', price: 1234, preview_url: productImage, tag: '3D object' },
+    { id: 7, name: 'products1', price: 1234, preview_url: productImage, tag: 'Bundles' },
+    { id: 8, name: 'products1', price: 1234, preview_url: productImage, tag: 'Photos' },
+    { id: 9, name: 'products1', price: 1234, preview_url: productImage, tag: 'Bundles' },
+    { id: 10, name: 'products1', price: 1234, preview_url: productImage, tag: '3D object' },
+    { id: 11, name: 'products1', price: 1234, preview_url: productImage, tag: 'Photos' },
+    { id: 12, name: 'products1', price: 1234, preview_url: productImage, tag: 'VFX Video' },
   ]);
   const [, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginatedProducts, setPaginatedProducts] = useState([]);
+  let pageSize = 9;
+  let pageNumbers;
+
+  const changePaginate = (newpage) => {
+    setCurrentPage(newpage);
+  };
+
+  useEffect(() => {
+    let endIndex = pageSize * currentPage;
+    let startIndex = endIndex - pageSize;
+    setPaginatedProducts(products.slice(startIndex, endIndex));
+  }, [currentPage]);
+
+  const pageCount = Math.ceil(products.length / pageSize);
+  pageNumbers = Array.from(Array(pageCount).keys());
 
   useEffect(() => {
     fetch('https://api.gumroad.com/v2/products', {
@@ -56,6 +76,9 @@ export default function Products() {
         }
 
         setProducts(data.products);
+        let endIndex = pageSize * currentPage;
+        let startIndex = endIndex - pageSize;
+        setPaginatedProducts(data.slice(startIndex, endIndex));
       })
       .catch((err) => {
         console.error('Error:', err.message);
@@ -63,7 +86,7 @@ export default function Products() {
       });
   }, []);
   return (
-    <div className='container'>
+    <div className="container">
       <div className="mt-28 flex flex-col items-center justify-center gap-5">
         <h1 className="px-5 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
           Discover the World’s Top 3D
@@ -113,7 +136,7 @@ export default function Products() {
           </button>
         </div>
         <div className="relative z-10 mt-10 grid w-full grid-cols-1 gap-8 overflow-hidden lg:grid-cols-2 xl:grid-cols-3">
-          {products.map((product) => (
+          {paginatedProducts.map((product) => (
             <Link to={`/product/${product.id}`} key={product.id}>
               <div
                 className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2"
@@ -151,6 +174,24 @@ export default function Products() {
             </Link>
           ))}
         </div>
+        <nav className="mt-9">
+          <ul className="flex items-center justify-center gap-3">
+            {pageNumbers.map((pagesNumber) => (
+              <li
+                onClick={() => changePaginate(pagesNumber + 1)}
+                className={`${pagesNumber + 1 === currentPage ? '' : 'cursor-pointer text-white'}`}
+                key={pagesNumber + 1}
+              >
+                <a
+                  className="glassBtn flex text-lg font-Neue-Montreal-Medium h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-white"
+                  aria-current="page"
+                >
+                  {pagesNumber + 1}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </div>
   );
