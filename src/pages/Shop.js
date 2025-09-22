@@ -124,8 +124,7 @@ export default function AllProducts() {
             <span className="text-secondery">design mastery, they craft unique</span>
           </p>
 
-          {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-          <Link to='/products' className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">
+          <Link to='/products' className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base">
             <GlassElement
               width={100}
               height={100}
@@ -135,8 +134,8 @@ export default function AllProducts() {
               center={'flex'}
               chromaticAberration={5}
             >
-              Shop Now
-              <img src={trendUp} className="ml-1 mt-0.5" alt="trend up" />
+              Shop now
+              <img src={trendUp} className="ml-1 mt-0.5 w-4 xl:w-5" alt="trend up" />
             </GlassElement>
           </Link>
         </div>
@@ -152,14 +151,14 @@ export default function AllProducts() {
                 <div className="h-[260px] w-full rounded-xl bg-gray-300 sm:w-full"></div>
                 <div className="h-[260px] w-full rounded-xl bg-gray-300 sm:w-full"></div>
               </div>
-              <div className="flex w-full items-center justify-between">
-                <p className="max-w-md font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:text-base xl:text-lg">
+              <div className="flex w-full flex-col justify-between xs:flex-row">
+                <p className="max-w-xs flex-1 pr-5 font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:max-w-md sm:text-base xl:text-lg">
                   The opportunity to work with us is open — just drop your work email to take the
                   first step toward joining a creative
                 </p>
                 <Link
                   to="/products"
-                  className="glassBtn flex h-[45px] w-[145px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
+                  className="glassBtn flex h-[46px] w-[153px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
                 >
                   More Products
                   <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
@@ -186,10 +185,10 @@ export default function AllProducts() {
         </div>
         {/* Best Selling Products */}
         <div className="mt-16">
-          <div className="flex items-center justify-between flex-wrap">
+          <div className="flex flex-wrap items-center justify-between">
             <div className="flex max-w-max gap-1">
               <img src={star} alt="star" className="w-7 sm:w-10 lg:w-14 xl:w-20" />
-              <h1 className="font-Neue-Montreal-Bold pr-5 lg:pr-0 text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+              <h1 className="pr-5 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:pr-0 lg:text-6xl xl:text-8xl">
                 New Arrival
               </h1>
             </div>
@@ -201,7 +200,7 @@ export default function AllProducts() {
               <div className="h-4 w-4 rounded-full bg-white"></div>
             </div>
 
-            <p className="max-w-md font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:text-base xl:text-lg">
+            <p className="mt-2 max-w-md font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:text-base lg:mt-0 xl:text-lg">
               The opportunity to work with us is open — just drop your work email to take the first
               step toward joining a creative
             </p>

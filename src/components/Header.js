@@ -70,46 +70,46 @@ export default function Header() {
 
   return (
     <header className="font-Greycliff-CF-bold relative z-30 mt-10 lg:mt-5 flex items-center justify-center">
-      <div className="absolute left-0 ml-14">
+      <div className="absolute left-0 ml-4 xl:ml-12">
         <h1 className="w-[111px] text-white">LOGO</h1>
       </div>
-      <nav className="hidden lg:flex items-center justify-center rounded-full lg:h-[50px] lg:w-[410px] xl:h-[57px] xl:w-[460px]">
+      <nav className="hidden lg:flex items-center justify-center rounded-full h-[50px] w-[410px]">
         <GlassElement
           width={100}
           height={100}
           radius={50}
-          blur={4}
+          blur={2}
           center={'flex'}
           chromaticAberration={2}
         >
           <ul className="flex items-center justify-center gap-3">
             <a
               href="/"
-              className="cursor-pointer font-Neue-Montreal-Regular text-white lg:text-sm xl:text-base"
+              className="cursor-pointer font-Neue-Montreal-Regular text-white text-sm"
             >
               HOME<span className="text-primary">.</span>
             </a>
             <a
               href="#aboutus"
-              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery text-sm"
             >
               ABOUT US<span className="text-secondery">.</span>
             </a>
             <a
               href="#projects"
-              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery text-sm"
             >
               PROJECTS<span className="text-secondery">.</span>
             </a>
             <a
               href="#shop"
-              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery text-sm"
             >
               SHOP<span className="text-secondery">.</span>
             </a>
             <a
               href="#contactus"
-              className="cursor-pointer font-Neue-Montreal-Regular text-secondery lg:text-sm xl:text-base"
+              className="cursor-pointer font-Neue-Montreal-Regular text-secondery text-sm"
             >
               CONTACT US<span className="text-secondery">.</span>
             </a>
@@ -117,7 +117,7 @@ export default function Header() {
         </GlassElement>
       </nav>
       <div
-        className="glassBtn absolute right-0 mr-14 h-[51px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px]"
+        className="glassBtn absolute right-0 mr-4 xl:mr-12 h-[51px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px]"
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
       >

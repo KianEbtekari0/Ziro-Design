@@ -109,7 +109,7 @@ export default function Home() {
         </h1>
 
         {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
-        <button className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">
+        <button className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base">
           <GlassElement
             width={100}
             height={100}
@@ -120,13 +120,13 @@ export default function Home() {
             chromaticAberration={5}
           >
             Explore now
-            <img src={trendUp} className="ml-1 mt-0.5" alt="trend up" />
+            <img src={trendUp} className="ml-1 mt-0.5 w-4 xl:w-5" alt="trend up" />
           </GlassElement>
         </button>
         {/* Video preview box: starts small, expands when clicked */}
         <div
           ref={videoBoxRef}
-          className="absolute bottom-5 right-5 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
+          className="absolute bottom-4 right-4 xl:bottom-9 xl:right-12 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
           onClick={toggleVideo}
         >
           <GlassElement

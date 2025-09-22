@@ -103,10 +103,10 @@ export default function AboutUs() {
       </div>
       <div>
         <div className="mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
-          <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-4xl lg:max-w-3xl lg:text-6xl xl:max-w-max xl:text-[85px]">
+          <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-4xl lg:max-w-3xl lg:text-6xl xl:max-w-3xl xl:text-7xl">
             Safarpoor 3D ARTIST Designer
           </h1>
-          <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-3xl sm:text-2xl xl:text-3xl">
+          <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-base xl:text-2xl">
             A versatile designer skilled in 2D, 3D, motion graphics, and{' '}
             <span className="text-secondery">creativity and design mastery, they craft unique</span>
           </p>
@@ -159,7 +159,7 @@ export default function AboutUs() {
                   />
                 </GlassElement>
               </button>
-              <h1 className="absolute bottom-7 left-7 max-w-xs font-Neue-Montreal-Bold text-xl tracking-3pct text-white sm:bottom-10 sm:left-10 sm:max-w-md sm:text-4xl xl:bottom-12 xl:left-12 xl:text-[40px]">
+              <h1 className="absolute bottom-7 left-7 max-w-xs font-Neue-Montreal-Bold text-xl tracking-3pct text-white sm:bottom-10 sm:left-10 sm:max-w-md sm:text-4xl xl:bottom-8 xl:left-8 xl:text-[40px]">
                 You Can See All Of My Project In Gallery
               </h1>
             </div>

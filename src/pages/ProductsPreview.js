@@ -78,7 +78,7 @@ export default function Products() {
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
             <div className="px-5 py-5 sm:px-9 sm:py-10">
-              <h1 className="pr-14 font-Neue-Montreal-Bold text-2xl uppercase tracking-3pct text-white sm:text-5xl xl:text-8xl">
+              <h1 className="pr-14 xl:pr-20 font-Neue-Montreal-Bold text-2xl uppercase tracking-3pct text-white sm:text-5xl xl:text-7xl">
                 Step Into More Dimensions
               </h1>
               <p className="mt-4 max-w-2xl font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct text-white sm:mt-5 sm:pr-12 sm:text-sm lg:mt-7 xl:max-w-7xl xl:text-3xl">
