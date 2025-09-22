@@ -171,7 +171,7 @@ export default function AllProducts() {
               <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
                 The Collections
               </h1>
-              <p className="mt-5 font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct text-white sm:mt-10 sm:text-xl xl:text-3xl">
+              <p className="mt-5 font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct text-white sm:mt-10 sm:text-xl xl:text-2xl">
                 A versatile designer skilled in 2D design, 3D modeling, motion graphics, and
                 Blender. With a strong creative vision and mastof design principles, they
                 <span className="text-secondery">
