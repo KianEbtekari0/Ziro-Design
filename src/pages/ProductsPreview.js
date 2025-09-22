@@ -146,9 +146,9 @@ export default function Products() {
           <div className="z-40 mt-20">
             <Link
               to="/shop"
-              className="glassBtn flex h-[45px] w-[145px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
+              className="glassBtn flex h-[46px] w-[153px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
             >
-              More Products
+              See Products
               <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
             </Link>
           </div>
