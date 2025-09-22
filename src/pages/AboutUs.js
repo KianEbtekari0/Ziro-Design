@@ -111,7 +111,7 @@ export default function AboutUs() {
             <span className="text-secondery">creativity and design mastery, they craft unique</span>
           </p>
         </div>
-        <div className="grid grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-[40%_20%_1fr] sm:grid-rows-1 xl:grid-cols-[1fr_460px_1fr] xl:grid-rows-1">
+        <div className="grid mt-3 grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-[40%_20%_1fr] sm:grid-rows-1 xl:grid-cols-[1fr_460px_1fr] xl:grid-rows-1">
           <div className="col-span-3 sm:col-span-2 xl:col-span-1">
             <div className="flex items-center gap-2 xl:gap-5">
               <button className="glassBtn flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-[50px] font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">
@@ -120,7 +120,7 @@ export default function AboutUs() {
               </button>
               <button
                 onClick={handleCopy}
-                className="glassBtn my-4 flex h-[35px] w-[130px] cursor-pointer items-center justify-center rounded-[50px] font-Neue-Montreal-Regular text-xs text-white sm:my-6 sm:h-[43px] sm:w-[145px] sm:text-sm xl:my-9 xl:h-[53px] xl:w-[170px] xl:text-base"
+                className="glassBtn flex h-[35px] w-[130px] cursor-pointer items-center justify-center rounded-[50px] font-Neue-Montreal-Regular text-xs text-white sm:my-6 sm:h-[43px] sm:w-[145px] sm:text-sm xl:my-9 xl:h-[53px] xl:w-[170px] xl:text-base"
               >
                 <span ref={iconRef} className="flex h-5 w-5 items-center justify-center">
                   {copied ? (
