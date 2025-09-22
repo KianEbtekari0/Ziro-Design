@@ -3,6 +3,7 @@ import dotsImg from '../assets/images/icons/dots.svg';
 import { GlassElement } from './GlassElement/GlassElement';
 import { SplitText } from 'gsap/all';
 import gsap from 'gsap';
+import { Link } from 'react-router';
 
 export default function Header() {
   gsap.registerPlugin(SplitText);
@@ -98,12 +99,12 @@ export default function Header() {
             >
               PROJECTS<span className="text-secondery">.</span>
             </a>
-            <a
-              href="#shop"
+            <Link
+              to="/shop"
               className="cursor-pointer font-Neue-Montreal-Regular text-sm text-secondery"
             >
               SHOP<span className="text-secondery">.</span>
-            </a>
+            </Link>
             <a
               href="#contactus"
               className="cursor-pointer font-Neue-Montreal-Regular text-sm text-secondery"

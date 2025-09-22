@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 export default function Footer() {
   return (
     <div className="relative flex flex-col items-center justify-center" id="contactus">
-      <footer className="z-10 flex w-full max-w-[1500px] flex-wrap items-center justify-center xs:justify-between gap-y-10 py-16 sm:py-20 sm:flex-nowrap sm:gap-y-0">
-        <div className="text-center w-[200px]">
+      <footer className="z-10 flex w-full max-w-[1500px] flex-wrap items-center justify-center gap-y-10 px-10 py-16 xs:justify-between sm:flex-nowrap sm:gap-y-0 sm:py-20">
+        <div className="w-[200px] text-center">
           <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">FAQ</h1>
           <div className="mt-2 flex flex-col text-sm xl:text-base">
             <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
@@ -66,13 +66,13 @@ export default function Footer() {
         </div>
       </footer>
       <h1
-        className="absolute bottom-28 xs:bottom-36 left-0 z-0 w-full text-center font-Neue-Montreal-Bold leading-3 text-white md:bottom-28 lg:bottom-40"
+        className="absolute bottom-28 left-0 z-0 w-full text-center font-Neue-Montreal-Bold leading-3 text-white xs:bottom-36 md:bottom-28 lg:bottom-36"
         style={{ fontSize: '15vw' }}
       >
         ZIRO DESIGN
       </h1>
-      <div className="relative z-10 flex w-full flex-col justify-between bg-black sm:px-10 px-5 py-5 sm:py-5 tracking-3pct sm:flex-row sm:items-center">
-        <h1 className="sm:pr-2 font-Neue-Montreal-Bold text-[5vw] text-white sm:text-[4vw]">
+      <div className="relative z-10 flex w-full flex-col justify-between bg-black px-5 py-5 tracking-3pct sm:flex-row sm:items-center sm:px-10 sm:py-5">
+        <h1 className="font-Neue-Montreal-Bold text-[5vw] text-white sm:pr-2 sm:text-[4vw]">
           BOOK A TIME FOR YOUR WORK
         </h1>
         <p className="max-w-[240px] font-Neue-Montreal-Regular text-xs tracking-3pct text-secondery lg:max-w-[300px] lg:text-sm xl:max-w-sm xl:text-base">
