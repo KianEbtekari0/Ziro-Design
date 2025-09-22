@@ -30,7 +30,7 @@ export default function ProductDetails() {
   if (!product) return <p>Loading...</p>;
 
   return (
-    <section className="container flex flex-col gap-8">
+    <section className="container flex flex-col gap-8 mt-9">
       <div className="flex items-center gap-2">
         <img src={rightArrow} alt="right arrow" className="rotate-180" />
         <Link
@@ -47,7 +47,7 @@ export default function ProductDetails() {
         </Link>
       </div>
       <div className="flex flex-col justify-between gap-10 xl:flex-row">
-        <div className="aspect-square w-full max-w-max flex-1 overflow-hidden rounded-xl md:aspect-[16/9] xl:max-w-4xl">
+        <div className="aspect-square w-full max-w-max flex-1 overflow-hidden rounded-xl md:aspect-[16/9] xl:w-[962px]">
           <img src={product.preview_url} alt="product" className="h-full w-full object-cover" />
         </div>
 

@@ -126,7 +126,7 @@ export default function Home() {
         {/* Video preview box: starts small, expands when clicked */}
         <div
           ref={videoBoxRef}
-          className="absolute bottom-4 right-4 xl:bottom-9 xl:right-12 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
+          className="absolute bottom-4 right-4 xl:bottom-6 xl:right-6 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
           onClick={toggleVideo}
         >
           <GlassElement

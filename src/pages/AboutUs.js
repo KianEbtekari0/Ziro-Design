@@ -7,9 +7,9 @@ import company2 from '../assets/images/company3.png';
 import company3 from '../assets/images/company4.png';
 import company4 from '../assets/images/company5.png';
 import company5 from '../assets/images/company7.png';
-import projectImg1 from '../assets/images/projects/12.webp';
+import projectImg1 from '../assets/images/projects/aboutus12.svg';
 import projectImg2 from '../assets/images/projects/Rain-022.1038.webp';
-import projectImg3 from '../assets/images/projects/C==.webp';
+import projectImg3 from '../assets/images/projects/aboutusc==.svg';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import copyIcon from '../assets/images/icons/copy.svg';
 import star from '../assets/images/icons/star.svg';
@@ -137,11 +137,11 @@ export default function AboutUs() {
               </button>
             </div>
             <div
-              className="aboutSection relative col-span-4 h-[550px] rounded-[30px] bg-cover bg-center xl:h-[760px]"
+              className="aboutSection relative col-span-4 h-[550px] rounded-[30px] bg-cover bg-center xl:h-[719px]"
               loading="lazy"
               style={{ backgroundImage: `url(${projectImg3})` }}
             >
-              <button className="absolute right-6 top-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full xl:h-[50px] xl:w-[50px]">
+              <button className="absolute right-6 top-6 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full xl:h-12 xl:w-12">
                 <GlassElement
                   width={100}
                   height={100}
@@ -155,7 +155,7 @@ export default function AboutUs() {
                     src={trendUp}
                     alt="trend up button"
                     loading="lazy"
-                    className="w-6 -rotate-[105deg] xl:w-8"
+                    className="w-6 -rotate-[105deg] xl:w-7"
                   />
                 </GlassElement>
               </button>
