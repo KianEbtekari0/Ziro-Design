@@ -46,7 +46,7 @@
 
   .glassBtn,
   .glassCard {
-    background: #0F0F0F;
+    background: #0f0f0f;
     border: 1px solid #373737;
   }
 
@@ -83,17 +83,32 @@
     pointer-events: none;
   }
 
-  @keyframes logoSlide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #444;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .logoAnimation {
-    animation: 20s logoSlide infinite linear;
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mySwiper .swiper-slide {
+    border: 0px;
+    border-radius: 12px;
+    opacity: 80%;
+  }
+
+  .mySwiper .swiper-slide-thumb-active {
+    border: 2px solid #ffffff;
   }
 
   .inverted-radius {

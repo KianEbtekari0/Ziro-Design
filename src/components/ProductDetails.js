@@ -2,12 +2,22 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
 import rightArrow from '../assets/images/icons/right-arrow.svg';
 import calendar from '../assets/images/icons/calendar.svg';
+import cube from '../assets/images/icons/cube.svg';
+import delivery from '../assets/images/icons/delivery.svg';
+import folder from '../assets/images/icons/folder.svg';
 import { GlassElement } from './GlassElement/GlassElement';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const accessToken = 'teI22PGHmIFjf8eu9M6hgJR8DJ1e3IkB7Eu0dWV9QdI';
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,7 +40,7 @@ export default function ProductDetails() {
   if (!product) return <p>Loading...</p>;
 
   return (
-    <section className="container flex flex-col gap-8 mt-9">
+    <section className="container mt-9 flex flex-col gap-8">
       <div className="flex items-center gap-2">
         <img src={rightArrow} alt="right arrow" className="rotate-180" />
         <Link
@@ -47,8 +57,64 @@ export default function ProductDetails() {
         </Link>
       </div>
       <div className="flex flex-col justify-between gap-10 xl:flex-row">
-        <div className="aspect-square w-full max-w-max flex-1 overflow-hidden rounded-xl md:aspect-[16/9] xl:w-[962px]">
-          <img src={product.preview_url} alt="product" className="h-full w-full object-cover" />
+        <div className="relative w-full max-w-5xl flex-1">
+          {/* اسلاید اصلی */}
+          <Swiper
+            style={{
+              '--swiper-navigation-color': '#fff',
+              '--swiper-pagination-color': '#fff',
+            }}
+            loop={true}
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper2 rounded-xl"
+          >
+            <SwiperSlide>
+              <div className="relative aspect-square w-full overflow-hidden rounded-xl md:aspect-[16/9]">
+                <img
+                  src={product.preview_url}
+                  alt="product"
+                  className="h-full w-full object-cover"
+                />
+                {/* Product Tag */}
+                <button className="absolute left-4 top-4 flex h-[35px] w-[90px] items-center justify-center font-Neue-Montreal-Regular text-sm text-white xl:h-[46px] xl:w-[110px] xl:text-base">
+                  <GlassElement
+                    width={100}
+                    height={100}
+                    radius={38}
+                    depth={10}
+                    blur={3}
+                    center={'flex'}
+                    chromaticAberration={5}
+                  >
+                    {product.tags?.length ? product.tags[0] : 'No Tag'}
+                  </GlassElement>
+                </button>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+
+          {/* thumbnail slider */}
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={true}
+            spaceBetween={12}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper mt-4"
+          >
+            <SwiperSlide>
+              <img
+                src={product.preview_url}
+                alt='product-thumb'
+                className="h-32 w-full cursor-pointer rounded-lg object-cover"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
         <div>
@@ -103,7 +169,28 @@ export default function ProductDetails() {
                     center={'flex'}
                     chromaticAberration={5}
                   >
-                    <img src={calendar} alt="calendar" />
+                    <img src={delivery} alt="delivery" />
+                  </GlassElement>
+                </div>
+                <div>
+                  <h1 className="font-Neue-Montreal-Medium text-xl">Delivery</h1>
+                  <p className="font-Neue-Montreal-Medium text-base tracking-3pct text-secondery">
+                    The opportunity to work
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex h-14 w-14 items-center justify-center">
+                  <GlassElement
+                    width={100}
+                    height={100}
+                    radius={50}
+                    depth={10}
+                    blur={3}
+                    center={'flex'}
+                    chromaticAberration={5}
+                  >
+                    <img src={cube} alt="cube" />
                   </GlassElement>
                 </div>
                 <div>
@@ -124,32 +211,11 @@ export default function ProductDetails() {
                     center={'flex'}
                     chromaticAberration={5}
                   >
-                    <img src={calendar} alt="calendar" />
+                    <img src={folder} alt="folder" />
                   </GlassElement>
                 </div>
                 <div>
-                  <h1 className="font-Neue-Montreal-Medium text-xl">Time</h1>
-                  <p className="font-Neue-Montreal-Medium text-base tracking-3pct text-secondery">
-                    The opportunity to work
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center">
-                  <GlassElement
-                    width={100}
-                    height={100}
-                    radius={50}
-                    depth={10}
-                    blur={3}
-                    center={'flex'}
-                    chromaticAberration={5}
-                  >
-                    <img src={calendar} alt="calendar" />
-                  </GlassElement>
-                </div>
-                <div>
-                  <h1 className="font-Neue-Montreal-Medium text-xl">Time</h1>
+                  <h1 className="font-Neue-Montreal-Medium text-xl">Format</h1>
                   <p className="font-Neue-Montreal-Medium text-base tracking-3pct text-secondery">
                     The opportunity to work
                   </p>

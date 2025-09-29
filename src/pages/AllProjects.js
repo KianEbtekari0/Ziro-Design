@@ -87,7 +87,7 @@ export default function AllProjects() {
                   center={'flex'}
                   chromaticAberration={5}
                 >
-                  {item.tags ?? 'LOGO'}
+                  {item.tags && 'LOGO'}
                 </GlassElement>
               </button>
             </div>
