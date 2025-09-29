@@ -1,6 +1,10 @@
 import arrowRight from '../assets/images/icons/right-arrow.svg';
 import { GlassElement } from './GlassElement/GlassElement';
 import { Link } from 'react-router';
+import gumroad from '../assets/images/icons/gumroad.svg';
+import instagram from '../assets/images/icons/instagram.svg';
+import artstaion from '../assets/images/icons/artstationFooter.svg';
+import linkedin from '../assets/images/icons/linkedin.svg';
 
 export default function Footer() {
   return (
@@ -61,12 +65,37 @@ export default function Footer() {
             <p className="max-w-[200px] font-Neue-Montreal-Regular text-sm text-secondery xl:text-base">
               3785 Blackwell Street City Cordova State Province
             </p>
-            {/* <div className='flex justify-center gap-2 mt-3'> <a href='#' className='rounded-full flex items-center justify-center'> <GlassElement width={44} height={44} radius={100} depth={10} blur={3} center={'flex'} chromaticAberration={5} > <img src="" alt="" className='' /> </GlassElement> </a> <a href='#' className='rounded-full flex items-center justify-center'> <GlassElement width={44} height={44} radius={100} depth={10} blur={3} center={'flex'} chromaticAberration={5} > <img src="" alt="" className='' /> </GlassElement> </a> <a href='#' className='rounded-full flex items-center justify-center'> <GlassElement width={44} height={44} radius={100} depth={10} blur={3} center={'flex'} chromaticAberration={5} > <img src="" alt="" className='' /> </GlassElement> </a> <a href='#' className='rounded-full flex items-center justify-center'> <GlassElement width={44} height={44} radius={100} depth={10} blur={3} center={'flex'} chromaticAberration={5} > <img src="" alt="" className='' /> </GlassElement> </a> </div> */}
+            <div className="mt-3 flex justify-center gap-2">
+              <a
+                href="#"
+                className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
+              >
+                <img src={gumroad} alt="gumroad" className="" />
+              </a>
+              <a
+                href="#"
+                className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
+              >
+                <img src={instagram} alt="instagram" className="" />
+              </a>
+              <a
+                href="#"
+                className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
+              >
+                <img src={artstaion} alt="artstaion" className="" />
+              </a>
+              <a
+                href="#"
+                className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
+              >
+                <img src={linkedin} alt="linkedin" className="" />
+              </a>
+            </div>
           </div>
         </div>
       </footer>
       <h1
-        className="absolute bottom-28 left-0 z-0 w-full text-center font-Neue-Montreal-Bold leading-3 text-white xs:bottom-36 md:bottom-28 lg:bottom-36"
+        className="absolute bottom-[115px] left-0 z-0 w-full text-center font-Neue-Montreal-Bold leading-3 text-white xs:bottom-36 md:bottom-28 lg:bottom-36"
         style={{ fontSize: '15vw' }}
       >
         ZIRO DESIGN

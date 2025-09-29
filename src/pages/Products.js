@@ -6,6 +6,7 @@ import productImage from '../assets/images/projects/loewe-couv-1920x1277.webp';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import dotIcon from '../assets/images/icons/redDot.svg';
 import RippleGrid from '../components/RippleGrid';
+import arrow from '../assets/images/icons/arrow.svg';
 
 export default function Products() {
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
@@ -36,6 +37,14 @@ export default function Products() {
 
   const changePaginate = (newpage) => {
     setCurrentPage(newpage);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const nextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, pageCount));
   };
 
   useEffect(() => {
@@ -102,14 +111,10 @@ export default function Products() {
           </p>
         </div>
         <div className="mt-28">
-          <div className="flex items-center justify-between">
-            <button className="glassBtn flex h-[45px] w-[166px] cursor-pointer items-center justify-center gap-1 rounded-3xl font-Neue-Montreal-Medium text-sm text-white xl:h-[46px] xl:text-base">
-              Type Of Project
-              <img src={rightArrow} alt="trend up button" className="ml-1 mt-0.5 rotate-90" />
-            </button>
+          <div className="flex items-center gap-7">
             <input
               type="email"
-              className="glassCard h-[46px] w-full max-w-2xl rounded-3xl p-3 font-Neue-Montreal-Bold text-white"
+              className="glassCard h-[46px] w-full max-w-3xl rounded-3xl p-3 font-Neue-Montreal-Bold text-white"
               placeholder="Search"
             />
             <div className="flex items-center justify-center gap-5">
@@ -135,10 +140,6 @@ export default function Products() {
                 Photos
               </button>
             </div>
-            <button className="glassBtn flex h-[45px] w-24 cursor-pointer items-center justify-center gap-1 rounded-3xl font-Neue-Montreal-Regular text-sm text-white xl:h-[46px] xl:text-base">
-              Filters
-              <img src={rightArrow} alt="trend up button" className="ml-1 mt-0.5 rotate-90" />
-            </button>
           </div>
           <div className="relative z-10 mt-10 grid w-full grid-cols-1 gap-8 overflow-hidden lg:grid-cols-2 xl:grid-cols-3">
             {paginatedProducts.map((product) => (
@@ -180,7 +181,14 @@ export default function Products() {
             ))}
           </div>
           <nav className="mt-9">
-            <ul className="flex items-center justify-center gap-3">
+            <ul className="flex items-center justify-center gap-2">
+              <a
+                className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white"
+                aria-current="page"
+                onClick={() => prevPage()}
+              >
+                <img src={arrow} alt="arrow" />
+              </a>
               {pageNumbers.map((pagesNumber) => (
                 <li
                   onClick={() => changePaginate(pagesNumber + 1)}
@@ -195,6 +203,13 @@ export default function Products() {
                   </a>
                 </li>
               ))}
+              <a
+                className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white"
+                aria-current="page"
+                onClick={() => nextPage()}
+              >
+                <img src={arrow} alt="arrow" className='rotate-180' />
+              </a>
             </ul>
           </nav>
         </div>

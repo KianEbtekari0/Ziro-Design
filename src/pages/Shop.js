@@ -1,13 +1,16 @@
+import { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router';
+import gsap from 'gsap';
+import { APIError, errorMessages } from '../Errors';
+import { GlassElement } from '../components/GlassElement/GlassElement';
+import house from '../assets/images/icons/collectionHouse.svg'
+import car from '../assets/images/icons/collectionCar.svg'
+import character from '../assets/images/icons/collectionCharacter.svg'
 import bgImage from '../assets/images/projects/allproductsbg.webp';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import rightArrow from '../assets/images/icons/right-arrow.svg';
 import dotIcon from '../assets/images/icons/redDot.svg';
-import { APIError, errorMessages } from '../Errors';
 import star from '../assets/images/icons/star.svg';
-import { GlassElement } from '../components/GlassElement/GlassElement';
-import { Link } from 'react-router';
-import { useRef, useState, useEffect } from 'react';
-import gsap from 'gsap';
 
 export default function AllProducts() {
   const faqs = [
@@ -147,9 +150,9 @@ export default function AllProducts() {
             {/* Left Side - Cards */}
             <div className="xl:row-start-0 row-start-2 flex h-full flex-col gap-4 sm:flex-row sm:flex-wrap">
               <div className="flex w-full flex-col items-center gap-5 sm:flex-row">
-                <div className="h-[260px] w-full rounded-xl bg-gray-300 sm:w-full"></div>
-                <div className="h-[260px] w-full rounded-xl bg-gray-300 sm:w-full"></div>
-                <div className="h-[260px] w-full rounded-xl bg-gray-300 sm:w-full"></div>
+                <div className="h-[260px] flex items-center justify-center w-full rounded-xl bg-[#0F0F0F] sm:w-full"><img src={house} alt="house" /></div>
+                <div className="h-[260px] flex items-center justify-center w-full rounded-xl bg-[#0F0F0F] sm:w-full"><img src={character} alt="character" /></div>
+                <div className="h-[260px] flex items-center justify-center w-full rounded-xl bg-[#0F0F0F] sm:w-full"><img src={car} alt="car" /></div>
               </div>
               <div className="flex w-full flex-col justify-between xs:flex-row">
                 <p className="max-w-xs flex-1 pr-5 font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:max-w-md sm:text-base xl:text-lg">
@@ -158,7 +161,7 @@ export default function AllProducts() {
                 </p>
                 <Link
                   to="/products"
-                  className="glassBtn flex h-[46px] w-[153px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
+                  className="glassBtn mt-3 xs:mt-0 flex h-[46px] w-[153px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
                 >
                   More Products
                   <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />

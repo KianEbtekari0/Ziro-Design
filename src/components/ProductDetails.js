@@ -58,7 +58,7 @@ export default function ProductDetails() {
       </div>
       <div className="flex flex-col justify-between gap-10 xl:flex-row">
         <div className="relative w-full max-w-5xl flex-1">
-          {/* اسلاید اصلی */}
+          {/* products image slider */}
           <Swiper
             style={{
               '--swiper-navigation-color': '#fff',
@@ -105,13 +105,13 @@ export default function ProductDetails() {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper mt-4"
+            className="mySwiper mt-4 mr-0"
           >
             <SwiperSlide>
               <img
                 src={product.preview_url}
                 alt='product-thumb'
-                className="h-32 w-full cursor-pointer rounded-lg object-cover"
+                className="h-20 sm:h-32 w-full cursor-pointer rounded-lg object-cover"
               />
             </SwiperSlide>
           </Swiper>
@@ -136,7 +136,7 @@ export default function ProductDetails() {
           </button>
           <div className="glassBtn mt-6 rounded-2xl p-5 text-white">
             <h1 className="font-Neue-Montreal-Medium text-2xl">Shopping</h1>
-            <div className="mt-4 grid grid-cols-2 gap-6">
+            <div className="mt-4 grid grid-cols-1 xs:grid-cols-2 gap-6">
               <div className="flex items-center gap-3">
                 <div className="flex h-14 w-14 items-center justify-center">
                   <GlassElement

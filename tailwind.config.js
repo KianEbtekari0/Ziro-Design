@@ -32,15 +32,15 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        DEFAULT: '2rem',
+        DEFAULT: '1rem',
         sm: '1rem',
         lg: '2rem',
         xl: '3rem',
         '2xl': '4rem',
       },
       screens: {
-        '3xs': '1000px',
-        '2xs': '1100px',
+        '3xs': '1100px',
+        '2xs': '1200px',
         xs: '1300px',
         sm: '1400px',
         md: '1600px',

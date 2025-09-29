@@ -10,9 +10,11 @@ export default function Header() {
 
   const [subMenu, setSubMenu] = useState(false);
   const iconRef = useRef(null);
+  const splitRef = useRef(null); // نگه داشتن SplitText instance
 
   const handlePointerEnter = (e) => {
     setSubMenu(true);
+
     gsap.to(iconRef.current, {
       rotate: 90,
       duration: 0.4,
@@ -31,22 +33,24 @@ export default function Header() {
     document.fonts.ready.then(() => {
       gsap.set('.languageText', { opacity: 1 });
 
-      let split;
-      SplitText.create('.languageText', {
-        type: 'words,lines',
-        linesClass: 'line',
-        autoSplit: true,
-        mask: 'lines',
-        onSplit: (self) => {
-          split = gsap.from(self.lines, {
-            duration: 0.7,
-            yPercent: 100,
-            opacity: 0,
-            stagger: 0.1,
-            ease: 'expo.out',
-          });
-          return split;
-        },
+      // اگر split هنوز ایجاد نشده، بسازش
+      if (!splitRef.current) {
+        splitRef.current = new SplitText('.languageText', {
+          type: 'words,lines',
+          linesClass: 'line',
+        });
+      }
+
+      // قبل از انیمیشن، خطوط را ریست کن
+      gsap.set(splitRef.current.lines, { yPercent: 100, opacity: 0 });
+
+      // انیمیشن خطوط
+      gsap.to(splitRef.current.lines, {
+        duration: 0.7,
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.1,
+        ease: 'expo.out',
       });
     });
   };
@@ -66,6 +70,7 @@ export default function Header() {
       ease: 'power3.out',
       duration: 0.4,
     });
+
     setSubMenu(false);
   };
 
@@ -115,7 +120,7 @@ export default function Header() {
         </GlassElement>
       </nav>
       <div
-        className="glassBtn absolute hidden lg:block right-0 mr-4 h-[50px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px] xl:mr-6"
+        className="glassBtn absolute right-0 mr-4 hidden h-[50px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px] lg:block xl:mr-6"
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
       >
