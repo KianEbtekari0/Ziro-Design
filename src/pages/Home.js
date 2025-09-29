@@ -136,7 +136,7 @@ export default function Home() {
       />
 
       <div className="absolute top-0 z-10 flex w-full flex-col items-center justify-center gap-4 text-center h-screen sm:gap-10">
-        <h1 className="px-5 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
+        <h1 className="px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
 

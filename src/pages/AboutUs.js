@@ -2,11 +2,14 @@ import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GlassElement } from '../components/GlassElement/GlassElement';
-import company1 from '../assets/images/company2.png';
-import company2 from '../assets/images/company3.png';
-import company3 from '../assets/images/company4.png';
-import company4 from '../assets/images/company5.png';
-import company5 from '../assets/images/company7.png';
+import adobe from '../assets/images/icons/adobe.svg';
+import artstation from '../assets/images/icons/artstation.svg';
+import blender from '../assets/images/icons/blender.svg';
+import cgtrader from '../assets/images/icons/cgtrader.svg';
+import turbo from '../assets/images/icons/turbo.png';
+import renderhub from '../assets/images/icons/renderhub.png';
+import sketchfab from '../assets/images/icons/sketchfab.svg';
+import patreon from '../assets/images/icons/patreon.svg';
 import projectImg1 from '../assets/images/projects/aboutus12.svg';
 import projectImg2 from '../assets/images/projects/Rain-022.1038.webp';
 import projectImg3 from '../assets/images/projects/aboutusc==.svg';
@@ -23,11 +26,14 @@ export default function AboutUs() {
   const counter2Ref = useRef();
 
   const imageLogos = [
-    { src: company1, alt: 'Company 1', href: 'https://company1.com' },
-    { src: company2, alt: 'Company 2', href: 'https://company2.com' },
-    { src: company3, alt: 'Company 3', href: 'https://company3.com' },
-    { src: company4, alt: 'Company 3', href: 'https://company3.com' },
-    { src: company5, alt: 'Company 3', href: 'https://company3.com' },
+    { src: adobe, alt: 'adobe', href: 'https://adobe.com' },
+    { src: artstation, alt: 'artstation', href: 'https://artstation.com' },
+    { src: blender, alt: 'blender', href: 'https://blender.com' },
+    { src: cgtrader, alt: 'cgtrader', href: 'https://cgtrader.com' },
+    { src: turbo, alt: 'turbo', href: 'https://turbo.com' },
+    { src: renderhub, alt: 'renderhub', href: 'https://renderhub.com' },
+    { src: sketchfab, alt: 'sketchfab', href: 'https://sketchfab.com' },
+    { src: patreon, alt: 'patreon', href: 'https://patreon.com' },
   ];
 
   useEffect(() => {
@@ -85,7 +91,7 @@ export default function AboutUs() {
   return (
     <div className="container bg-black pb-10" id="aboutus">
       <div className="relative flex items-center justify-center overflow-hidden whitespace-nowrap px-8">
-        <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-black from-50% to-transparent"></div>
+        <div className="absolute right-0 top-0 z-10 h-full w-24 sm:w-32 bg-gradient-to-l from-black from-50% to-transparent"></div>
         <img src={star} alt="star" className="absolute left-0 z-30 w-7 sm:w-9" />
 
         <LogoLoop
@@ -99,7 +105,7 @@ export default function AboutUs() {
         />
 
         <img src={star} alt="star" className="absolute right-0 z-30 w-7 sm:w-9" />
-        <div className="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black from-50% to-transparent"></div>
+        <div className="absolute left-0 top-0 h-full w-24 sm:w-32 bg-gradient-to-r from-black from-50% to-transparent"></div>
       </div>
       <div>
         <div className="mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
