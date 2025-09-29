@@ -79,7 +79,7 @@ export default function Products() {
         setProducts(data.products);
         let endIndex = pageSize * currentPage;
         let startIndex = endIndex - pageSize;
-        setPaginatedProducts(data.slice(startIndex, endIndex));
+        setPaginatedProducts(data.products.slice(startIndex, endIndex));
       })
       .catch((err) => {
         console.error('Error:', err.message);

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import bgVideo from '../assets/images/magas 2.png';
 import playImg from '../assets/images/icons/play.svg';
 import gsap from 'gsap';
@@ -11,20 +11,17 @@ export default function Home() {
   const videoBoxRef = useRef(null);
   const videoRef = useRef(null);
   const rightSideRef = useRef(null);
+  const videoPadding = useRef(null);
 
-  // We use GSAP’s matchMedia so our animations adapt to Tailwind breakpoints.
-  // This ensures that our motion logic is as responsive as our layout.
-  //
-  // The responsiveness of animated elements is a handled in the GSAP's
-  // implementation and the responsiveness of the static elements is handled
-  // withing the tailwind implementation. By doing so we follow the SRP
-  // also known as the single responsibility principle and follow best practices
-  // for scalability.
-  //
-  // A default layout is set in the tailwind properties for the animated objects.
-  // The reason behind this is that the animated objects responsiveness is handled
-  // after the item is clicked, so a default value is necessary.
   const mm = gsap.matchMedia();
+
+  useEffect(() => {
+    if (!isExpanded) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isExpanded]);
 
   const toggleVideo = () => {
     if (!isExpanded) {
@@ -46,25 +43,47 @@ export default function Home() {
             zIndex: 30,
             duration: 0.5,
             ease: 'power2.inOut',
+            onStart: () => {
+              // همون لحظه hide میشه
+              gsap.set(rightSideRef.current, { display: 'none' });
+            },
             onComplete: () => {
-              gsap.set(rightSideRef.current, {
-                zIndex: 30,
-                display: xl ? 'block' : 'none',
-              });
+              if (xl) {
+                // وقتی باکس کوچیک شد → ظاهر شه
+                gsap.set(rightSideRef.current, { display: 'block' });
+                gsap.fromTo(
+                  rightSideRef.current,
+                  { autoAlpha: 0, },
+                  { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }
+                );
+              }
             },
           });
 
           gsap.to(videoRef.current, {
             width: xl ? '206px' : '180px',
-            height: '100%',
+            height: 107.5,
+            x: 0,
+            y: 0,
             zIndex: 30,
             duration: 0.5,
             ease: 'power2.inOut',
           });
+
+          gsap.set(videoPadding.current, {
+            padding: xl ? 8 : 6,
+          });
         }
       );
 
-      gsap.to('header', { autoAlpha: 1, duration: 0.3 });
+      gsap.to('header', { opacity: 100, duration: 0.3, delay: 0.3 });
+
+      gsap.to(document.body, {
+        duration: 0.5,
+        onComplete: () => {
+          document.body.style.overflow = 'auto';
+        },
+      });
     } else {
       gsap.to(videoBoxRef.current, {
         width: '100%',
@@ -72,43 +91,55 @@ export default function Home() {
         bottom: 0,
         right: 0,
         zIndex: 9999,
-        duration: 0.5,
+        duration: 0.6,
         ease: 'power2.inOut',
+        onStart: () => {
+          // موقع fullscreen همون لحظه پنهان شه
+          gsap.set(rightSideRef.current, { display: 'none', duration: 0.3 });
+        },
       });
 
       gsap.to(videoRef.current, {
-        width: '100%',
-        height: '100%',
+        width: '98vw',
+        height: '96vh',
         zIndex: 9999,
-        duration: 0.5,
+        duration: 0.6,
         ease: 'power2.inOut',
       });
 
-      gsap.to('header', { autoAlpha: 0, duration: 0.3 });
+      gsap.to('header', { opacity: 0, duration: 0.3 });
 
-      gsap.set(rightSideRef.current, { display: 'none' });
+      gsap.set(videoPadding.current, {
+        padding: 0,
+      });
+
+      gsap.to(document.body, {
+        duration: 0.5,
+        delay: 0.7,
+        onStart: () => {
+          document.body.style.overflow = 'hidden';
+        },
+      });
     }
 
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div className="h-[60vh] sm:h-screen">
-      {/* Background image for visual depth */}
+    <div className="h-screen">
+      {/* Background image */}
       <img
-        className="absolute left-0 top-0 h-[60vh] w-full object-cover sm:h-screen"
+        className="absolute left-0 top-0 w-full object-cover h-screen"
         alt="Background video"
         loading="lazy"
         src={bgVideo}
       />
 
-      {/* Hero section: communicates brand values with bold typography */}
-      <div className="absolute top-0 z-10 flex h-[60vh] w-full flex-col items-center justify-center gap-4 text-center sm:h-screen sm:gap-10">
+      <div className="absolute top-0 z-10 flex w-full flex-col items-center justify-center gap-4 text-center h-screen sm:gap-10">
         <h1 className="px-5 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
 
-        {/* Call-to-action: styled with GlassElement to feel premium and tactile */}
         <button className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base">
           <GlassElement
             width={100}
@@ -123,10 +154,11 @@ export default function Home() {
             <img src={trendUp} className="ml-1 mt-0.5 w-4 xl:w-5" alt="trend up" />
           </GlassElement>
         </button>
-        {/* Video preview box: starts small, expands when clicked */}
+
+        {/* Video preview box */}
         <div
           ref={videoBoxRef}
-          className="absolute bottom-4 right-4 xl:bottom-6 xl:right-6 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:w-[318px]"
+          className="absolute bottom-4 right-4 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:bottom-6 xl:right-6 xl:w-[318px]"
           onClick={toggleVideo}
         >
           <GlassElement
@@ -138,8 +170,10 @@ export default function Home() {
             blur={4}
             chromaticAberration={2}
           >
-            <div className="flex cursor-pointer justify-between p-1.5 sm:p-2">
-              {/* Video thumbnail scales with the container */}
+            <div
+              className="relative flex cursor-pointer justify-between p-1.5 sm:p-2"
+              ref={videoPadding}
+            >
               <img
                 ref={videoRef}
                 className="video w-[180px] rounded-[30px] xl:w-[206px]"
@@ -148,7 +182,6 @@ export default function Home() {
                 loading="lazy"
               />
 
-              {/* Supplemental content: only relevant on desktop */}
               <div
                 ref={rightSideRef}
                 className="relative hidden flex-col justify-between px-2 xl:flex"
@@ -158,6 +191,18 @@ export default function Home() {
                   <img src={playImg} alt="play" />
                 </button>
               </div>
+
+              {!isExpanded && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleVideo();
+                  }}
+                  className="absolute right-3 top-3 z-[10000] rounded-full bg-black/70 px-3 py-1 text-white"
+                >
+                  Close
+                </button>
+              )}
             </div>
           </GlassElement>
         </div>

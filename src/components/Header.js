@@ -115,7 +115,7 @@ export default function Header() {
         </GlassElement>
       </nav>
       <div
-        className="glassBtn absolute right-0 mr-4 h-[50px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px] xl:mr-6"
+        className="glassBtn absolute hidden lg:block right-0 mr-4 h-[50px] w-[111px] cursor-pointer overflow-hidden rounded-3xl py-[12px] font-Neue-Montreal-Bold tracking-wide text-white backdrop-blur-[42px] xl:mr-6"
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
       >
