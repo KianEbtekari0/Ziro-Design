@@ -250,33 +250,33 @@ export default function AllProducts() {
         </div>
 
         {/* FAQ */}
-        <div className="mt-16 flex h-[430px] flex-wrap items-center justify-between rounded-[50px] bg-[#0F0F0F] px-10 py-10 font-Neue-Montreal-Bold text-white">
-          <div className="space-y-14">
-            <h1 className="text-3xl tracking-3pct sm:text-5xl lg:text-6xl xl:text-8xl">
+        <div className="mt-16 flex items-center lg:h-[300px] xl:h-[350px] flex-wrap justify-between rounded-[50px] bg-[#0F0F0F] px-8 sm:px-10 py-8 sm:py-10 font-Neue-Montreal-Bold text-white">
+          <div className="space-y-3 sm:space-y-6 xl:space-y-10">
+            <h1 className="text-3xl tracking-3pct sm:text-5xl lg:text-6xl xl:text-7xl">
               FAQ Asked Questions
             </h1>
-            <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-3xl sm:text-xl xl:text-3xl">
+            <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-sm xl:text-xl">
               Take a look at my other projects and dive deeper into the world experimental ideas{' '}
               <span className="text-secondery">
                 to polished designs, there’s so much more waiting to be explored
               </span>
             </p>
           </div>
-          <div className="flex h-full w-[600px] flex-col items-center justify-center">
+          <div className="flex h-full xl:pl-10 w-full lg:flex-1 max-w-2xl flex-col items-center justify-center">
             {faqs.map((item, index) => (
               <div key={item.id}>
                 <div
-                  className="flex cursor-pointer justify-between py-4"
+                  className="flex cursor-pointer justify-between py-2 xl:py-3"
                   onClick={() => toggleFaq(item.id)}
                 >
                   <div className="flex flex-col">
-                    <h1 className="text-3xl">{item.q}</h1>
+                    <h1 className="text-lg sm:text-xl xl:text-2xl">{item.q}</h1>
                   </div>
-                  <button className="glassBtn flex h-9 w-9 items-center justify-center rounded-full">
+                  <button className="glassBtn flex h-7 sm:h-9 w-7 sm:w-9 items-center justify-center rounded-full flex-shrink-0">
                     <img
                       src={rightArrow}
                       alt="arrow"
-                      className={`${activeId === item.id ? 'rotate-90 duration-300' : 'duration-300'}`}
+                      className={`${activeId === item.id ? 'rotate-90 duration-300' : 'duration-300 w-3 sm:w-5'}`}
                     />
                   </button>
                 </div>
