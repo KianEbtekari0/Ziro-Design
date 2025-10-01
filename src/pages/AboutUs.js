@@ -3,8 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import adobe from '../assets/images/icons/adobe.svg';
-import artstation from '../assets/images/icons/artstation.svg';
 import blender from '../assets/images/icons/blender.svg';
+import artstation from '../assets/images/icons/artstation.svg'
 import cgtrader from '../assets/images/icons/cgtrader.svg';
 import turbo from '../assets/images/icons/turbo.png';
 import renderhub from '../assets/images/icons/renderhub.png';
