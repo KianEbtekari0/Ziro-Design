@@ -94,7 +94,6 @@ export default function Home() {
         duration: 0.6,
         ease: 'power2.inOut',
         onStart: () => {
-          // موقع fullscreen همون لحظه پنهان شه
           gsap.set(rightSideRef.current, { display: 'none', duration: 0.3 });
         },
       });

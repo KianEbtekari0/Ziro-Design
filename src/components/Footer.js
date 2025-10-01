@@ -38,7 +38,7 @@ export default function Footer() {
             />
             <Link
               to="/"
-              className="flex h-[42px] w-[101px] items-center gap-1.5 font-Neue-Montreal-Medium text-sm text-white"
+              className="flex h-[35px] sm:h-[42px] w-[90px] sm:w-[101px] items-center gap-1.5 font-Neue-Montreal-Medium text-sm text-white"
             >
               <GlassElement
                 width={100}

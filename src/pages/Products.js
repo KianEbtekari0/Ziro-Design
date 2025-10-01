@@ -13,7 +13,6 @@ import { Skeleton } from '../components/skeleton';
 export default function Products() {
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
 
-  // لیست اصلی محصولات
   const [allProducts, setAllProducts] = useState([
     { id: 1, name: 'Batman 3D Charachter', price: 1234, preview_url: productImage, tag: 'Photos' },
     { id: 2, name: 'products1', price: 1234, preview_url: productImage, tag: '3D objects' },
@@ -29,7 +28,6 @@ export default function Products() {
     { id: 12, name: 'products1', price: 1234, preview_url: productImage, tag: 'VFX Video' },
   ]);
 
-  // لیست قابل فیلتر و نمایش
   const [products, setProducts] = useState(allProducts);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -98,7 +96,7 @@ export default function Products() {
 
   // Filter Products
   const filterProductsHandler = (category) => {
-    setCurrentPage(1); // وقتی فیلتر اعمال می‌شه، صفحه اول رو نشون بده
+    setCurrentPage(1);
     if (category === 'Discover') {
       setProducts(allProducts);
       return;
@@ -172,10 +170,13 @@ export default function Products() {
                                   DOLLAR
                                 </span>
                               </p>
-                              <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
+                              <Link
+                                to={product.short_url}
+                                className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]"
+                              >
                                 <img src={dotIcon} alt="Dot Icon" loading="lazy" />
                                 PRICE
-                              </button>
+                              </Link>
                             </div>
                           </div>
                         </GlassElement>

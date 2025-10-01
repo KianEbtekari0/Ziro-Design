@@ -144,10 +144,13 @@ export default function Products() {
                               DOLLAR
                             </span>
                           </p>
-                          <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
+                          <Link
+                            to={product.short_url}
+                            className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]"
+                          >
                             <img src={dotIcon} alt="Dot Icon" loading="lazy" />
                             PRICE
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </GlassElement>
@@ -163,10 +166,10 @@ export default function Products() {
           <div className="z-40 mt-20">
             <Link
               to="/shop"
-              className="glassBtn flex h-[46px] w-[153px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
+              className="glassBtn mt-3 flex h-[35px] w-[115px] cursor-pointer items-center justify-center gap-1 rounded-3xl font-Neue-Montreal-Regular text-xs text-white xs:mt-0 sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
             >
               See Products
-              <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
+              <img src={trendUp} alt="trend up button" className="mt-0.5 w-4 sm:w-5" />
             </Link>
           </div>
         </>

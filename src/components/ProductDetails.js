@@ -64,7 +64,6 @@ export default function ProductDetails() {
               '--swiper-navigation-color': '#fff',
               '--swiper-pagination-color': '#fff',
             }}
-            loop={true}
             spaceBetween={10}
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
@@ -99,19 +98,18 @@ export default function ProductDetails() {
           {/* thumbnail slider */}
           <Swiper
             onSwiper={setThumbsSwiper}
-            loop={true}
             spaceBetween={12}
             slidesPerView={4}
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper mt-4 mr-0"
+            className="mySwiper mr-0 mt-4"
           >
             <SwiperSlide>
               <img
                 src={product.preview_url}
-                alt='product-thumb'
-                className="h-20 sm:h-32 w-full cursor-pointer rounded-lg object-cover"
+                alt="product-thumb"
+                className="h-20 w-full cursor-pointer rounded-lg object-cover sm:h-32"
               />
             </SwiperSlide>
           </Swiper>
@@ -131,12 +129,15 @@ export default function ProductDetails() {
             open — just drop your work email to take the first step toward joining a creative and
             passionate team.
           </p>
-          <button className="glassBtn mt-6 h-20 w-full rounded-2xl font-Neue-Montreal-Medium text-xl text-white">
+          <Link
+            to={product.short_url}
+            className="glassBtn mt-6 flex h-20 w-full items-center justify-center rounded-2xl font-Neue-Montreal-Medium text-xl text-white"
+          >
             Add to Cart
-          </button>
+          </Link>
           <div className="glassBtn mt-6 rounded-2xl p-5 text-white">
             <h1 className="font-Neue-Montreal-Medium text-2xl">Shopping</h1>
-            <div className="mt-4 grid grid-cols-1 xs:grid-cols-2 gap-6">
+            <div className="mt-4 grid grid-cols-1 gap-6 xs:grid-cols-2">
               <div className="flex items-center gap-3">
                 <div className="flex h-14 w-14 items-center justify-center">
                   <GlassElement

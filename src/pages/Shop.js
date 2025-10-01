@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import gsap from 'gsap';
 import { APIError, errorMessages } from '../Errors';
 import { GlassElement } from '../components/GlassElement/GlassElement';
-import house from '../assets/images/icons/collectionHouse.svg'
-import car from '../assets/images/icons/collectionCar.svg'
-import character from '../assets/images/icons/collectionCharacter.svg'
+import house from '../assets/images/icons/collectionHouse.svg';
+import car from '../assets/images/icons/collectionCar.svg';
+import character from '../assets/images/icons/collectionCharacter.svg';
 import bgImage from '../assets/images/projects/allproductsbg.webp';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import rightArrow from '../assets/images/icons/right-arrow.svg';
@@ -127,7 +127,10 @@ export default function AllProducts() {
             <span className="text-secondery">design mastery, they craft unique</span>
           </p>
 
-          <Link to='/products' className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base">
+          <Link
+            to="/products"
+            className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
+          >
             <GlassElement
               width={100}
               height={100}
@@ -150,9 +153,15 @@ export default function AllProducts() {
             {/* Left Side - Cards */}
             <div className="xl:row-start-0 row-start-2 flex h-full flex-col gap-4 sm:flex-row sm:flex-wrap">
               <div className="flex w-full flex-col items-center gap-5 sm:flex-row">
-                <div className="h-[260px] flex items-center justify-center w-full rounded-xl bg-[#0F0F0F] sm:w-full"><img src={house} alt="house" /></div>
-                <div className="h-[260px] flex items-center justify-center w-full rounded-xl bg-[#0F0F0F] sm:w-full"><img src={character} alt="character" /></div>
-                <div className="h-[260px] flex items-center justify-center w-full rounded-xl bg-[#0F0F0F] sm:w-full"><img src={car} alt="car" /></div>
+                <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
+                  <img src={house} alt="house" />
+                </div>
+                <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
+                  <img src={character} alt="character" />
+                </div>
+                <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
+                  <img src={car} alt="car" />
+                </div>
               </div>
               <div className="flex w-full flex-col justify-between xs:flex-row">
                 <p className="max-w-xs flex-1 pr-5 font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:max-w-md sm:text-base xl:text-lg">
@@ -161,10 +170,10 @@ export default function AllProducts() {
                 </p>
                 <Link
                   to="/products"
-                  className="glassBtn mt-3 xs:mt-0 flex h-[46px] w-[153px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-sm tracking-3pct text-white xl:h-[46px] xl:text-base"
+                  className="glassBtn mt-3 flex h-[35px] w-[115px] cursor-pointer items-center justify-center gap-1 rounded-3xl font-Neue-Montreal-Regular text-xs text-white xs:mt-0 sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
                 >
                   More Products
-                  <img src={trendUp} alt="trend up button" className="ml-1 mt-0.5" />
+                  <img src={trendUp} alt="trend up button" className="mt-0.5 w-4 sm:w-5" />
                 </Link>
               </div>
             </div>
@@ -235,10 +244,13 @@ export default function AllProducts() {
                               DOLLAR
                             </span>
                           </p>
-                          <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
+                          <Link
+                            to={`https://gumroad.com/l/${product.id}`}
+                            className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]"
+                          >
                             <img src={dotIcon} alt="Dot Icon" loading="lazy" />
                             PRICE
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </GlassElement>
@@ -250,7 +262,7 @@ export default function AllProducts() {
         </div>
 
         {/* FAQ */}
-        <div className="mt-16 flex items-center lg:h-[300px] xl:h-[350px] flex-wrap justify-between rounded-[50px] bg-[#0F0F0F] px-8 sm:px-10 py-8 sm:py-10 font-Neue-Montreal-Bold text-white">
+        <div className="mt-16 flex flex-wrap items-center justify-between rounded-[50px] bg-[#0F0F0F] px-8 py-8 font-Neue-Montreal-Bold text-white sm:px-10 sm:py-10 lg:h-[300px] xl:h-[350px]">
           <div className="space-y-3 sm:space-y-6 xl:space-y-10">
             <h1 className="text-3xl tracking-3pct sm:text-5xl lg:text-6xl xl:text-7xl">
               FAQ Asked Questions
@@ -262,7 +274,7 @@ export default function AllProducts() {
               </span>
             </p>
           </div>
-          <div className="flex h-full xl:pl-10 w-full lg:flex-1 max-w-2xl flex-col items-center justify-center">
+          <div className="flex h-full w-full max-w-2xl flex-col items-center justify-center lg:flex-1 xl:pl-10">
             {faqs.map((item, index) => (
               <div key={item.id}>
                 <div
@@ -272,11 +284,11 @@ export default function AllProducts() {
                   <div className="flex flex-col">
                     <h1 className="text-lg sm:text-xl xl:text-2xl">{item.q}</h1>
                   </div>
-                  <button className="glassBtn flex h-7 sm:h-9 w-7 sm:w-9 items-center justify-center rounded-full flex-shrink-0">
+                  <button className="glassBtn flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full sm:h-9 sm:w-9">
                     <img
                       src={rightArrow}
                       alt="arrow"
-                      className={`${activeId === item.id ? 'rotate-90 duration-300' : 'duration-300 w-3 sm:w-5'}`}
+                      className={`${activeId === item.id ? 'rotate-90 duration-300' : 'w-3 duration-300 sm:w-5'}`}
                     />
                   </button>
                 </div>
