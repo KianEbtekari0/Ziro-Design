@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import adobe from '../assets/images/icons/adobe.svg';
 import blender from '../assets/images/icons/blender.svg';
-import artstation from '../assets/images/icons/artstation.svg'
 import cgtrader from '../assets/images/icons/cgtrader.svg';
 import turbo from '../assets/images/icons/turbo.png';
 import renderhub from '../assets/images/icons/renderhub.png';
@@ -27,7 +26,6 @@ export default function AboutUs() {
 
   const imageLogos = [
     { src: adobe, alt: 'adobe', href: 'https://adobe.com' },
-    { src: artstation, alt: 'artstation', href: 'https://artstation.com' },
     { src: blender, alt: 'blender', href: 'https://blender.com' },
     { src: cgtrader, alt: 'cgtrader', href: 'https://cgtrader.com' },
     { src: turbo, alt: 'turbo', href: 'https://turbo.com' },

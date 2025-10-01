@@ -3,7 +3,6 @@ import { GlassElement } from './GlassElement/GlassElement';
 import { Link } from 'react-router';
 import gumroad from '../assets/images/icons/gumroad.svg';
 import instagram from '../assets/images/icons/instagram.svg';
-import artstaion from '../assets/images/icons/artstationFooter.svg';
 import linkedin from '../assets/images/icons/linkedin.svg';
 
 export default function Footer() {
@@ -82,7 +81,7 @@ export default function Footer() {
                 href="#"
                 className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
               >
-                <img src={artstaion} alt="artstaion" className="" />
+                <img src='' alt="artstaion" className="" />
               </a>
               <a
                 href="#"
