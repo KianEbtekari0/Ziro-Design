@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import adobe from '../assets/images/icons/adobe.svg';
 import blender from '../assets/images/icons/blender.svg';
+import artstation from '../assets/images/icons/artstation-seeklogo.svg';
 import cgtrader from '../assets/images/icons/cgtrader.svg';
 import turbo from '../assets/images/icons/turbo.png';
 import renderhub from '../assets/images/icons/renderhub.png';
@@ -26,6 +27,7 @@ export default function AboutUs() {
 
   const imageLogos = [
     { src: adobe, alt: 'adobe', href: 'https://adobe.com' },
+    { src: artstation, alt: 'artstation', href: 'https://artstation.com' },
     { src: blender, alt: 'blender', href: 'https://blender.com' },
     { src: cgtrader, alt: 'cgtrader', href: 'https://cgtrader.com' },
     { src: turbo, alt: 'turbo', href: 'https://turbo.com' },
@@ -89,7 +91,7 @@ export default function AboutUs() {
   return (
     <div className="container bg-black pb-10" id="aboutus">
       <div className="relative flex items-center justify-center overflow-hidden whitespace-nowrap px-8">
-        <div className="absolute right-0 top-0 z-10 h-full w-24 sm:w-32 bg-gradient-to-l from-black from-50% to-transparent"></div>
+        <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-black from-50% to-transparent sm:w-32"></div>
         <img src={star} alt="star" className="absolute left-0 z-30 w-7 sm:w-9" />
 
         <LogoLoop
@@ -103,7 +105,7 @@ export default function AboutUs() {
         />
 
         <img src={star} alt="star" className="absolute right-0 z-30 w-7 sm:w-9" />
-        <div className="absolute left-0 top-0 h-full w-24 sm:w-32 bg-gradient-to-r from-black from-50% to-transparent"></div>
+        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-black from-50% to-transparent sm:w-32"></div>
       </div>
       <div>
         <div className="mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
@@ -115,7 +117,7 @@ export default function AboutUs() {
             <span className="text-secondery">creativity and design mastery, they craft unique</span>
           </p>
         </div>
-        <div className="grid mt-3 grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-[40%_20%_1fr] sm:grid-rows-1 xl:grid-cols-[1fr_460px_1fr] xl:grid-rows-1">
+        <div className="mt-3 grid grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-[40%_20%_1fr] sm:grid-rows-1 xl:grid-cols-[1fr_460px_1fr] xl:grid-rows-1">
           <div className="col-span-3 sm:col-span-2 xl:col-span-1">
             <div className="flex items-center gap-2 xl:gap-5">
               <button className="glassBtn flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-[50px] font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[157px] xl:text-base">

@@ -3,6 +3,7 @@ import { GlassElement } from './GlassElement/GlassElement';
 import { Link } from 'react-router';
 import gumroad from '../assets/images/icons/gumroad.svg';
 import instagram from '../assets/images/icons/instagram.svg';
+import artstaion from '../assets/images/icons/artstationFooter.svg';
 import linkedin from '../assets/images/icons/linkedin.svg';
 
 export default function Footer() {
@@ -48,7 +49,7 @@ export default function Footer() {
                 center={'flex'}
                 chromaticAberration={4}
               >
-                Send <img src={arrowRight} alt="arrow right" className="ml-1.5 w-3.5" />
+                Send <img src={arrowRight} alt="arrow right" className="ml-1.5 sm:w-3.5" />
               </GlassElement>
             </Link>
           </div>
@@ -81,7 +82,7 @@ export default function Footer() {
                 href="#"
                 className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
               >
-                <img src='' alt="artstaion" className="" />
+                <img src={artstaion} alt="artstaion" className="" />
               </a>
               <a
                 href="#"
