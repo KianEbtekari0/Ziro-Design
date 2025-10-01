@@ -170,13 +170,12 @@ export default function Products() {
                                   DOLLAR
                                 </span>
                               </p>
-                              <Link
-                                to={product.short_url}
+                              <button
                                 className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]"
                               >
                                 <img src={dotIcon} alt="Dot Icon" loading="lazy" />
                                 PRICE
-                              </Link>
+                              </button>
                             </div>
                           </div>
                         </GlassElement>

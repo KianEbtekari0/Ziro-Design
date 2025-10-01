@@ -104,7 +104,7 @@ export default function AllProducts() {
         console.error('Error:', err.message);
         setError(err.message);
       });
-  }, []);
+  });
 
   return (
     <div>
