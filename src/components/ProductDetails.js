@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import { Skeleton } from "./skeleton"; // Skeleton import
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -23,9 +24,7 @@ export default function ProductDetails() {
     const fetchProduct = async () => {
       try {
         const response = await fetch(`https://api.gumroad.com/v2/products/${id}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+          headers: { Authorization: `Bearer ${accessToken}` },
         });
         const data = await response.json();
         setProduct(data.product);
@@ -37,7 +36,55 @@ export default function ProductDetails() {
     fetchProduct();
   }, [id]);
 
-  if (!product) return <p>Loading...</p>;
+  if (!product) {
+    return (
+      <section className="container mt-9 flex flex-col gap-8">
+        {/* Breadcrumb Skeleton */}
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-5 w-20 rounded-md" />
+          <Skeleton className="h-5 w-20 rounded-md" />
+          <Skeleton className="h-5 w-20 rounded-md" />
+        </div>
+
+        {/* Main content Skeleton */}
+        <div className="flex flex-col justify-between gap-10 xl:flex-row">
+          {/* Image slider Skeleton */}
+          <div className="relative w-full max-w-5xl flex-1">
+            <Skeleton className="h-[576px] w-full rounded-xl relative aspect-square overflow-hidden md:aspect-[16/9]" /> {/* products image */}
+            <div className="mt-4 flex gap-2">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="h-20 w-full rounded-lg sm:h-32" /> // thumbnails
+              ))}
+            </div>
+          </div>
+
+          {/* Product info Skeleton */}
+          <div className="flex-1 space-y-4 max-w-xl">
+            <Skeleton className="h-24 w-3/4 rounded-md" /> {/* name */}
+            <Skeleton className="h-14 w-2/4 rounded-md" /> {/* price */}
+            <Skeleton className="h-7 w-1/4 rounded-md" /> {/* title description */}
+            <Skeleton className="h-6 w-full rounded-md mt-2" /> {/* description */}
+            <Skeleton className="h-6 w-full rounded-md mt-1" />
+            <Skeleton className="h-6 w-full rounded-md mt-1" />
+            <Skeleton className="h-20 w-full rounded-2xl mt-4" /> {/* Add to Cart */}
+
+            {/* Shopping cards Skeleton */}
+            <div className="grid grid-cols-1 gap-6 xs:grid-cols-2 mt-6">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <Skeleton className="h-14 w-14 rounded-full" /> {/* icon */}
+                  <div className="flex-1 space-y-1">
+                    <Skeleton className="h-5 w-2/5 rounded-md" /> {/* title */}
+                    <Skeleton className="h-4 w-3/5 rounded-md" /> {/* description */}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="container mt-9 flex flex-col gap-8">
