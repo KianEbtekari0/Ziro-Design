@@ -4,13 +4,14 @@ import { GlassElement } from './GlassElement/GlassElement';
 import { SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import { Link } from 'react-router';
+import { HashLink } from 'react-router-hash-link';
 
 export default function Header() {
   gsap.registerPlugin(SplitText);
 
   const [subMenu, setSubMenu] = useState(false);
   const iconRef = useRef(null);
-  const splitRef = useRef(null); // نگه داشتن SplitText instance
+  const splitRef = useRef(null);
 
   const handlePointerEnter = (e) => {
     setSubMenu(true);
@@ -33,7 +34,6 @@ export default function Header() {
     document.fonts.ready.then(() => {
       gsap.set('.languageText', { opacity: 1 });
 
-      // اگر split هنوز ایجاد نشده، بسازش
       if (!splitRef.current) {
         splitRef.current = new SplitText('.languageText', {
           type: 'words,lines',
@@ -41,10 +41,8 @@ export default function Header() {
         });
       }
 
-      // قبل از انیمیشن، خطوط را ریست کن
       gsap.set(splitRef.current.lines, { yPercent: 100, opacity: 0 });
 
-      // انیمیشن خطوط
       gsap.to(splitRef.current.lines, {
         duration: 0.7,
         yPercent: 0,
@@ -89,33 +87,33 @@ export default function Header() {
           chromaticAberration={2}
         >
           <ul className="flex items-center justify-center gap-3">
-            <a href="/" className="cursor-pointer font-Neue-Montreal-Regular text-sm text-white">
+            <HashLink smooth to="/" className="cursor-pointer font-Neue-Montreal-Regular text-sm text-white">
               HOME<span className="text-primary">.</span>
-            </a>
-            <a
-              href="#aboutus"
+            </HashLink>
+            <HashLink
+              smooth to="/#aboutus"
               className="cursor-pointer font-Neue-Montreal-Regular text-sm text-secondery"
             >
               ABOUT US<span className="text-secondery">.</span>
-            </a>
-            <a
-              href="#projects"
+            </HashLink>
+            <HashLink
+              smooth to="/#projects"
               className="cursor-pointer font-Neue-Montreal-Regular text-sm text-secondery"
             >
               PROJECTS<span className="text-secondery">.</span>
-            </a>
+            </HashLink>
             <Link
               to="/shop"
               className="cursor-pointer font-Neue-Montreal-Regular text-sm text-secondery"
             >
               SHOP<span className="text-secondery">.</span>
             </Link>
-            <a
-              href="#contactus"
+            <HashLink
+              smooth to="/#contactus"
               className="cursor-pointer font-Neue-Montreal-Regular text-sm text-secondery"
             >
               CONTACT US<span className="text-secondery">.</span>
-            </a>
+            </HashLink>
           </ul>
         </GlassElement>
       </nav>

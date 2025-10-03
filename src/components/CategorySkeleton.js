@@ -1,7 +1,7 @@
 import React from 'react';
 import { Skeleton } from './skeleton';
 
-export function CategorySkeleton({ count = 5 }) {
+export function CategorySkeleton({ count }) {
   return (
     <div className="flex items-center justify-center gap-5">
       {Array.from({ length: count }).map((_, i) => (

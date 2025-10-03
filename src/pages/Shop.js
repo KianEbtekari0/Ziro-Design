@@ -107,7 +107,7 @@ export default function AllProducts() {
   });
 
   return (
-    <div>
+    <div id='shop'>
       <div className="h-[60vh] sm:h-screen">
         {/* Background image for visual depth */}
         <img
