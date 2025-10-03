@@ -11,6 +11,7 @@ import trendUp from '../assets/images/icons/trend-up.svg';
 import rightArrow from '../assets/images/icons/right-arrow.svg';
 import dotIcon from '../assets/images/icons/redDot.svg';
 import star from '../assets/images/icons/star.svg';
+import { Skeleton } from '../components/skeleton';
 
 export default function AllProducts() {
   const faqs = [
@@ -38,6 +39,7 @@ export default function AllProducts() {
 
   const [activeId, setActiveId] = useState(null);
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [, setError] = useState(null);
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const refs = useRef({});
@@ -99,21 +101,22 @@ export default function AllProducts() {
         );
 
         setProducts(sorted.slice(0, 3));
+        setIsLoading(false)
       })
       .catch((err) => {
         console.error('Error:', err.message);
         setError(err.message);
+        setIsLoading(false)
       });
   });
 
   return (
-    <div id='shop'>
+    <div id="shop">
       <div className="h-[60vh] sm:h-screen">
         {/* Background image for visual depth */}
         <img
           className="absolute left-0 top-0 h-[60vh] w-full object-cover sm:h-screen"
           alt="Background video"
-          loading="lazy"
           src={bgImage}
         />
 
@@ -141,7 +144,7 @@ export default function AllProducts() {
               chromaticAberration={5}
             >
               Shop now
-              <img src={trendUp} className="ml-1 mt-0.5 w-4 xl:w-5" alt="trend up" />
+              <img src={trendUp} className="ml-2 mt-0.5 w-2 xl:w-3" alt="trend up" />
             </GlassElement>
           </Link>
         </div>
@@ -170,10 +173,10 @@ export default function AllProducts() {
                 </p>
                 <Link
                   to="/products"
-                  className="glassBtn mt-3 flex h-[35px] w-[115px] cursor-pointer items-center justify-center gap-1 rounded-3xl font-Neue-Montreal-Regular text-xs text-white xs:mt-0 sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
+                  className="glassBtn mt-3 flex h-[35px] w-[115px] cursor-pointer items-center justify-center gap-2 rounded-3xl font-Neue-Montreal-Regular text-xs text-white xs:mt-0 sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
                 >
                   More Products
-                  <img src={trendUp} alt="trend up button" className="mt-0.5 w-4 sm:w-5" />
+                  <img src={trendUp} alt="trend up button" className="mt-0.5 w-2 sm:w-3" />
                 </Link>
               </div>
             </div>
@@ -218,46 +221,57 @@ export default function AllProducts() {
             </p>
           </div>
           <div className="mt-10 grid w-full grid-cols-1 gap-8 overflow-hidden lg:grid-cols-2 xl:grid-cols-3">
-            {products.map((product) => (
-              <Link to={`/product/${product.id}`} key={product.id}>
-                <div
-                  className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2"
-                  style={{ backgroundImage: `url(${product.preview_url})` }}
-                >
-                  <div className="flex w-full flex-col self-end">
-                    <GlassElement
-                      width={'100%'}
-                      height={'100px'}
-                      radius={38}
-                      depth={0}
-                      blur={4}
-                      chromaticAberration={3}
-                    >
-                      <div className="px-4 py-3 sm:px-[21px] sm:py-[14px]">
-                        <h1 className="font-Neue-Montreal-Bold text-xl text-white sm:text-2xl">
-                          {product.name}
-                        </h1>
-                        <div className="flex items-center justify-between sm:mt-1">
-                          <p className="font-Neue-Montreal-Bold text-base text-white sm:text-lg">
-                            {product.price}
-                            <span className="ml-2 font-Neue-Montreal-Regular text-sm text-white/50 sm:text-base">
-                              DOLLAR
-                            </span>
-                          </p>
-                          <Link
-                            to={`https://gumroad.com/l/${product.id}`}
-                            className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]"
-                          >
-                            <img src={dotIcon} alt="Dot Icon" loading="lazy" />
-                            PRICE
-                          </Link>
+            {isLoading
+              ? Array.from({ length: 3 }).map((_, i) => (
+                  <div key={i} className="flex h-[350px] w-full rounded-[48px] bg-neutral-800 p-2">
+                    <div className="flex w-full flex-col self-end">
+                      <div className="h-[100px] w-full rounded-[38px] bg-white/10 p-4 backdrop-blur-md sm:p-[14px]">
+                        <Skeleton className="h-6 w-2/3 rounded-3xl" />
+                        <div className="mt-3 flex items-center justify-between">
+                          <Skeleton className="h-5 w-20 rounded-3xl" />
+                          <Skeleton className="h-10 w-[95px] rounded-3xl" />
                         </div>
                       </div>
-                    </GlassElement>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                ))
+              : products.map((product) => (
+                  <Link to={`/product/${product.id}`} key={product.id}>
+                    <div
+                      className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2 [text-shadow:_0_1px_10px_#000]"
+                      style={{ backgroundImage: `url(${product.preview_url})` }}
+                    >
+                      <div className="flex w-full flex-col self-end">
+                        <GlassElement
+                          width={'100%'}
+                          height={'100px'}
+                          radius={38}
+                          depth={0}
+                          blur={4}
+                          chromaticAberration={3}
+                        >
+                          <div className="px-4 py-3 sm:px-[21px] sm:py-[14px]">
+                            <h1 className="font-Neue-Montreal-Bold text-xl text-white sm:text-2xl">
+                              {product.name}
+                            </h1>
+                            <div className="flex items-center justify-between sm:mt-1">
+                              <p className="font-Neue-Montreal-Bold text-base text-white sm:text-lg">
+                                {product.price}
+                                <span className="ml-2 font-Neue-Montreal-Regular text-sm text-white/50 sm:text-base">
+                                  DOLLAR
+                                </span>
+                              </p>
+                              <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
+                                <img src={dotIcon} alt="Dot Icon" loading="lazy" />
+                                PRICE
+                              </button>
+                            </div>
+                          </div>
+                        </GlassElement>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
           </div>
         </div>
 

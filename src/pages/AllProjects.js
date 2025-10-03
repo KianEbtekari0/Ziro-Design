@@ -11,40 +11,52 @@ import projectsImg7 from '../assets/images/projects/Rain-022.1038.webp';
 import projectsImg8 from '../assets/images/projects/keycap.webp';
 import projectsImg9 from '../assets/images/projects/hamsaye saqf.webp';
 import Box from '@mui/material/Box';
+import DarkVeil from '../components/DarkVeil';
 import Masonry from '@mui/lab/Masonry';
 
 export default function AllProjects() {
-  const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
-  const [projects, setProjects] = useState([
-    { id: 1, title: 'product2', preview_url: projectsImg1 },
-    { id: 2, title: 'product', preview_url: projectsImg },
-    { id: 3, title: 'product', preview_url: projectsImg3 },
-    { id: 4, title: 'product2', preview_url: projectsImg4 },
-    { id: 5, title: 'product', preview_url: projectsImg5 },
-    { id: 6, title: 'product', preview_url: projectsImg6 },
-    { id: 7, title: 'product', preview_url: projectsImg7 },
-    { id: 8, title: 'product', preview_url: projectsImg8 },
-    { id: 9, title: 'product', preview_url: projectsImg9 },
+  const [projects, ] = useState([
+    { id: 1, title: 'product2', preview_url: projectsImg1, tags: 'VFX Video' },
+    { id: 2, title: 'product', preview_url: projectsImg, tags: 'Character' },
+    { id: 3, title: 'product', preview_url: projectsImg3, tags: 'Photo' },
+    { id: 4, title: 'product2', preview_url: projectsImg4, tags: '3D Objects' },
+    { id: 5, title: 'product', preview_url: projectsImg5, tags: 'Character' },
+    { id: 6, title: 'product', preview_url: projectsImg6, tags: 'VFX video' },
+    { id: 7, title: 'product', preview_url: projectsImg7, tags: 'Photo' },
+    { id: 8, title: 'product', preview_url: projectsImg8, tags: 'Character' },
+    { id: 9, title: 'product', preview_url: projectsImg9, tags: 'VFX Video' },
   ]);
 
   return (
     <div className="container mt-20 lg:mt-24">
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-center font-Neue-Montreal-Bold text-4xl tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
+      <div className="absolute left-0 top-0 z-10 h-[300px] lg:h-[500px] w-full">
+        <DarkVeil speed={0.75} scanlineFrequency={5} scanlineIntensity={0} warpAmount={4} />
+      </div>
+      <div className="z-50 flex flex-col items-center justify-center">
+        <h1 className="z-50 text-center font-Neue-Montreal-Bold text-4xl tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Gallery Of My Projects
         </h1>
-        <p className="mt-5 max-w-xs text-center font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl xl:max-w-3xl sm:text-xl xl:text-3xl">
+        <p className="z-50 mt-10 max-w-xs text-center font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-xl xl:max-w-3xl xl:text-3xl">
           A versatile designer skilled in 2D design, 3D modeling, motion graphics, and Blender. With
           a strong creative vision a
           <span className="text-secondery">
             Their art is a fusion of beauty, motion, and storytelling.
           </span>
         </p>
-        <h1 className="mt-4 flex items-center gap-2 font-Neue-Montreal-Medium text-xs text-white sm:text-base">
-          Ready to See <img src={rightArrow} alt="arrow right" className="w-3 sm:w-3.5" />
+        <h1
+          className="animate-shine z-50 mt-6 flex items-center gap-2 bg-clip-text font-Neue-Montreal-Medium text-xs sm:text-base"
+          style={{
+            backgroundImage: 'linear-gradient(120deg, #ffffff 50%, #dbdbdba4 60%, #ffffff 70%)',
+            backgroundSize: '200% 100%',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            animationDuration: '3s',
+          }}
+        >
+          Ready to See <img src={rightArrow} alt="arrow right" className="mt-0.5 w-3 sm:w-3.5" />
         </h1>
       </div>
-      <Box className="mt-28">
+      <Box className="mt-14 sm:mt-20 xl:mt-28">
         <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={1}>
           {projects.map((item) => (
             <div
@@ -58,7 +70,7 @@ export default function AllProjects() {
                 loading="lazy"
               />
               {/* Projects Tag */}
-              <button className="absolute bottom-4 left-4 flex h-[35px] w-[70px] cursor-pointer items-center justify-center gap-1.5 font-Neue-Montreal-Regular text-sm text-white xl:h-[46px] xl:w-[90px] xl:text-base">
+              <button className="absolute bottom-4 left-4 flex h-[35px] cursor-pointer items-center justify-center gap-1.5 font-Neue-Montreal-Regular text-sm text-white [text-shadow:_0_1px_10px_#000] xl:h-[46px] xl:text-base">
                 <GlassElement
                   width={100}
                   height={100}
@@ -68,7 +80,7 @@ export default function AllProjects() {
                   center={'flex'}
                   chromaticAberration={5}
                 >
-                  {item.tags && 'LOGO'}
+                  <span className="px-4">{item.tags}</span>
                 </GlassElement>
               </button>
             </div>

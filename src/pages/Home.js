@@ -150,7 +150,7 @@ export default function Home() {
             chromaticAberration={5}
           >
             Explore now
-            <img src={trendUp} className="ml-1 mt-0.5 w-4 xl:w-5" alt="trend up" />
+            <img src={trendUp} className="ml-2 mt-0.5 w-2 xl:w-3" alt="trend up" />
           </GlassElement>
         </button>
 

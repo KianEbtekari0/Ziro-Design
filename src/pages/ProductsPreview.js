@@ -4,7 +4,6 @@ import { SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import { Link } from 'react-router';
 import { GlassElement } from '../components/GlassElement/GlassElement';
-import productImage from '../assets/images/projects/loewe-couv-1920x1277.webp';
 import dotIcon from '../assets/images/icons/redDot.svg';
 import cube from '../assets/images/cube.png';
 import trendUp from '../assets/images/icons/trend-up.svg';
@@ -15,22 +14,7 @@ export default function Products() {
   gsap.registerPlugin(SplitText);
 
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: 'Batman 3D Charachter',
-      price: 1234,
-      preview_url: productImage,
-    },
-    { id: 2, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 3, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 4, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 5, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 6, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 7, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 8, name: 'products1', price: 1234, preview_url: productImage },
-    { id: 9, name: 'products1', price: 1234, preview_url: productImage },
-  ]);
+  const [products, setProducts] = useState([]);
   const [, setError] = useState(null);
   const [showAll] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -121,7 +105,7 @@ export default function Products() {
           : visible.map((product) => (
               <Link to={`/product/${product.id}`} key={product.id}>
                 <div
-                  className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2"
+                  className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2 [text-shadow:_0_1px_10px_#000]"
                   style={{ backgroundImage: `url(${product.preview_url})` }}
                 >
                   <div className="flex w-full flex-col self-end">
@@ -165,10 +149,10 @@ export default function Products() {
           <div className="z-40 mt-20">
             <Link
               to="/shop"
-              className="glassBtn mt-3 flex h-[35px] w-[115px] cursor-pointer items-center justify-center gap-1 rounded-3xl font-Neue-Montreal-Regular text-xs text-white xs:mt-0 sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
+              className="glassBtn mt-3 flex h-[35px] w-[115px] cursor-pointer items-center justify-center gap-2 rounded-3xl font-Neue-Montreal-Regular text-xs text-white xs:mt-0 sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
             >
               See Products
-              <img src={trendUp} alt="trend up button" className="mt-0.5 w-4 sm:w-5" />
+              <img src={trendUp} alt="trend up button" className="mt-0.5 w-2 sm:w-3" />
             </Link>
           </div>
         </>

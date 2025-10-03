@@ -17,7 +17,7 @@ import 'swiper/css/thumbs';
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const location = useLocation();
   const { product, variants } = location.state || { product: null, variants: [] };
   const accessToken = 'teI22PGHmIFjf8eu9M6hgJR8DJ1e3IkB7Eu0dWV9QdI';
@@ -53,7 +53,7 @@ export default function ProductDetails() {
         <div className="flex flex-col justify-between gap-10 xl:flex-row">
           {/* Image slider Skeleton */}
           <div className="relative w-full max-w-5xl flex-1">
-            <Skeleton className="relative aspect-square h-[576px] w-full overflow-hidden rounded-xl md:aspect-[16/9]" />{' '}
+            <Skeleton className="relative aspect-square h-[576px] w-full overflow-hidden rounded-xl md:aspect-[16/9]" />
             {/* products image */}
             <div className="mt-4 flex gap-2">
               {Array.from({ length: 4 }).map((_, i) => (
@@ -141,7 +141,7 @@ export default function ProductDetails() {
                         {variants.map((tag, index) => (
                           <span
                             key={index}
-                            className="font-Neue-Montreal-Medium text-sm text-white"
+                            className="font-Neue-Montreal-Medium text-sm text-white [text-shadow:_0_1px_6px_#000]"
                           >
                             {tag}
                             {index < variants.length - 1 ? ',' : ''}

@@ -67,28 +67,28 @@ export default function Footer() {
             </p>
             <div className="mt-3 flex justify-center gap-2">
               <a
-                href="#"
+                href="/"
                 className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
               >
-                <img src={gumroad} alt="gumroad" className="" />
+                <img src={gumroad} alt="gumroad" />
               </a>
               <a
-                href="#"
+                href="/"
                 className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
               >
-                <img src={instagram} alt="instagram" className="" />
+                <img src={instagram} alt="instagram" />
               </a>
               <a
-                href="#"
+                href="/"
                 className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
               >
-                <img src={artstaion} alt="artstaion" className="" />
+                <img src={artstaion} alt="artstaion" />
               </a>
               <a
-                href="#"
+                href="/"
                 className="glassBtn flex h-11 w-11 items-center justify-center rounded-full"
               >
-                <img src={linkedin} alt="linkedin" className="" />
+                <img src={linkedin} alt="linkedin" />
               </a>
             </div>
           </div>

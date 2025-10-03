@@ -1,8 +1,5 @@
 import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router';
-import rightArrow from '../assets/images/icons/right-arrow.svg';
-import { APIError, errorMessages } from '../Errors';
-import productImage from '../assets/images/projects/loewe-couv-1920x1277.webp';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import dotIcon from '../assets/images/icons/redDot.svg';
 import RippleGrid from '../components/RippleGrid';
@@ -15,30 +12,10 @@ import gsap from 'gsap';
 export default function Products() {
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
 
-  const [allProducts, setAllProducts] = useState([
-    {
-      id: 1,
-      name: 'Batman 3D Charachter',
-      price: 1234,
-      preview_url: 'productImage',
-      tag: 'Photos',
-    },
-    { id: 2, name: 'products1', price: 1234, preview_url: 'productImage', tag: '3D objects' },
-    { id: 3, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'bundles' },
-    { id: 4, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'car' },
-    { id: 5, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'house' },
-    { id: 6, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'Photos' },
-    { id: 7, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'car' },
-    { id: 8, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'VFX Video' },
-    { id: 9, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'Photos' },
-    { id: 10, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'car' },
-    { id: 11, name: 'products1', price: 1234, preview_url: 'productImage', tag: '3D objects' },
-    { id: 12, name: 'products1', price: 1234, preview_url: 'productImage', tag: 'VFX Video' },
-  ]);
+  const [allProducts, setAllProducts] = useState([]);
 
   const [products, setProducts] = useState(allProducts);
   const [isLoading, setIsLoading] = useState(true);
-  const [, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedProducts, setPaginatedProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -193,7 +170,7 @@ export default function Products() {
             }}
           />
           {isLoading ? (
-            <CategorySkeleton count={3} />
+            <CategorySkeleton count={4} />
           ) : (
             <Categories categories={categories} filterProducts={filterProductsHandler} />
           )}
@@ -227,7 +204,7 @@ export default function Products() {
                   key={product.id}
                 >
                   <div
-                    className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2"
+                    className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2 [text-shadow:_0_1px_10px_#000]"
                     style={{ backgroundImage: `url(${product.preview_url})` }}
                   >
                     <div className="flex w-full flex-col self-end">
@@ -235,7 +212,7 @@ export default function Products() {
                         width={'100%'}
                         height={'100px'}
                         radius={38}
-                        depth={0}
+                        depth={10}
                         blur={4}
                         chromaticAberration={3}
                       >
@@ -266,29 +243,29 @@ export default function Products() {
         {/* Pagination */}
         <nav className="mt-9">
           <ul className="flex items-center justify-center gap-2">
-            <a
+            <button
               className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white"
               onClick={prevPage}
             >
               <img src={arrow} alt="arrow" />
-            </a>
+            </button>
             {pageNumbers.map((pagesNumber) => (
               <li
                 onClick={() => changePaginate(pagesNumber + 1)}
                 className={`${pagesNumber + 1 === currentPage ? '' : 'cursor-pointer text-white'}`}
                 key={pagesNumber + 1}
               >
-                <a className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white">
+                <button className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white">
                   {pagesNumber + 1}
-                </a>
+                </button>
               </li>
             ))}
-            <a
+            <button
               className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white"
               onClick={nextPage}
             >
               <img src={arrow} alt="arrow" className="rotate-180" />
-            </a>
+            </button>
           </ul>
         </nav>
       </div>
