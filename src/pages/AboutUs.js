@@ -215,7 +215,7 @@ export default function AboutUs() {
               loading="lazy"
             >
               <div className="absolute bottom-6 left-6">
-                <h1 className="mb-5 max-w-sm font-Neue-Montreal-Bold text-3xl tracking-3pct text-white xl:text-[40px]">
+                <h1 className="mb-5 max-w-xs pr-5 font-Neue-Montreal-Bold text-2xl tracking-3pct text-white xs:max-w-sm xs:text-3xl xl:text-[40px]">
                   The best projects that won awards
                 </h1>
                 <button className="flex h-[35px] w-[107px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[120px] xl:h-[40px] xl:text-base">

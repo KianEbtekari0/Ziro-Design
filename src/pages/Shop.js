@@ -119,7 +119,7 @@ export default function AllProducts() {
 
         {/* Hero section: communicates brand values with bold typography */}
         <div className="relative z-10 flex h-[60vh] flex-col items-center justify-center gap-4 text-center sm:h-[80vh] sm:gap-10">
-          <h1 className="px-5 font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+          <h1 className="px-5 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
             You Can Order My 3D Objects
           </h1>
           <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-3xl sm:text-xl xl:text-3xl">

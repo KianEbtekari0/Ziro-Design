@@ -27,43 +27,24 @@ export default function AllProjects() {
     { id: 9, title: 'product', preview_url: projectsImg9 },
   ]);
 
-  fetch('https://api.gumroad.com/v2/products', {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => setProjects(data.products))
-    .catch((err) => console.error(err));
-
   return (
-    <div className="container mt-40">
-      <h1 className="font-Neue-Montreal-Bold text-6xl text-white xl:text-8xl">
-        Gallery Of My Projects
-      </h1>
-      <p className="mb-4 mt-6 font-Neue-Montreal-Bold text-xl text-white lg:max-w-3xl xl:max-w-5xl xl:text-3xl">
-        A versatile designer skilled in 2D design, 3D modeling, motion graphics, and Blender. With a
-        strong creative vision and mastery of design principles, they
-        <span className="text-secondery">
-          Combining professional tools with fresh ideas, they breathe life into every project. Their
-          art is a fusion of beauty, motion, and storytelling.
-        </span>
-      </p>
-      <button className="flex h-9 w-28 cursor-pointer items-center justify-center gap-1.5 rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[46px] sm:w-[138px] sm:text-sm lg:text-base">
-        <GlassElement
-          width={100}
-          height={100}
-          radius={50}
-          depth={10}
-          blur={3}
-          center={'flex'}
-          chromaticAberration={5}
-        >
-          Let's See
-          <img src={rightArrow} alt="trend up button" className="ml-1.5 mt-0.5 w-3.5" />
-        </GlassElement>
-      </button>
-      <Box className="mt-14">
+    <div className="container mt-20 lg:mt-24">
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-center font-Neue-Montreal-Bold text-4xl tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
+          Gallery Of My Projects
+        </h1>
+        <p className="mt-5 max-w-xs text-center font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl xl:max-w-3xl sm:text-xl xl:text-3xl">
+          A versatile designer skilled in 2D design, 3D modeling, motion graphics, and Blender. With
+          a strong creative vision a
+          <span className="text-secondery">
+            Their art is a fusion of beauty, motion, and storytelling.
+          </span>
+        </p>
+        <h1 className="mt-4 flex items-center gap-2 font-Neue-Montreal-Medium text-xs text-white sm:text-base">
+          Ready to See <img src={rightArrow} alt="arrow right" className="w-3 sm:w-3.5" />
+        </h1>
+      </div>
+      <Box className="mt-28">
         <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={1}>
           {projects.map((item) => (
             <div

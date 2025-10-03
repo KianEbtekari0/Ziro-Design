@@ -48,8 +48,8 @@ export default function Products() {
 
   productRefs.current = [];
 
-  const allCategories = ['Discover', ...new Set(allProducts.map((product) => product.tag))];
-  const [categories, setCategories] = useState(allCategories);
+  const [categories, setCategories] = useState(['Discover']);
+  const [variantsMap, setVariantsMap] = useState({});
 
   const pageSize = 9;
   const pageCount = Math.ceil(products.length / pageSize);
@@ -58,6 +58,78 @@ export default function Products() {
   const changePaginate = (newpage) => setCurrentPage(newpage);
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, pageCount));
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch('https://api.gumroad.com/v2/products', {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        const data = await res.json();
+        if (data.success) {
+          setAllProducts(data.products);
+          setProducts(data.products);
+
+          fetchVariants(data.products);
+        }
+      } catch (err) {
+        console.error('Error fetching products:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    const fetchVariants = async (products) => {
+      const map = {};
+      const allVariantTitles = new Set();
+
+      await Promise.all(
+        products.map(async (product) => {
+          try {
+            const resCat = await fetch(
+              `https://api.gumroad.com/v2/products/${product.id}/variant_categories?access_token=${accessToken}`
+            );
+
+            const dataCat = await resCat.json();
+            if (dataCat.success) {
+              for (const cat of dataCat.variant_categories) {
+                const resVar = await fetch(
+                  `https://api.gumroad.com/v2/products/${product.id}/variant_categories/${encodeURIComponent(cat.id)}/variants?access_token=${accessToken}`
+                );
+
+                const dataVar = await resVar.json();
+                if (dataVar.success) {
+                  const titles = dataVar.variants.map((v) => v.name);
+                  if (!map[product.id]) map[product.id] = [];
+                  map[product.id].push(...titles);
+                  titles.forEach((t) => allVariantTitles.add(t));
+                }
+              }
+            }
+          } catch (err) {
+            console.error('Error fetching variants for product:', product.id, err);
+          }
+        })
+      );
+
+      setVariantsMap(map);
+      setCategories(['Discover', ...Array.from(allVariantTitles)]);
+    };
+
+    fetchProducts();
+  }, [accessToken]);
+
+  // ---------------- Filter Products ----------------
+  const filterProductsHandler = (category) => {
+    setCurrentPage(1);
+    setUserSearched(true);
+    if (category === 'Discover') {
+      setProducts(allProducts);
+      return;
+    }
+    const filtered = allProducts.filter((p) => variantsMap[p.id]?.includes(category));
+    setProducts(filtered);
+  };
 
   useEffect(() => {
     const filteredProducts = products.filter((product) =>
@@ -67,57 +139,6 @@ export default function Products() {
     const startIndex = endIndex - pageSize;
     setPaginatedProducts(filteredProducts.slice(startIndex, endIndex));
   }, [currentPage, products, searchTerm]);
-
-  // Fetch Products from API
-  useEffect(() => {
-    setIsLoading(true);
-    fetch('https://api.gumroad.com/v2/products', {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          switch (response.status) {
-            case 401:
-              throw new APIError(errorMessages.UNAUTHORIZED, 401);
-            case 403:
-              throw new APIError(errorMessages.FORBIDDEN, 403);
-            case 429:
-              throw new APIError(errorMessages.RATE_LIMIT, 429);
-            default:
-              throw new APIError(
-                `${errorMessages.UNKNOWN} (HTTP ${response.status})`,
-                response.status
-              );
-          }
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data.success || !data.products || data.products.length === 0) {
-          throw new APIError(errorMessages.NO_PRODUCTS, 200);
-        }
-        setAllProducts(data.products);
-        setProducts(data.products);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error:', err.message);
-        setError(err.message);
-        setIsLoading(false);
-      });
-  }, []);
-
-  // Filter Products
-  const filterProductsHandler = (category) => {
-    setCurrentPage(1);
-    setUserSearched(true);
-    if (category === 'Discover') {
-      setProducts(allProducts);
-      return;
-    }
-    const filteredProducts = allProducts.filter((product) => product.tag === category);
-    setProducts(filteredProducts);
-  };
 
   useLayoutEffect(() => {
     if (!userSearched || paginatedProducts.length === 0) return;
