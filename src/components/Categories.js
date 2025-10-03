@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Categories({ categories = [], filterProducts }) {
   const [mainCategory, setMainCategory] = useState('Discover');
-
-  useEffect(() => {
-    console.log('categories prop:', categories);
-  }, [categories]);
 
   return (
     <div className="flex items-center justify-center gap-5">

@@ -7,16 +7,19 @@ import delivery from '../assets/images/icons/delivery.svg';
 import folder from '../assets/images/icons/folder.svg';
 import { GlassElement } from './GlassElement/GlassElement';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { useLocation } from 'react-router';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Skeleton } from './skeleton';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import { Skeleton } from "./skeleton"; // Skeleton import
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const [products, setProducts] = useState(null);
+  const location = useLocation();
+  const { product, variants } = location.state || { product: null, variants: [] };
   const accessToken = 'teI22PGHmIFjf8eu9M6hgJR8DJ1e3IkB7Eu0dWV9QdI';
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -27,7 +30,7 @@ export default function ProductDetails() {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
         const data = await response.json();
-        setProduct(data.product);
+        setProducts(data.product);
       } catch (error) {
         console.error('Failed to fetch product:', error);
       }
@@ -36,7 +39,7 @@ export default function ProductDetails() {
     fetchProduct();
   }, [id]);
 
-  if (!product) {
+  if (!products) {
     return (
       <section className="container mt-9 flex flex-col gap-8">
         {/* Breadcrumb Skeleton */}
@@ -50,7 +53,8 @@ export default function ProductDetails() {
         <div className="flex flex-col justify-between gap-10 xl:flex-row">
           {/* Image slider Skeleton */}
           <div className="relative w-full max-w-5xl flex-1">
-            <Skeleton className="h-[576px] w-full rounded-xl relative aspect-square overflow-hidden md:aspect-[16/9]" /> {/* products image */}
+            <Skeleton className="relative aspect-square h-[576px] w-full overflow-hidden rounded-xl md:aspect-[16/9]" />{' '}
+            {/* products image */}
             <div className="mt-4 flex gap-2">
               {Array.from({ length: 4 }).map((_, i) => (
                 <Skeleton key={i} className="h-20 w-full rounded-lg sm:h-32" /> // thumbnails
@@ -59,17 +63,16 @@ export default function ProductDetails() {
           </div>
 
           {/* Product info Skeleton */}
-          <div className="flex-1 space-y-4 max-w-xl">
+          <div className="max-w-xl flex-1 space-y-4">
             <Skeleton className="h-24 w-3/4 rounded-md" /> {/* name */}
             <Skeleton className="h-14 w-2/4 rounded-md" /> {/* price */}
             <Skeleton className="h-7 w-1/4 rounded-md" /> {/* title description */}
-            <Skeleton className="h-6 w-full rounded-md mt-2" /> {/* description */}
-            <Skeleton className="h-6 w-full rounded-md mt-1" />
-            <Skeleton className="h-6 w-full rounded-md mt-1" />
-            <Skeleton className="h-20 w-full rounded-2xl mt-4" /> {/* Add to Cart */}
-
+            <Skeleton className="mt-2 h-6 w-full rounded-md" /> {/* description */}
+            <Skeleton className="mt-1 h-6 w-full rounded-md" />
+            <Skeleton className="mt-1 h-6 w-full rounded-md" />
+            <Skeleton className="mt-4 h-20 w-full rounded-2xl" /> {/* Add to Cart */}
             {/* Shopping cards Skeleton */}
-            <div className="grid grid-cols-1 gap-6 xs:grid-cols-2 mt-6">
+            <div className="mt-6 grid grid-cols-1 gap-6 xs:grid-cols-2">
               {Array.from({ length: 4 }).map((_, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <Skeleton className="h-14 w-14 rounded-full" /> {/* icon */}
@@ -125,19 +128,29 @@ export default function ProductDetails() {
                   className="h-full w-full object-cover"
                 />
                 {/* Product Tag */}
-                <button className="absolute left-4 top-4 flex h-[35px] w-[90px] items-center justify-center font-Neue-Montreal-Regular text-sm text-white xl:h-[46px] xl:w-[110px] xl:text-base">
-                  <GlassElement
-                    width={100}
-                    height={100}
-                    radius={38}
-                    depth={10}
-                    blur={3}
-                    center={'flex'}
-                    chromaticAberration={5}
-                  >
-                    {product.tags?.length ? product.tags[0] : 'No Tag'}
-                  </GlassElement>
-                </button>
+                {variants && variants.length > 0 && (
+                  <div className="absolute left-4 top-4">
+                    <GlassElement
+                      radius={38}
+                      depth={10}
+                      blur={3}
+                      center="flex"
+                      chromaticAberration={5}
+                    >
+                      <div className="flex h-10 flex-wrap items-center justify-center gap-1 px-4">
+                        {variants.map((tag, index) => (
+                          <span
+                            key={index}
+                            className="font-Neue-Montreal-Medium text-sm text-white"
+                          >
+                            {tag}
+                            {index < variants.length - 1 ? ',' : ''}
+                          </span>
+                        ))}
+                      </div>
+                    </GlassElement>
+                  </div>
+                )}
               </div>
             </SwiperSlide>
           </Swiper>

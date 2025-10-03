@@ -9,6 +9,7 @@ import RippleGrid from '../components/RippleGrid';
 import arrow from '../assets/images/icons/arrow.svg';
 import Categories from '../components/Categories';
 import { Skeleton } from '../components/skeleton';
+import { CategorySkeleton } from '../components/CategorySkeleton';
 import gsap from 'gsap';
 
 export default function Products() {
@@ -58,65 +59,73 @@ export default function Products() {
   const changePaginate = (newpage) => setCurrentPage(newpage);
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
   const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, pageCount));
+
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProductsAndVariants = async () => {
+      setIsLoading(true);
+
       try {
-        setIsLoading(true);
         const res = await fetch('https://api.gumroad.com/v2/products', {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
         const data = await res.json();
+
         if (data.success) {
           setAllProducts(data.products);
           setProducts(data.products);
+          setPaginatedProducts(data.products.slice(0, pageSize));
 
-          fetchVariants(data.products);
+          const map = {};
+          const allVariantTitles = new Set();
+
+          await Promise.all(
+            data.products.map(async (product) => {
+              try {
+                const resCat = await fetch(
+                  `https://api.gumroad.com/v2/products/${product.id}/variant_categories?access_token=${accessToken}`
+                );
+                const dataCat = await resCat.json();
+
+                if (dataCat.success) {
+                  await Promise.all(
+                    dataCat.variant_categories.map(async (cat) => {
+                      try {
+                        const resVar = await fetch(
+                          `https://api.gumroad.com/v2/products/${product.id}/variant_categories/${encodeURIComponent(
+                            cat.id
+                          )}/variants?access_token=${accessToken}`
+                        );
+                        const dataVar = await resVar.json();
+
+                        if (dataVar.success) {
+                          const titles = dataVar.variants.map((v) => v.name);
+                          if (!map[product.id]) map[product.id] = [];
+                          map[product.id].push(...titles);
+                          titles.forEach((t) => allVariantTitles.add(t));
+                        }
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    })
+                  );
+                }
+              } catch (err) {
+                console.error(err);
+              }
+            })
+          );
+
+          setVariantsMap(map);
+          setCategories(['Discover', ...Array.from(allVariantTitles)]);
         }
       } catch (err) {
-        console.error('Error fetching products:', err);
+        console.error(err);
       } finally {
         setIsLoading(false);
       }
     };
 
-    const fetchVariants = async (products) => {
-      const map = {};
-      const allVariantTitles = new Set();
-
-      await Promise.all(
-        products.map(async (product) => {
-          try {
-            const resCat = await fetch(
-              `https://api.gumroad.com/v2/products/${product.id}/variant_categories?access_token=${accessToken}`
-            );
-
-            const dataCat = await resCat.json();
-            if (dataCat.success) {
-              for (const cat of dataCat.variant_categories) {
-                const resVar = await fetch(
-                  `https://api.gumroad.com/v2/products/${product.id}/variant_categories/${encodeURIComponent(cat.id)}/variants?access_token=${accessToken}`
-                );
-
-                const dataVar = await resVar.json();
-                if (dataVar.success) {
-                  const titles = dataVar.variants.map((v) => v.name);
-                  if (!map[product.id]) map[product.id] = [];
-                  map[product.id].push(...titles);
-                  titles.forEach((t) => allVariantTitles.add(t));
-                }
-              }
-            }
-          } catch (err) {
-            console.error('Error fetching variants for product:', product.id, err);
-          }
-        })
-      );
-
-      setVariantsMap(map);
-      setCategories(['Discover', ...Array.from(allVariantTitles)]);
-    };
-
-    fetchProducts();
+    fetchProductsAndVariants();
   }, [accessToken]);
 
   // ---------------- Filter Products ----------------
@@ -183,7 +192,11 @@ export default function Products() {
               setUserSearched(true);
             }}
           />
-          <Categories categories={categories} filterProducts={filterProductsHandler} />
+          {isLoading ? (
+            <CategorySkeleton count={3} />
+          ) : (
+            <Categories categories={categories} filterProducts={filterProductsHandler} />
+          )}
         </div>
 
         {/* Products Grid */}
@@ -209,6 +222,7 @@ export default function Products() {
                       productRefs.current.push(el);
                     }
                   }}
+                  state={{ product, variants: variantsMap[product.id] }}
                   to={`/product/${product.id}`}
                   key={product.id}
                 >
