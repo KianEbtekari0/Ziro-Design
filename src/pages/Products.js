@@ -243,12 +243,12 @@ export default function Products() {
         {/* Pagination */}
         <nav className="mt-9">
           <ul className="flex items-center justify-center gap-2">
-            <button
+            <li
               className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white"
               onClick={prevPage}
             >
               <img src={arrow} alt="arrow" />
-            </button>
+            </li>
             {pageNumbers.map((pagesNumber) => (
               <li
                 onClick={() => changePaginate(pagesNumber + 1)}
@@ -260,12 +260,12 @@ export default function Products() {
                 </button>
               </li>
             ))}
-            <button
+            <li
               className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white"
               onClick={nextPage}
             >
               <img src={arrow} alt="arrow" className="rotate-180" />
-            </button>
+            </li>
           </ul>
         </nav>
       </div>

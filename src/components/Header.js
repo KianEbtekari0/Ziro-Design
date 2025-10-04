@@ -125,7 +125,7 @@ export default function Header() {
           depth={10}
           chromaticAberration={2}
         >
-          <ul className="relative flex h-full w-full items-center">
+          <div className="relative flex h-full w-full items-center">
             {/* Indicator */}
             <div
               ref={indicatorRef}
@@ -157,7 +157,7 @@ export default function Header() {
                 {link.name}
               </HashLink>
             ))}
-          </ul>
+          </div>
         </GlassElement>
       </nav>
 
