@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import bgVideo from '../assets/images/magas 2.webp';
 import playImg from '../assets/images/icons/play.svg';
+import bgVideoMobile from '../assets/images/magas 2 mobile.svg';
 import gsap from 'gsap';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
@@ -53,7 +54,7 @@ export default function Home() {
                 gsap.set(rightSideRef.current, { display: 'block' });
                 gsap.fromTo(
                   rightSideRef.current,
-                  { autoAlpha: 0, },
+                  { autoAlpha: 0 },
                   { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }
                 );
               }
@@ -127,13 +128,19 @@ export default function Home() {
   return (
     <div className="h-screen">
       {/* Background image */}
-      <img
-        className="absolute left-0 top-0 w-full object-cover h-screen"
-        alt="Background video"
-        src={bgVideo}
-      />
+      <picture>
+        <source media="(max-width: 640px)" srcSet='../assets/images/magas 2 mobile.svg' />
+        <img
+          src='../assets/images/magas 2.webp'
+          alt="Hero Background"
+          className="absolute left-0 top-0 h-screen w-full object-cover"
+          width={1920}
+          height={1080}
+          loading="lazy"
+        />
+      </picture>
 
-      <div className="absolute top-0 z-10 flex w-full flex-col items-center justify-center gap-4 text-center h-screen sm:gap-10">
+      <div className="absolute top-0 z-10 flex h-screen w-full flex-col items-center justify-center gap-4 text-center sm:gap-10">
         <h1 className="px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
