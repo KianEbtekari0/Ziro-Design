@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router';
-import projectImg from '../assets/images/magas 2.png';
+import projectImg from '../assets/images/magas 2.webp';
 import projectImg2 from '../assets/images/projects/8b008977f4e1e4ee0c3e8d6a34532e7d.webp';
 import projectImg3 from '../assets/images/projects/l5r_cover2-1920x1200.webp';
 import projectImg4 from '../assets/images/projects/wolverine-web-cover-1920x1042.webp';

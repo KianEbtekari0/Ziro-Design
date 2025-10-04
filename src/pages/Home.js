@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import bgVideo from '../assets/images/magas 2.png';
+import bgVideo from '../assets/images/magas 2.webp';
 import playImg from '../assets/images/icons/play.svg';
 import gsap from 'gsap';
 import trendUp from '../assets/images/icons/trend-up.svg';
@@ -130,7 +130,6 @@ export default function Home() {
       <img
         className="absolute left-0 top-0 w-full object-cover h-screen"
         alt="Background video"
-        loading="lazy"
         src={bgVideo}
       />
 
@@ -178,7 +177,6 @@ export default function Home() {
                 className="video w-[180px] rounded-[30px] xl:w-[206px]"
                 src={bgVideo}
                 alt="popup Background video"
-                loading="lazy"
               />
 
               <div
