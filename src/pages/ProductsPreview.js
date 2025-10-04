@@ -1,18 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { APIError, errorMessages } from '../Errors';
-import { SplitText } from 'gsap/all';
-import gsap from 'gsap';
-import { Link } from 'react-router';
 import { GlassElement } from '../components/GlassElement/GlassElement';
+import { Link } from 'react-router';
 import dotIcon from '../assets/images/icons/redDot.svg';
 import cube from '../assets/images/cube.png';
 import trendUp from '../assets/images/icons/trend-up.svg';
-import '../index.css';
 import { Skeleton } from '../components/skeleton';
 
 export default function Products() {
-  gsap.registerPlugin(SplitText);
-
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const [products, setProducts] = useState([]);
   const [, setError] = useState(null);
@@ -21,6 +16,10 @@ export default function Products() {
 
   const visible = showAll ? products : products.slice(0, 3);
 
+  // Ref برای سکشن
+  const sectionRef = useRef(null);
+
+  // لود محصولات از Gumroad
   useEffect(() => {
     fetch('https://api.gumroad.com/v2/products', {
       headers: {
@@ -57,10 +56,33 @@ export default function Products() {
         setError(err.message);
         setIsLoading(false);
       });
-  });
+  }, []);
+
+  // Lazy-load gumroad script
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const script = document.createElement('script');
+          script.src = 'https://gumroad.com/js/gumroad-embed.js';
+          script.async = true;
+          document.body.appendChild(script);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="container relative mb-28 flex flex-col items-center" id="shop">
+    <div
+      className="container relative mb-28 flex flex-col items-center"
+      id="shop"
+      ref={sectionRef} // ref به سکشن
+    >
       <div className="relative mt-10 w-full">
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
@@ -128,9 +150,7 @@ export default function Products() {
                               DOLLAR
                             </span>
                           </p>
-                          <button
-                            className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]"
-                          >
+                          <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
                             <img src={dotIcon} alt="Dot Icon" loading="lazy" />
                             PRICE
                           </button>
