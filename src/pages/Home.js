@@ -129,9 +129,9 @@ export default function Home() {
     <div className="h-screen">
       {/* Background image */}
       <picture>
-        <source media="(max-width: 640px)" srcSet='../assets/images/magas 2 mobile.svg' />
+        <source media="(max-width: 640px)" srcSet={bgVideoMobile} />
         <img
-          src='../assets/images/magas 2.webp'
+          src={bgVideo}
           alt="Hero Background"
           className="absolute left-0 top-0 h-screen w-full object-cover"
           width={1920}
