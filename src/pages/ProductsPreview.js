@@ -81,7 +81,7 @@ export default function Products() {
     <div
       className="container relative mb-28 flex flex-col items-center"
       id="shop"
-      ref={sectionRef} // ref به سکشن
+      ref={sectionRef}
     >
       <div className="relative mt-10 w-full">
         <div className="inverted-radius relative w-full">

@@ -107,7 +107,7 @@ export default function ProductDetails() {
         </Link>
       </div>
       <div className="flex flex-col justify-between gap-10 xl:flex-row">
-        <div className="relative w-full max-w-5xl flex-1">
+        <div className="relative w-full max-w-full xl:max-w-3xl 2xl:max-w-5xl flex-1">
           {/* products image slider */}
           <Swiper
             style={{
@@ -176,7 +176,7 @@ export default function ProductDetails() {
         </div>
 
         <div>
-          <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+          <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-6xl lg:text-7xl xl:text-8xl">
             {product.name}
           </h1>
           <p className="mt-6 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl">
