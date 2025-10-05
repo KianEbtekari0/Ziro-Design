@@ -143,7 +143,7 @@ export default function Products() {
 
   return (
     <>
-      <div style={{ width: '100%', height: '1000px', position: 'absolute', top: '0px' }}>
+      <div style={{ width: '100%', height: '700px', position: 'absolute', top: '0px' }}>
         <RippleGrid />
       </div>
       <div className="container relative overflow-hidden">
