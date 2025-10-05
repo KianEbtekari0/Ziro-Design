@@ -20,7 +20,7 @@ module.exports = {
       },
 
       letterSpacing: {
-        '3pct': '-0.03em',
+        '3pct': '-0.03%',
       },
 
       fontFamily: {

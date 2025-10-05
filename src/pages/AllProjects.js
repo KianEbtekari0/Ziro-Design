@@ -32,11 +32,11 @@ export default function AllProjects() {
       <div className="absolute left-0 top-0 z-10 h-[300px] lg:h-[500px] w-full">
         <DarkVeil speed={0.75} scanlineFrequency={5} scanlineIntensity={0} warpAmount={4} />
       </div>
-      <div className="z-50 flex flex-col items-center justify-center">
-        <h1 className="z-50 text-center font-Neue-Montreal-Bold text-4xl tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
+      <div className="z-30 flex flex-col items-center justify-center">
+        <h1 className="z-30 text-center font-Neue-Montreal-Bold text-4xl tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
           Gallery Of My Projects
         </h1>
-        <p className="z-50 mt-10 max-w-xs text-center font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-xl xl:max-w-3xl xl:text-3xl">
+        <p className="z-30 mt-10 max-w-xs text-center font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-xl xl:max-w-3xl xl:text-3xl">
           A versatile designer skilled in 2D design, 3D modeling, motion graphics, and Blender. With
           a strong creative vision a
           <span className="text-secondery">
@@ -44,7 +44,7 @@ export default function AllProjects() {
           </span>
         </p>
         <h1
-          className="animate-shine z-50 mt-6 flex items-center gap-2 bg-clip-text font-Neue-Montreal-Medium text-xs sm:text-base"
+          className="animate-shine z-30 mt-6 flex items-center gap-2 bg-clip-text font-Neue-Montreal-Medium text-xs sm:text-base"
           style={{
             backgroundImage: 'linear-gradient(120deg, #ffffff 50%, #dbdbdba4 60%, #ffffff 70%)',
             backgroundSize: '200% 100%',

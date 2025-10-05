@@ -119,7 +119,10 @@ export default function AboutUs() {
         <div className="mt-3 grid grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-[40%_20%_1fr] sm:grid-rows-1 xl:grid-cols-[1fr_460px_1fr] xl:grid-rows-1">
           <div className="col-span-3 sm:col-span-2 xl:col-span-1">
             <div className="flex items-center gap-2 xl:gap-3">
-              <Link to='/shop' className="glassBtn flex h-[40px] w-[115px] cursor-pointer items-center justify-center rounded-[50px] font-Neue-Montreal-Medium text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[140px] xl:text-base">
+              <Link
+                to="/shop"
+                className="glassBtn flex h-[40px] w-[115px] cursor-pointer items-center justify-center rounded-[50px] font-Neue-Montreal-Medium text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[53px] xl:w-[140px] xl:text-base"
+              >
                 <span
                   style={{
                     backgroundImage:
@@ -229,7 +232,10 @@ export default function AboutUs() {
                 <h1 className="mb-5 max-w-xs pr-5 font-Neue-Montreal-Bold text-2xl tracking-3pct text-white xs:max-w-sm xs:text-3xl xl:text-[40px]">
                   The best projects that won awards
                 </h1>
-                <Link to='/allprojects' className="flex h-[35px] w-[107px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[120px] xl:h-[40px] xl:text-base">
+                <Link
+                  to="/allprojects"
+                  className="flex h-[35px] w-[107px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-sm text-white lg:w-[120px] xl:h-[40px] xl:text-base"
+                >
                   <GlassElement
                     width={100}
                     height={100}

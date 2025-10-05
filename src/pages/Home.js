@@ -12,7 +12,6 @@ export default function Home() {
   const videoBoxRef = useRef(null);
   const videoRef = useRef(null);
   const rightSideRef = useRef(null);
-  const videoPadding = useRef(null);
 
   const mm = gsap.matchMedia();
 
@@ -45,12 +44,10 @@ export default function Home() {
             duration: 0.5,
             ease: 'power2.inOut',
             onStart: () => {
-              // همون لحظه hide میشه
               gsap.set(rightSideRef.current, { display: 'none' });
             },
             onComplete: () => {
               if (xl) {
-                // وقتی باکس کوچیک شد → ظاهر شه
                 gsap.set(rightSideRef.current, { display: 'block' });
                 gsap.fromTo(
                   rightSideRef.current,
@@ -68,11 +65,8 @@ export default function Home() {
             y: 0,
             zIndex: 30,
             duration: 0.5,
+            borderRadius: '30px',
             ease: 'power2.inOut',
-          });
-
-          gsap.set(videoPadding.current, {
-            padding: xl ? 8 : 6,
           });
         }
       );
@@ -98,20 +92,29 @@ export default function Home() {
           gsap.set(rightSideRef.current, { display: 'none', duration: 0.3 });
         },
       });
+      mm.add(
+        {
+          sm: '(min-width: 640px)',
+          md: '(min-width: 768px)',
+          lg: '(min-width: 1024px)',
+          xl: '(min-width: 1280px)',
+        },
+        (context) => {
+          let { xl } = context.conditions;
 
-      gsap.to(videoRef.current, {
-        width: '98vw',
-        height: '96vh',
-        zIndex: 9999,
-        duration: 0.6,
-        ease: 'power2.inOut',
-      });
-
+          gsap.to(videoRef.current, {
+            width: '98vw',
+            height: '96vh',
+            zIndex: 9999,
+            objectFit: xl ? 'cover' : 'contain',
+            duration: 0.6,
+            ease: 'power2.inOut',
+            borderRadius: '30px',
+          });
+        }
+      );
+      
       gsap.to('header', { opacity: 0, duration: 0.3 });
-
-      gsap.set(videoPadding.current, {
-        padding: 0,
-      });
 
       gsap.to(document.body, {
         duration: 0.5,
@@ -177,7 +180,6 @@ export default function Home() {
           >
             <div
               className="relative flex cursor-pointer justify-between p-1.5 sm:p-2"
-              ref={videoPadding}
             >
               <img
                 ref={videoRef}
