@@ -46,19 +46,29 @@ export default function Projects() {
   const [activeItem, setActiveItem] = useState(null);
   const previewRef = useRef(null);
   const containerRef = useRef(null);
-  const mm = useRef(null);
 
-  // 🖼️ Preload all images before any hover interaction
-  useEffect(() => {
-    items.forEach((item) => {
-      const img = new Image();
-      img.src = item.src;
-    });
-  }, []);
+  // We use GSAP’s matchMedia so our animations adapt to Tailwind breakpoints.
+  // This ensures that our motion logic is as responsive as our layout.
+  //
+  // The responsiveness of animated elements is a handled in the GSAP's
+  // implementation and the responsiveness of the static elements is handled
+  // withing the tailwind implementation. By doing so we follow the SRP
+  // also known as the single responsibility principle and follow best practices
+  // for scalability.
+  //
+  // A default layout is set in the tailwind properties for the animated objects.
+  // The reason behind this is that the animated objects responsiveness is handled
+  // after the item is clicked, so a default value is necessary.
+  //
+  // Note: In this case we are not handling responsiveness of the animated objects
+  // since they are static. But we are handling the availability of anmiations
+  // based on the screen sizes(mobile and tablet) for responsiveness in this case.
+  const mm = useRef(null);
 
   const togglePreview = (item, isActive, e) => {
     if (isActive) {
       setActiveItem(item);
+      // Highlight the project title to indicate focus and guide user attention
       gsap.to(e.target, {
         color: item.foregroundColor,
         duration: 0.3,
@@ -66,39 +76,31 @@ export default function Projects() {
       });
     } else {
       setActiveItem(null);
-      gsap.to(e.target, {
-        color: '#bebebe',
-        duration: 0.3,
-        ease: 'power2.out',
-      });
+      // Reset color when no longer active to maintain visual hierarchy
+      gsap.to(e.target, { color: '#bebebe', duration: 0.3, ease: 'power2.out' });
     }
   };
 
-  // 🌀 Animate preview image transition
+  // Animates the preview image when the active item changes
+  // Only runs if the container is visible (desktop)
+  // Purpose: provide visual feedback and preview of the selected project
   useEffect(() => {
     const img = previewRef.current;
     const container = containerRef.current;
     if (!img || !container) return;
 
     if (activeItem && gsap.getProperty(container, 'display') !== 'none') {
-      // kill any running animations before switching
+      img.src = activeItem.src;
       gsap.killTweensOf(img);
-      img.src = activeItem.src; // set new image after killing old animation
-
-      gsap.set(img, {
-        display: 'block',
-        opacity: 0,
-        scale: 2,
-        willChange: 'opacity, transform',
-      });
-
+      gsap.set(img, { display: 'block', opacity: 0, scale: 2 }); // start from hidden and scaled up
       gsap.to(img, {
         opacity: 1,
         scale: 1.9,
         duration: 0.6,
         ease: 'power2.out',
-      });
+      }); // fade-in and scale animation
     } else {
+      // Hide preview when no item is active or on smaller screens
       gsap.killTweensOf(img);
       gsap.to(img, {
         scale: 1.9,
@@ -110,7 +112,8 @@ export default function Projects() {
     }
   }, [activeItem]);
 
-  // 🌈 Animate background color smoothly based on active project
+  // Animate the background and text colors to match the active project
+  // Provides a contextual visual cue to the user for immersive experience
   useEffect(() => {
     gsap.to('.bg-container', {
       backgroundColor: activeItem ? activeItem.backgroundColor : '#121B24',
@@ -120,29 +123,33 @@ export default function Projects() {
     });
   }, [activeItem]);
 
-  // 📱 Handle responsive visibility for preview container
+  // Use GSAP matchMedia to handle responsive behavior
+  // Purpose: hide the preview container on smaller screens to reduce clutter and improve UX
   useEffect(() => {
     mm.current = gsap.matchMedia();
 
     mm.current.add(
       {
-        hidePreviewOnMobile: '(max-width: 1023px)',
-        showPreviewOnDesktop: '(min-width: 1024px)',
+        hidePreviewOnMobile: '(max-width: 1023px)', // hide on tablets and smaller
+        showPreviewOnDesktop: '(min-width: 1024px)', // show on desktop for richer experience
       },
       (context) => {
         const { hidePreviewOnMobile, showPreviewOnDesktop } = context.conditions;
         const container = containerRef.current;
 
         if (hidePreviewOnMobile) {
+          // Completely remove the preview to avoid unnecessary animations and DOM clutter
           gsap.set(container, { display: 'none' });
         }
 
         if (showPreviewOnDesktop) {
+          // Ensure the preview container is visible on desktop where space allows
           gsap.set(container, { display: 'block' });
         }
       }
     );
 
+    // Clean up matchMedia listeners on unmount
     return () => mm.current.revert();
   }, []);
 
