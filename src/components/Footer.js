@@ -8,8 +8,8 @@ import linkedin from '../assets/images/icons/linkedin.svg';
 
 export default function Footer() {
   return (
-    <div className="relative flex flex-col items-center justify-center" id="contactus">
-      <footer className="z-10 flex w-full max-w-[1500px] flex-wrap items-center justify-center gap-y-10 px-10 py-16 xs:justify-between sm:flex-nowrap sm:gap-y-0 sm:py-20">
+    <div className="relative flex flex-col items-center justify-center">
+      <footer className="z-10 flex w-full max-w-[1500px] flex-wrap items-center justify-center gap-y-10 px-10 py-16 xs:justify-between md:flex-nowrap md:gap-y-0 md:py-20">
         <div className="w-[200px] text-center">
           <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">FAQ</h1>
           <div className="mt-2 flex flex-col text-sm xl:text-base">
@@ -27,7 +27,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="-order-1 flex-1 text-center sm:-order-none sm:flex-none sm:px-10">
+        <div className="-order-1 flex-1 text-center md:-order-none md:flex-none sm:px-10">
           <h1 className="mt-2 font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">
             BOOK A TIME!
           </h1>
@@ -38,7 +38,7 @@ export default function Footer() {
             />
             <Link
               to="/"
-              className="flex h-[35px] sm:h-[42px] w-[90px] sm:w-[101px] items-center gap-1.5 font-Neue-Montreal-Medium text-sm text-white"
+              className="flex h-[35px] w-[90px] items-center gap-1.5 font-Neue-Montreal-Medium text-sm text-white sm:h-[42px] sm:w-[101px]"
             >
               <GlassElement
                 width={100}

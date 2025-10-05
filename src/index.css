@@ -101,16 +101,6 @@
     border: 2px solid #ffffff;
   }
 
-  .fullscreen-glass {
-  backdrop-filter: blur(15px);
-  background: rgba(10, 10, 10, 0.5); /* شیشه‌ای ولی تیره‌تر برای تمرکز روی ویدیو */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.4s ease;
-}
-
-
   .inverted-radius {
     --r: 50px; /* the radius */
     --s: 50px; /* size of inner curve */

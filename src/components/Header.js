@@ -24,7 +24,6 @@ export default function Header() {
       document.body.style.overflow = 'auto';
     }
 
-    // پاک کردن وقتی کامپوننت آن‌مونت شد
     return () => {
       document.body.style.overflow = 'auto';
     };
