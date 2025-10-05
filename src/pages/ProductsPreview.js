@@ -13,50 +13,84 @@ export default function Products() {
   const [, setError] = useState(null);
   const [showAll] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const productRefs = useRef([]);
+  const skeletonRefs = useRef([]);
+  skeletonRefs.current = [];
+
+  productRefs.current = [];
+
+  const [categories, setCategories] = useState(['Discover']);
+  const [variantsMap, setVariantsMap] = useState({});
 
   const visible = showAll ? products : products.slice(0, 3);
 
-  // Ref برای سکشن
   const sectionRef = useRef(null);
 
-  // لود محصولات از Gumroad
   useEffect(() => {
-    fetch('https://api.gumroad.com/v2/products', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          switch (response.status) {
-            case 401:
-              throw new APIError(errorMessages.UNAUTHORIZED, 401);
-            case 403:
-              throw new APIError(errorMessages.FORBIDDEN, 403);
-            case 429:
-              throw new APIError(errorMessages.RATE_LIMIT, 429);
-            default:
-              throw new APIError(
-                `${errorMessages.UNKNOWN} (HTTP ${response.status})`,
-                response.status
-              );
-          }
+    const fetchProductsAndVariants = async () => {
+      setIsLoading(true);
+
+      try {
+        const res = await fetch('https://api.gumroad.com/v2/products', {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          setProducts(data.products);
+
+          const map = {};
+          const allVariantTitles = new Set();
+
+          await Promise.all(
+            data.products.map(async (product) => {
+              try {
+                const resCat = await fetch(
+                  `https://api.gumroad.com/v2/products/${product.id}/variant_categories?access_token=${accessToken}`
+                );
+                const dataCat = await resCat.json();
+
+                if (dataCat.success) {
+                  await Promise.all(
+                    dataCat.variant_categories.map(async (cat) => {
+                      try {
+                        const resVar = await fetch(
+                          `https://api.gumroad.com/v2/products/${product.id}/variant_categories/${encodeURIComponent(
+                            cat.id
+                          )}/variants?access_token=${accessToken}`
+                        );
+                        const dataVar = await resVar.json();
+
+                        if (dataVar.success) {
+                          const titles = dataVar.variants.map((v) => v.name);
+                          if (!map[product.id]) map[product.id] = [];
+                          map[product.id].push(...titles);
+                          titles.forEach((t) => allVariantTitles.add(t));
+                        }
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    })
+                  );
+                }
+              } catch (err) {
+                console.error(err);
+              }
+            })
+          );
+
+          setVariantsMap(map);
+          setCategories(['Discover', ...Array.from(allVariantTitles)]);
         }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data.success || !data.products || data.products.length === 0) {
-          throw new APIError(errorMessages.NO_PRODUCTS, 200);
-        }
-        setProducts(data.products);
+      } catch (err) {
+        console.error(err);
+      } finally {
         setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error:', err.message);
-        setError(err.message);
-        setIsLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchProductsAndVariants();
+  }, [accessToken]);
 
   // Lazy-load gumroad script
   useEffect(() => {
@@ -78,11 +112,7 @@ export default function Products() {
   }, []);
 
   return (
-    <div
-      className="container relative mb-28 flex flex-col items-center"
-      id="shop"
-      ref={sectionRef}
-    >
+    <div className="container relative mb-28 flex flex-col items-center" id="shop" ref={sectionRef}>
       <div className="relative mt-10 w-full">
         <div className="inverted-radius relative w-full">
           <div className="relative bg-[#0F0F0F]">
@@ -125,7 +155,16 @@ export default function Products() {
               </div>
             ))
           : visible.map((product) => (
-              <Link to={`/product/${product.id}`} key={product.id}>
+              <Link
+                ref={(el) => {
+                  if (el && !productRefs.current.includes(el)) {
+                    productRefs.current.push(el);
+                  }
+                }}
+                state={{ product, variants: variantsMap[product.id] }}
+                to={`/product/${product.id}`}
+                key={product.id}
+              >
                 <div
                   className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2 [text-shadow:_0_1px_10px_#000]"
                   style={{ backgroundImage: `url(${product.preview_url})` }}
@@ -135,7 +174,7 @@ export default function Products() {
                       width={'100%'}
                       height={'100px'}
                       radius={38}
-                      depth={0}
+                      depth={10}
                       blur={4}
                       chromaticAberration={3}
                     >

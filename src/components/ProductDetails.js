@@ -19,8 +19,8 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const location = useLocation();
+  const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const { product, variants } = location.state || { product: null, variants: [] };
-  const accessToken = 'teI22PGHmIFjf8eu9M6hgJR8DJ1e3IkB7Eu0dWV9QdI';
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function ProductDetails() {
         </Link>
       </div>
       <div className="flex flex-col justify-between gap-10 xl:flex-row">
-        <div className="relative w-full max-w-full xl:max-w-3xl 2xl:max-w-5xl flex-1">
+        <div className="relative w-full max-w-full flex-1 xl:max-w-3xl 2xl:max-w-5xl">
           {/* products image slider */}
           <Swiper
             style={{
