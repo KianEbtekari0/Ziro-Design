@@ -85,7 +85,11 @@ export default function AllProducts() {
         const data = await res.json();
 
         if (data.success) {
-          setProducts(data.products);
+          const sorted = [...data.products].sort(
+            (a, b) => Number(b.sales_count || 0) - Number(a.sales_count || 0)
+          );
+
+          setProducts(sorted.slice(0, 3));
 
           const map = {};
           const allVariantTitles = new Set();

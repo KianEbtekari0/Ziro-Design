@@ -101,6 +101,27 @@
     border: 2px solid #ffffff;
   }
 
+  .scroll-visible {
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #9ca3af #1f2937; /* thumb, track */
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  /* Chrome, Edge, Safari */
+  .scroll-visible::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .scroll-visible::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  .scroll-visible::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 3px;
+  }
+
+
   .inverted-radius {
     --r: 50px; /* the radius */
     --s: 50px; /* size of inner curve */

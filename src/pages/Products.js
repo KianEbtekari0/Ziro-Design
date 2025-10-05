@@ -149,10 +149,10 @@ export default function Products() {
       <div className="container relative overflow-hidden">
         {/* Title */}
         <div className="mt-28 flex flex-col items-center justify-center gap-5">
-          <h1 className="px-5 text-center font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+          <h1 className="text-center font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
             Discover the World’s Top 3D
           </h1>
-          <p className="max-w-xl text-center font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:text-base xl:text-lg">
+          <p className="max-w-xs sm:max-w-2xl text-center font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:text-base xl:text-lg">
             The opportunity to work with us is open — just drop your work email to take the first
             step toward joining a creative and passionate team.
           </p>
@@ -179,7 +179,7 @@ export default function Products() {
         {/* Products Grid */}
         <div className="relative z-10 mt-10 grid w-full grid-cols-1 gap-8 overflow-hidden lg:grid-cols-2 xl:grid-cols-3">
           {isLoading
-            ? Array.from({ length: 6 }).map((_, i) => (
+            ? Array.from({ length: 9 }).map((_, i) => (
                 <div key={i} className="flex h-[350px] w-full rounded-[48px] bg-neutral-800 p-2">
                   <div className="flex w-full flex-col self-end">
                     <div className="h-[100px] w-full rounded-[38px] bg-white/10 p-4 backdrop-blur-md sm:p-[14px]">
