@@ -89,21 +89,26 @@ export default function Projects() {
     const container = containerRef.current;
     if (!img || !container) return;
 
+    gsap.killTweensOf(img);
+
     if (activeItem && gsap.getProperty(container, 'display') !== 'none') {
-      img.src = activeItem.src;
-      gsap.killTweensOf(img);
-      gsap.set(img, { display: 'block', opacity: 0, scale: 2 }); // start from hidden and scaled up
       gsap.to(img, {
-        opacity: 1,
-        scale: 1.9,
-        duration: 0.6,
+        opacity: 0,
+        duration: 0.2,
         ease: 'power2.out',
-      }); // fade-in and scale animation
+        onComplete: () => {
+          img.src = activeItem.src;
+          gsap.set(img, { display: 'block', scale: 2 });
+          gsap.to(img, {
+            opacity: 1,
+            scale: 1.9,
+            duration: 0.6,
+            ease: 'power2.out',
+          });
+        },
+      });
     } else {
-      // Hide preview when no item is active or on smaller screens
-      gsap.killTweensOf(img);
       gsap.to(img, {
-        scale: 1.9,
         opacity: 0,
         duration: 0.3,
         ease: 'power2.out',

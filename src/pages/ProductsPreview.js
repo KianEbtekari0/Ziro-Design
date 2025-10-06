@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { APIError, errorMessages } from '../Errors';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import { Link } from 'react-router';
 import dotIcon from '../assets/images/icons/redDot.svg';
@@ -10,7 +9,6 @@ import { Skeleton } from '../components/skeleton';
 export default function Products() {
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const [products, setProducts] = useState([]);
-  const [, setError] = useState(null);
   const [showAll] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const productRefs = useRef([]);
@@ -19,7 +17,7 @@ export default function Products() {
 
   productRefs.current = [];
 
-  const [categories, setCategories] = useState(['Discover']);
+  const [, setCategories] = useState(['Discover']);
   const [variantsMap, setVariantsMap] = useState({});
 
   const visible = showAll ? products : products.slice(0, 3);

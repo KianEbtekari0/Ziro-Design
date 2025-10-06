@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import gsap from 'gsap';
-import { APIError, errorMessages } from '../Errors';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import house from '../assets/images/icons/collectionHouse.svg';
 import car from '../assets/images/icons/collectionCar.svg';
@@ -41,7 +40,6 @@ export default function AllProducts() {
   const [activeId, setActiveId] = useState(null);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [, setError] = useState(null);
   const refs = useRef({});
 
   const toggleFaq = (id) => {
@@ -71,7 +69,7 @@ export default function AllProducts() {
 
   productRefs.current = [];
 
-  const [categories, setCategories] = useState(['Discover']);
+  const [, setCategories] = useState(['Discover']);
   const [variantsMap, setVariantsMap] = useState({});
 
   useEffect(() => {

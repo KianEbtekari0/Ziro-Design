@@ -16,10 +16,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 export default function ProductDetails() {
+  const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const location = useLocation();
-  const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const { product, variants } = location.state || { product: null, variants: [] };
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -37,7 +37,7 @@ export default function ProductDetails() {
     };
 
     fetchProduct();
-  }, [id]);
+  });
 
   if (!products) {
     return (

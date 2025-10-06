@@ -184,12 +184,12 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-1 mt-20">
+          <div className="mt-20 flex flex-col gap-1">
             <div className="flex gap-2">
               <a
                 href="/"
                 onClick={() => setIsOpen(false)}
-                className="font-Neue-Montreal-Bold text-5xl xs:text-6xl sm:text-7xl uppercase tracking-3pct"
+                className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
                 home
               </a>
@@ -199,7 +199,7 @@ export default function Header() {
               <a
                 href="#aboutus"
                 onClick={() => setIsOpen(false)}
-                className="font-Neue-Montreal-Bold text-5xl xs:text-6xl sm:text-7xl uppercase tracking-3pct"
+                className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
                 about us
               </a>
@@ -209,7 +209,7 @@ export default function Header() {
               <a
                 href="#projects"
                 onClick={() => setIsOpen(false)}
-                className="font-Neue-Montreal-Bold text-5xl xs:text-6xl sm:text-7xl uppercase tracking-3pct"
+                className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
                 projects
               </a>
@@ -219,7 +219,7 @@ export default function Header() {
               <Link
                 to="/shop"
                 onClick={() => setIsOpen(false)}
-                className="font-Neue-Montreal-Bold text-5xl xs:text-6xl sm:text-7xl uppercase tracking-3pct"
+                className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
                 shop
               </Link>
@@ -229,14 +229,14 @@ export default function Header() {
               <a
                 onClick={() => setIsOpen(false)}
                 href="#contactus"
-                className="font-Neue-Montreal-Bold text-5xl xs:text-6xl sm:text-7xl uppercase tracking-3pct"
+                className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
                 contact
               </a>
               <h3 className="font-Neue-Montreal-Bold text-xl tracking-3pct text-[#373737]">05</h3>
             </div>
           </div>
-          <div className='mt-auto'>
+          <div className="mt-auto">
             <h1 className="font-Neue-Montreal-Bold text-xl tracking-3pct text-[#E31114]">
               Socials
             </h1>
@@ -254,11 +254,11 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <header className="relative z-30 mt-10 hidden items-center justify-center md:mt-5 md:flex">
-        <div className="absolute left-0 ml-4 xl:ml-6">
+      <header className="relative z-30 hidden items-center justify-center md:flex">
+        <div className="absolute left-0 ml-4 mt-10 md:mt-5 xl:ml-6">
           <h1 className="w-[111px] text-white">LOGO</h1>
         </div>
-        <nav className="relative h-[50px] items-center rounded-full">
+        <nav className="relative mt-10 h-[50px] items-center rounded-full md:mt-5">
           <GlassElement
             width={100}
             height={100}
@@ -304,7 +304,7 @@ export default function Header() {
         </nav>
 
         <div
-          className="glassBtn absolute right-0 mr-4 hidden h-[50px] w-[90px] cursor-pointer overflow-hidden rounded-3xl py-[9px] font-Neue-Montreal-Bold text-sm tracking-wide text-white backdrop-blur-[42px] sm:block md:h-[50px] md:py-[14px] lg:w-[111px] lg:py-[12px] lg:text-base xl:mr-6"
+          className="glassBtn absolute right-0 mr-4 mt-10 hidden h-[50px] w-[90px] cursor-pointer overflow-hidden rounded-3xl py-[9px] font-Neue-Montreal-Bold text-sm tracking-wide text-white backdrop-blur-[42px] sm:block md:mt-5 md:h-[50px] md:py-[14px] lg:w-[111px] lg:py-[12px] lg:text-base xl:mr-6"
           onPointerEnter={handlePointerEnter}
           onPointerLeave={handlePointerLeave}
         >
