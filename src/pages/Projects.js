@@ -47,6 +47,18 @@ export default function Projects() {
   const previewRef = useRef(null);
   const containerRef = useRef(null);
 
+  // Preload all images to prevent delays on Vercel
+  const preloadedImages = useRef({});
+  useEffect(() => {
+    items.forEach((item) => {
+      const img = new Image();
+      img.src = item.src;
+      img.onload = () => {
+        preloadedImages.current[item.name] = item.src;
+      };
+    });
+  }, []);
+
   // We use GSAP’s matchMedia so our animations adapt to Tailwind breakpoints.
   // This ensures that our motion logic is as responsive as our layout.
   //
@@ -92,23 +104,25 @@ export default function Projects() {
     gsap.killTweensOf(img);
 
     if (activeItem && gsap.getProperty(container, 'display') !== 'none') {
+      // اگر preload شده بود، از آن استفاده کن، وگرنه مستقیم src بده
+      const newSrc = preloadedImages.current[activeItem.name] || activeItem.src;
+
+      // جلوگیری از reload تصویر قبلی
+      if (img.src.includes(newSrc)) return;
+      img.src = activeItem.src;
+      gsap.killTweensOf(img);
+      gsap.set(img, { display: 'block', opacity: 0, scale: 2 }); // start from hidden and scaled up
       gsap.to(img, {
-        opacity: 0,
-        duration: 0.2,
+        opacity: 1,
+        scale: 1.9,
+        duration: 0.6,
         ease: 'power2.out',
-        onComplete: () => {
-          img.src = activeItem.src;
-          gsap.set(img, { display: 'block', scale: 2 });
-          gsap.to(img, {
-            opacity: 1,
-            scale: 1.9,
-            duration: 0.6,
-            ease: 'power2.out',
-          });
-        },
-      });
+      }); // fade-in and scale animation
     } else {
+      // Hide preview when no item is active or on smaller screens
+      gsap.killTweensOf(img);
       gsap.to(img, {
+        scale: 1.9,
         opacity: 0,
         duration: 0.3,
         ease: 'power2.out',
