@@ -48,8 +48,10 @@ export default function Projects() {
   const containerRef = useRef(null);
   const mm = useRef(null);
 
-  // ⚡ Preload all images on mount (real preload, even on Vercel)
+  // ⚡ Preload images on desktop only
   useEffect(() => {
+    if (window.innerWidth <= 1023) return;
+
     const preloadContainer = document.createElement('div');
     preloadContainer.style.cssText =
       'position:absolute; width:0; height:0; overflow:hidden; opacity:0; pointer-events:none;';
