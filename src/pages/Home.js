@@ -113,7 +113,7 @@ export default function Home() {
           });
         }
       );
-      
+
       gsap.to('header', { opacity: 0, duration: 0.3 });
 
       gsap.to(document.body, {
@@ -144,7 +144,7 @@ export default function Home() {
       </picture>
 
       <div className="absolute top-0 z-10 flex h-screen w-full flex-col items-center justify-center gap-4 text-center sm:gap-10">
-        <h1 className="px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white sm:max-w-2xl sm:text-5xl lg:text-6xl xl:max-w-[1100px] xl:text-8xl">
+        <h1 className="px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white max-w-2xl sm:text-5xl lg:text-6xl lg:max-w-[1100px] xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
 
@@ -178,9 +178,7 @@ export default function Home() {
             blur={4}
             chromaticAberration={2}
           >
-            <div
-              className="relative flex cursor-pointer justify-between p-1.5 sm:p-2"
-            >
+            <div className="relative flex cursor-pointer justify-between p-1.5 sm:p-2">
               <img
                 ref={videoRef}
                 className="video w-[180px] rounded-[30px] xl:w-[206px]"

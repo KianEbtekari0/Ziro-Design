@@ -144,16 +144,16 @@ export default function AllProducts() {
 
   return (
     <div id="shop">
-      <div className="h-[60vh] sm:h-screen">
+      <div className="h-screen">
         {/* Background image for visual depth */}
         <img
-          className="absolute left-0 top-0 h-[60vh] w-full object-cover sm:h-screen"
+          className="absolute left-0 top-0 h-screen w-full object-cover"
           alt="Background video"
           src={bgImage}
         />
 
         {/* Hero section: communicates brand values with bold typography */}
-        <div className="relative z-10 flex h-[60vh] flex-col items-center justify-center gap-4 text-center sm:h-[80vh] sm:gap-10">
+        <div className="relative z-10 flex h-[80vh] flex-col items-center justify-center gap-4 text-center sm:gap-10">
           <h1 className="px-5 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
             You Can Order My 3D Objects
           </h1>
@@ -215,7 +215,7 @@ export default function AllProducts() {
 
             {/* Right Side - Text */}
             <div className="row-start-0 xl:row-start-2">
-              <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+              <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
                 The Collections
               </h1>
               <p className="mt-5 font-Neue-Montreal-Bold text-xs leading-relaxed tracking-3pct text-white sm:mt-10 sm:text-xl xl:text-2xl">
