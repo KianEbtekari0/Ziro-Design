@@ -67,7 +67,7 @@ export default function AboutUs() {
   const iconRef = useRef(null);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText('zirodesign@gmail.com');
+    await navigator.clipboard.writeText('zirodesign3D@gmail.com');
 
     setCopied(true);
 

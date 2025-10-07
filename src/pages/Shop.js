@@ -5,7 +5,7 @@ import { GlassElement } from '../components/GlassElement/GlassElement';
 import house from '../assets/images/icons/collectionHouse.svg';
 import car from '../assets/images/icons/collectionCar.svg';
 import character from '../assets/images/icons/collectionCharacter.svg';
-import bgImage from '../assets/images/projects/allproductsbg.webp';
+import bgImage from '../assets/images/projects/library-4k.webp';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import rightArrow from '../assets/images/icons/right-arrow.svg';
 import dotIcon from '../assets/images/icons/redDot.svg';
