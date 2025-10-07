@@ -156,7 +156,6 @@ export default function Projects() {
             <img
               ref={previewRef}
               alt="preview"
-              loading="lazy"
               className="h-full w-full object-cover opacity-0"
             />
           </div>
