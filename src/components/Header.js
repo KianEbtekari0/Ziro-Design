@@ -13,9 +13,16 @@ export default function Header() {
 
   const [subMenu, setSubMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isBoxOpen, setIsBoxOpen] = useState(false);
   const iconRef = useRef(null);
   const splitRef = useRef(null);
   const mm = gsap.matchMedia();
+
+  useEffect(() => {
+    const checkMobile = window.matchMedia('(pointer: coarse)').matches;
+    setIsMobile(checkMobile);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -29,7 +36,64 @@ export default function Header() {
     };
   }, [isOpen]);
 
+  // Mobile click-base
+  const handleLanguageClick = (e) => {
+    if (!isMobile) return;
+
+    const target = e.currentTarget;
+
+    if (isBoxOpen) {
+      gsap.to(iconRef.current, { rotate: 0, duration: 0.4 });
+      gsap.to(target, {
+        height: 40,
+        width: 90,
+        duration: 0.4,
+        ease: 'power3.out',
+      });
+      setSubMenu(false);
+    } else {
+      gsap.to(iconRef.current, { rotate: 90, duration: 0.4 });
+      gsap.to(target, {
+        height: 130, // expand only downward
+        width: 170,
+        top: 0,
+        right: 0,
+        zIndex: 30,
+        ease: 'power3.out',
+        duration: 0.4,
+      });
+      setSubMenu(true);
+    }
+
+    // split animation
+    document.fonts.ready.then(() => {
+      gsap.set('.languageText', { opacity: 1 });
+
+      if (!splitRef.current) {
+        splitRef.current = new SplitText('.languageText', {
+          type: 'words,lines',
+          linesClass: 'line',
+        });
+      }
+
+      gsap.set(splitRef.current.lines, { yPercent: 100, opacity: 0 });
+
+      gsap.to(splitRef.current.lines, {
+        duration: 0.5,
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.1,
+        ease: 'expo.out',
+      });
+    });
+
+    setIsBoxOpen(!isBoxOpen);
+  };
+
+  // Desktop hover-base
   const handlePointerEnter = (e) => {
+    if (isMobile) return;
+
     setSubMenu(true);
 
     gsap.to(iconRef.current, {
@@ -47,6 +111,7 @@ export default function Header() {
       duration: 0.4,
     });
 
+    // split animation
     document.fonts.ready.then(() => {
       gsap.set('.languageText', { opacity: 1 });
 
@@ -70,6 +135,8 @@ export default function Header() {
   };
 
   const handlePointerLeave = (e) => {
+    if (isMobile) return;
+
     mm.add(
       {
         sm: '(min-width: 640px)',
@@ -143,7 +210,7 @@ export default function Header() {
     <>
       <div className="relative z-50 block md:hidden">
         <button
-          className="mr-4 pt-6 flex items-center justify-center gap-1 place-self-end font-Neue-Montreal-Bold text-base tracking-3pct text-white"
+          className="mr-4 flex items-center justify-center gap-1 place-self-end pt-6 font-Neue-Montreal-Bold text-base tracking-3pct text-white"
           onClick={() => setIsOpen(true)}
         >
           Menu <img src={open} alt="open menu" />
@@ -164,8 +231,7 @@ export default function Header() {
             </button>
             <div
               className="glassBtn absolute left-0 h-[40px] w-[90px] cursor-pointer rounded-3xl py-[9px] font-Neue-Montreal-Bold text-sm tracking-wide text-white backdrop-blur-[42px] md:h-[50px] md:py-[14px] lg:w-[111px] lg:py-[12px] lg:text-base xl:mr-6"
-              onPointerEnter={handlePointerEnter}
-              onPointerLeave={handlePointerLeave}
+              onClick={handleLanguageClick}
             >
               <div className="flex items-center justify-between px-3.5 lg:px-4">
                 English

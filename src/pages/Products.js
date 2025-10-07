@@ -7,6 +7,7 @@ import arrow from '../assets/images/icons/arrow.svg';
 import Categories from '../components/Categories';
 import { Skeleton } from '../components/skeleton';
 import { CategorySkeleton } from '../components/CategorySkeleton';
+import rightArrow from '../assets/images/icons/right-arrow.svg';
 import gsap from 'gsap';
 
 export default function Products() {
@@ -149,10 +150,10 @@ export default function Products() {
       <div className="container relative overflow-hidden">
         {/* Title */}
         <div className="mt-28 flex flex-col items-center justify-center gap-5">
-          <h1 className="text-center font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+          <h1 className="text-center font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
             Discover the World’s Top 3D
           </h1>
-          <p className="max-w-xs sm:max-w-2xl text-center font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:text-base xl:text-lg">
+          <p className="max-w-xs text-center font-Neue-Montreal-Medium text-xs tracking-3pct text-secondery sm:max-w-2xl sm:text-base xl:text-lg">
             The opportunity to work with us is open — just drop your work email to take the first
             step toward joining a creative and passionate team.
           </p>
@@ -160,15 +161,18 @@ export default function Products() {
 
         {/* Search & Categories */}
         <div className="mt-28 flex items-center gap-7">
-          <input
-            type="email"
-            className="glassCard h-[46px] w-full max-w-3xl rounded-3xl p-3 font-Neue-Montreal-Bold text-white"
-            placeholder="Search"
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setUserSearched(true);
-            }}
-          />
+          <div className="relative w-full max-w-3xl">
+            <input
+              type="email"
+              className="glassCard h-[46px] w-full focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-3xl px-5 p-3 font-Neue-Montreal-Medium text-white"
+              placeholder="Search"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setUserSearched(true);
+              }}
+            />
+            <img src={rightArrow} alt="right arrow" className="absolute left-[80px] top-1/2 -translate-y-1/2 cursor-pointer" />
+          </div>
           {isLoading ? (
             <CategorySkeleton count={4} />
           ) : (
