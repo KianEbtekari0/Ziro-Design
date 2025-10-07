@@ -48,12 +48,22 @@ export default function Projects() {
   const containerRef = useRef(null);
   const mm = useRef(null);
 
-  // ⚡ Preload all images on mount to prevent network delay on Vercel
+  // ⚡ Preload all images on mount (real preload, even on Vercel)
   useEffect(() => {
+    const preloadContainer = document.createElement('div');
+    preloadContainer.style.cssText =
+      'position:absolute; width:0; height:0; overflow:hidden; opacity:0; pointer-events:none;';
+    document.body.appendChild(preloadContainer);
+
     items.forEach((item) => {
       const img = new Image();
       img.src = item.src;
+      preloadContainer.appendChild(img);
     });
+
+    return () => {
+      document.body.removeChild(preloadContainer);
+    };
   }, []);
 
   const togglePreview = (item, isActive, e) => {
@@ -153,11 +163,7 @@ export default function Projects() {
             ref={containerRef}
             className="preview-container pointer-events-none absolute z-10 h-[500px] w-[800px] overflow-hidden rounded-3xl"
           >
-            <img
-              ref={previewRef}
-              alt="preview"
-              className="h-full w-full object-cover opacity-0"
-            />
+            <img ref={previewRef} alt="preview" className="h-full w-full object-cover opacity-0" />
           </div>
         </div>
       </div>
