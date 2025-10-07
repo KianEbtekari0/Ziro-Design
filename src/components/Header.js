@@ -141,9 +141,9 @@ export default function Header() {
 
   return (
     <>
-      <div className="relative z-50 mt-6 block md:hidden">
+      <div className="relative z-50 block md:hidden">
         <button
-          className="mr-4 flex items-center justify-center gap-1 place-self-end font-Neue-Montreal-Bold text-base tracking-3pct text-white"
+          className="mr-4 pt-6 flex items-center justify-center gap-1 place-self-end font-Neue-Montreal-Bold text-base tracking-3pct text-white"
           onClick={() => setIsOpen(true)}
         >
           Menu <img src={open} alt="open menu" />

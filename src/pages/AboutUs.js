@@ -108,7 +108,7 @@ export default function AboutUs() {
       </div>
       <div>
         <div className="mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
-          <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-4xl lg:max-w-3xl lg:text-6xl xl:max-w-3xl xl:text-7xl">
+          <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl sm:max-w-xl lg:max-w-3xl lg:text-6xl 2xl:max-w-4xl xl:text-6xl 2xl:text-7xl">
             Safarpoor 3D ARTIST Designer
           </h1>
           <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-base xl:text-2xl">
