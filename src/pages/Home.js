@@ -4,6 +4,7 @@ import playImg from '../assets/images/icons/play.svg';
 import bgVideoMobile from '../assets/images/magas 2 mobile.svg';
 import gsap from 'gsap';
 import trendUp from '../assets/images/icons/trend-up.svg';
+import dots from '../assets/images/icons/dots.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 
 export default function Home() {
@@ -12,8 +13,6 @@ export default function Home() {
   const videoBoxRef = useRef(null);
   const videoRef = useRef(null);
   const rightSideRef = useRef(null);
-
-  const mm = gsap.matchMedia();
 
   useEffect(() => {
     if (!isExpanded) {
@@ -25,51 +24,39 @@ export default function Home() {
 
   const toggleVideo = () => {
     if (!isExpanded) {
-      mm.add(
-        {
-          sm: '(min-width: 640px)',
-          md: '(min-width: 768px)',
-          lg: '(min-width: 1024px)',
-          xl: '(min-width: 1280px)',
+      gsap.to(videoBoxRef.current, {
+        width: window.innerWidth >= 1280 ? '320px' : '175px',
+        height: window.innerWidth >= 1280 ? '125px' : '105px',
+        bottom: 20,
+        right: 20,
+        zIndex: 30,
+        duration: 0.5,
+        borderRadius: '30px', // اضافه کردن border-radius
+        overflow: 'hidden', // جلوگیری از بیرون زدن تصویر
+        ease: 'power2.inOut',
+        onStart: () => gsap.set(rightSideRef.current, { display: 'none' }),
+        onComplete: () => {
+          if (window.innerWidth >= 1280) {
+            gsap.set(rightSideRef.current, { display: 'flex' });
+            gsap.fromTo(
+              rightSideRef.current,
+              { autoAlpha: 0 },
+              { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }
+            );
+          }
         },
-        (context) => {
-          let { xl } = context.conditions;
+      });
 
-          gsap.to(videoBoxRef.current, {
-            width: xl ? '320px' : '175px',
-            height: xl ? '125px' : '105px',
-            bottom: 20,
-            right: 20,
-            zIndex: 30,
-            duration: 0.5,
-            ease: 'power2.inOut',
-            onStart: () => {
-              gsap.set(rightSideRef.current, { display: 'none' });
-            },
-            onComplete: () => {
-              if (xl) {
-                gsap.set(rightSideRef.current, { display: 'block' });
-                gsap.fromTo(
-                  rightSideRef.current,
-                  { autoAlpha: 0 },
-                  { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }
-                );
-              }
-            },
-          });
-
-          gsap.to(videoRef.current, {
-            width: xl ? '206px' : '180px',
-            height: 107.5,
-            x: 0,
-            y: 0,
-            zIndex: 30,
-            duration: 0.5,
-            borderRadius: '30px',
-            ease: 'power2.inOut',
-          });
-        }
-      );
+      gsap.to(videoRef.current, {
+        width: window.innerWidth >= 1280 ? '206px' : '180px',
+        height: 107.5,
+        x: 0,
+        y: 0,
+        zIndex: 30,
+        duration: 0.5,
+        borderRadius: '30px',
+        ease: 'power2.inOut',
+      });
 
       gsap.to('header', { opacity: 100, duration: 0.3, delay: 0.3 });
 
@@ -85,34 +72,22 @@ export default function Home() {
         height: '100%',
         bottom: 0,
         right: 0,
+        borderRadius: '0px', // full screen دیگر radius ن
         zIndex: 9999,
         duration: 0.6,
         ease: 'power2.inOut',
-        onStart: () => {
-          gsap.set(rightSideRef.current, { display: 'none', duration: 0.3 });
-        },
+        onStart: () => gsap.set(rightSideRef.current, { display: 'none', duration: 0.3 }),
       });
-      mm.add(
-        {
-          sm: '(min-width: 640px)',
-          md: '(min-width: 768px)',
-          lg: '(min-width: 1024px)',
-          xl: '(min-width: 1280px)',
-        },
-        (context) => {
-          let { xl } = context.conditions;
 
-          gsap.to(videoRef.current, {
-            width: '98vw',
-            height: '96vh',
-            zIndex: 9999,
-            objectFit: xl ? 'cover' : 'contain',
-            duration: 0.6,
-            ease: 'power2.inOut',
-            borderRadius: '30px',
-          });
-        }
-      );
+      gsap.to(videoRef.current, {
+        width: '97vw',
+        height: '95vh',
+        borderRadius: '30px',
+        duration: 0.6,
+        objectFit: window.innerWidth >= 1280 ? 'cover' : 'contain',
+        zIndex: 9999,
+        ease: 'power2.inOut',
+      });
 
       gsap.to('header', { opacity: 0, duration: 0.3 });
 
@@ -136,7 +111,7 @@ export default function Home() {
         <img
           src={bgVideo}
           alt="Hero Background"
-          className="absolute left-0 top-0 h-screen w-full object-cover"
+          className="h-full w-full object-cover"
           width={1920}
           height={1080}
           loading="lazy"
@@ -144,7 +119,7 @@ export default function Home() {
       </picture>
 
       <div className="absolute top-0 z-10 flex h-screen w-full flex-col items-center justify-center gap-4 text-center sm:gap-10">
-        <h1 className="px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white max-w-2xl sm:text-5xl lg:text-6xl lg:max-w-[1100px] xl:text-8xl">
+        <h1 className="max-w-2xl px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white sm:text-5xl lg:max-w-[1100px] lg:text-6xl xl:text-8xl">
           Safarpoor 3D & film ARTIST Designer
         </h1>
 
@@ -166,7 +141,7 @@ export default function Home() {
         {/* Video preview box */}
         <div
           ref={videoBoxRef}
-          className="absolute bottom-4 right-4 z-50 flex w-40 justify-between sm:bottom-5 sm:w-[176px] xl:bottom-6 xl:right-6 xl:w-[318px]"
+          className="absolute bottom-4 right-4 z-50 flex w-40 justify-between rounded-[38px] sm:bottom-5 sm:w-[176px] xl:bottom-6 xl:right-6 xl:w-[318px]"
           onClick={toggleVideo}
         >
           <GlassElement
@@ -181,7 +156,7 @@ export default function Home() {
             <div className="relative flex cursor-pointer justify-between p-1.5 sm:p-2">
               <img
                 ref={videoRef}
-                className="video w-[180px] rounded-[30px] xl:w-[206px]"
+                className="video rounded-[30px] xl:w-[206px]"
                 src={bgVideo}
                 alt="popup Background video"
               />
@@ -198,13 +173,24 @@ export default function Home() {
 
               {!isExpanded && (
                 <button
+                  className="absolute left-1/2 top-10 z-[10000] flex h-[35px] w-[70px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Medium text-xs text-white sm:h-[43px] sm:w-[70px] sm:text-sm xl:h-[46px] xl:w-[87px] xl:text-base"
                   onClick={(e) => {
                     e.stopPropagation();
                     toggleVideo();
                   }}
-                  className="absolute right-3 top-3 z-[10000] rounded-full bg-black/70 px-3 py-1 text-white"
                 >
-                  Close
+                  <GlassElement
+                    width={100}
+                    height={100}
+                    radius={50}
+                    depth={10}
+                    blur={3}
+                    center={'flex'}
+                    chromaticAberration={5}
+                  >
+                    Close
+                    <img src={dots} className="ml-1.5 mt-0.5 w-1" alt="dots" />
+                  </GlassElement>
                 </button>
               )}
             </div>

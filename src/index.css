@@ -43,24 +43,6 @@
     border: 1px solid #373737;
   }
 
-  .custom-cursor {
-    width: 7rem;
-    height: 7rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    pointer-events: none;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    mix-blend-mode: difference;
-    z-index: 9999;
-  }
-
   .fade-shadow {
     position: absolute;
     bottom: 60px;

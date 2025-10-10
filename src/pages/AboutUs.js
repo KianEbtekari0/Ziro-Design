@@ -88,7 +88,7 @@ export default function AboutUs() {
   };
 
   return (
-    <div className="container bg-black pb-10" id="aboutus">
+    <div className="container bg-black py-10 " id="aboutus">
       <div className="relative flex items-center justify-center overflow-hidden whitespace-nowrap px-8">
         <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-black from-50% to-transparent sm:w-32"></div>
         <img src={star} alt="star" className="absolute left-0 z-30 w-7 sm:w-9" />

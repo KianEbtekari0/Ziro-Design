@@ -208,7 +208,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="relative z-50 block md:hidden">
+      <div className="w-full absolute z-50 block md:hidden">
         <button
           className="mr-4 flex items-center justify-center gap-1 place-self-end pt-6 font-Neue-Montreal-Bold text-base tracking-3pct text-white"
           onClick={() => setIsOpen(true)}
@@ -320,7 +320,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <header className="relative z-30 hidden items-center justify-center md:flex">
+      <header className="absolute w-full z-30 hidden items-center justify-center md:flex">
         <div className="absolute left-0 ml-4 mt-10 md:mt-5 xl:ml-6">
           <h1 className="w-[111px] text-white">LOGO</h1>
         </div>
