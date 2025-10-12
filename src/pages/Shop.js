@@ -153,11 +153,11 @@ export default function AllProducts() {
         />
 
         {/* Hero section: communicates brand values with bold typography */}
-        <div className="relative z-10 flex h-[80vh] flex-col items-center justify-center gap-4 text-center sm:gap-10">
-          <h1 className="px-5 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+        <div className="relative z-10 flex h-[95vh] flex-col items-center justify-center gap-4 text-center sm:gap-10">
+          <h1 className="sm:px-5 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
             You Can Order My 3D Objects
           </h1>
-          <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-3xl sm:text-xl xl:text-3xl">
+          <p className="max-w-xs font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl xl:max-w-3xl sm:text-xl xl:text-3xl">
             A versatile designer skilled in 2D, 3D, motion graphics, and creativity and{' '}
             <span className="text-secondery">design mastery, they craft unique</span>
           </p>
@@ -183,19 +183,19 @@ export default function AllProducts() {
       </div>
       <div className="container">
         {/* Products Collections */}
-        <div className="w-full">
+        <div className="w-full mt-10 xl:mt-0">
           <div className="grid grid-cols-1 gap-10 xl:grid-cols-2">
             {/* Left Side - Cards */}
             <div className="xl:row-start-0 row-start-2 flex h-full flex-col gap-4 sm:flex-row sm:flex-wrap">
               <div className="flex w-full flex-col items-center gap-5 sm:flex-row">
                 <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
-                  <img src={house} alt="house" />
+                  <img src={house} alt="house" className='px-3' />
                 </div>
                 <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
-                  <img src={character} alt="character" />
+                  <img src={character} alt="character" className='px-3' />
                 </div>
                 <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
-                  <img src={car} alt="car" />
+                  <img src={car} alt="car" className='px-3' />
                 </div>
               </div>
               <div className="flex w-full flex-col justify-between xs:flex-row">

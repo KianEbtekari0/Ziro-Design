@@ -31,8 +31,8 @@ export default function Home() {
         right: 20,
         zIndex: 30,
         duration: 0.5,
-        borderRadius: '30px', // اضافه کردن border-radius
-        overflow: 'hidden', // جلوگیری از بیرون زدن تصویر
+        borderRadius: '30px',
+        overflow: 'hidden',
         ease: 'power2.inOut',
         onStart: () => gsap.set(rightSideRef.current, { display: 'none' }),
         onComplete: () => {
