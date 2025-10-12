@@ -154,10 +154,10 @@ export default function AllProducts() {
 
         {/* Hero section: communicates brand values with bold typography */}
         <div className="relative z-10 flex h-[95vh] flex-col items-center justify-center gap-4 text-center sm:gap-10">
-          <h1 className="sm:px-5 font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:text-5xl lg:text-6xl xl:text-8xl">
+          <h1 className="font-Neue-Montreal-Bold text-3xl tracking-3pct text-white sm:px-5 sm:text-5xl lg:text-6xl xl:text-8xl">
             You Can Order My 3D Objects
           </h1>
-          <p className="max-w-xs font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl xl:max-w-3xl sm:text-xl xl:text-3xl">
+          <p className="max-w-xs font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-xl xl:max-w-3xl xl:text-3xl">
             A versatile designer skilled in 2D, 3D, motion graphics, and creativity and{' '}
             <span className="text-secondery">design mastery, they craft unique</span>
           </p>
@@ -183,19 +183,19 @@ export default function AllProducts() {
       </div>
       <div className="container">
         {/* Products Collections */}
-        <div className="w-full mt-10 xl:mt-0">
+        <div className="mt-10 w-full xl:mt-0">
           <div className="grid grid-cols-1 gap-10 xl:grid-cols-2">
             {/* Left Side - Cards */}
             <div className="xl:row-start-0 row-start-2 flex h-full flex-col gap-4 sm:flex-row sm:flex-wrap">
               <div className="flex w-full flex-col items-center gap-5 sm:flex-row">
                 <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
-                  <img src={house} alt="house" className='px-3' />
+                  <img src={house} alt="house" className="px-3" />
                 </div>
                 <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
-                  <img src={character} alt="character" className='px-3' />
+                  <img src={character} alt="character" className="px-3" />
                 </div>
                 <div className="flex h-[260px] w-full items-center justify-center rounded-xl bg-[#0F0F0F] sm:w-full">
-                  <img src={car} alt="car" className='px-3' />
+                  <img src={car} alt="car" className="px-3" />
                 </div>
               </div>
               <div className="flex w-full flex-col justify-between xs:flex-row">
@@ -317,12 +317,12 @@ export default function AllProducts() {
         </div>
 
         {/* FAQ */}
-        <div className="mt-16 flex flex-wrap items-center justify-between rounded-[50px] bg-[#0F0F0F] px-8 py-8 font-Neue-Montreal-Bold text-white sm:px-10 sm:py-10 lg:h-[300px] xl:h-[350px]">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-2 rounded-[50px] bg-[#0F0F0F] px-8 py-8 font-Neue-Montreal-Bold text-white sm:gap-10 sm:px-10 sm:py-10 lg:h-[300px] xl:h-[350px]">
           <div className="space-y-3 sm:space-y-6 xl:space-y-10">
-            <h1 className="text-3xl tracking-3pct sm:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="text-3xl tracking-3pct sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
               FAQ Asked Questions
             </h1>
-            <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-sm xl:text-xl">
+            <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-md sm:text-sm xl:max-w-2xl xl:text-xl">
               Take a look at my other projects and dive deeper into the world experimental ideas{' '}
               <span className="text-secondery">
                 to polished designs, there’s so much more waiting to be explored
@@ -343,7 +343,7 @@ export default function AllProducts() {
                     <img
                       src={rightArrow}
                       alt="arrow"
-                      className={`${activeId === item.id ? 'rotate-90 duration-300' : 'w-3 duration-300 sm:w-5'}`}
+                      className={`${activeId === item.id ? 'w-3 rotate-90 duration-300 sm:w-4' : 'w-3 duration-300 sm:w-4'}`}
                     />
                   </button>
                 </div>
