@@ -12,7 +12,7 @@ export default function Footer() {
       <footer className="z-10 flex w-full max-w-[1500px] flex-wrap items-center justify-center gap-y-10 px-10 py-16 xs:justify-between md:flex-nowrap md:gap-y-0 md:py-20">
         <div className="w-[200px] text-center">
           <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">FAQ</h1>
-          <div className="mt-2 flex flex-col text-sm xl:text-base">
+          <div className="mt-2 flex flex-col gap-1 text-sm xl:text-base">
             <Link to="/" className="font-Neue-Montreal-Regular text-secondery">
               Company
             </Link>
@@ -27,13 +27,17 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="-order-1 flex-1 text-center md:-order-none md:flex-none sm:px-10">
-          <h1 className="mt-2 font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">
+        <div className="-order-1 flex-1 text-center sm:px-10 md:-order-none md:flex-none">
+          <label
+            htmlFor="emailInput"
+            className="mt-2 font-Neue-Montreal-Bold text-xl text-white xl:text-2xl"
+          >
             BOOK A TIME!
-          </h1>
+          </label>
           <div className="mt-2 flex flex-col items-center justify-between gap-5">
             <input
               type="email"
+              id="emailInput"
               className="glassCard h-[40px] w-[290px] rounded-3xl p-3 font-Neue-Montreal-Bold text-white sm:w-[320px]"
             />
             <Link

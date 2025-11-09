@@ -66,7 +66,7 @@ export default function Projects() {
     return () => {
       document.body.removeChild(preloadContainer);
     };
-  }, []);
+  });
 
   const togglePreview = (item, isActive, e) => {
     if (isActive) {

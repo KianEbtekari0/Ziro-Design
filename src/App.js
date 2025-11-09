@@ -1,30 +1,43 @@
 import { Routes, Route } from 'react-router';
-import { useEffect } from 'react';
-import Main from './pages/Main';
+import { useEffect, Suspense } from 'react';
+import React from 'react';
+import gsap from 'gsap';
+import ScrollSmoother from 'gsap/ScrollSmoother';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ProductDetails from './components/ProductDetails';
-import AllProjects from './pages/AllProjects';
-import Shop from './pages/Shop';
-import gsap from 'gsap';
-import Products from './pages/Products';
-import ScrollSmoother from 'gsap/ScrollSmoother';
+import Main from './pages/Main';
 import './index.css';
 
 gsap.registerPlugin(ScrollSmoother);
 
+const ProductDetails = React.lazy(() => import('./components/ProductDetails'));
+const AllProjects = React.lazy(() => import('./pages/AllProjects'));
+const Shop = React.lazy(() => import('./pages/Shop'));
+const Products = React.lazy(() => import('./pages/Products'));
+
 export default function App() {
   useEffect(() => {
-    ScrollSmoother.create({
-      smooth: 1.5,
-    });
+    const isMobile = window.innerWidth < 768;
+
+    let smoother;
+
+    if (!isMobile) {
+      smoother = ScrollSmoother.create({
+        smooth: 1.5,
+        effects: true,
+      });
+    }
+
+    return () => {
+      if (smoother) smoother.kill();
+    };
   }, []);
 
   return (
-    <>
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <Header />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <Header />
+        <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/product/:id" element={<ProductDetails />} />
@@ -32,9 +45,9 @@ export default function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/products" element={<Products />} />
           </Routes>
-          <Footer />
-        </div>
+        </Suspense>
+        <Footer />
       </div>
-    </>
+    </div>
   );
 }

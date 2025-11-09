@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect, useMemo, useCallback } from 'react';
 import { Link } from 'react-router';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import dotIcon from '../assets/images/icons/redDot.svg';
@@ -12,36 +12,44 @@ import gsap from 'gsap';
 
 export default function Products() {
   const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
-
   const [allProducts, setAllProducts] = useState([]);
-
-  const [products, setProducts] = useState(allProducts);
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedProducts, setPaginatedProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [userSearched, setUserSearched] = useState(false);
-  const productRefs = useRef([]);
-  const skeletonRefs = useRef([]);
-  skeletonRefs.current = [];
-
-  productRefs.current = [];
-
   const [categories, setCategories] = useState(['Discover']);
   const [variantsMap, setVariantsMap] = useState({});
-
+  const productRefs = useRef([]);
   const pageSize = 9;
+
+  // ---- Pagination ----
   const pageCount = Math.ceil(products.length / pageSize);
-  let pageNumbers = Array.from(Array(pageCount).keys());
+  const pageNumbers = useMemo(() => Array.from(Array(pageCount).keys()), [pageCount]);
+  const changePaginate = useCallback((newpage) => setCurrentPage(newpage), []);
+  const prevPage = useCallback(() => setCurrentPage((prev) => Math.max(prev - 1, 1)), []);
+  const nextPage = useCallback(
+    () => setCurrentPage((prev) => Math.min(prev + 1, pageCount)),
+    [pageCount]
+  );
 
-  const changePaginate = (newpage) => setCurrentPage(newpage);
-  const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, pageCount));
-
+  // ---- Fetch with Caching ----
   useEffect(() => {
+    const cached = sessionStorage.getItem('gumroadProducts');
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      setAllProducts(parsed.products);
+      setProducts(parsed.products);
+      setVariantsMap(parsed.variantsMap);
+      setCategories(parsed.categories);
+      setPaginatedProducts(parsed.products.slice(0, pageSize));
+      setIsLoading(false);
+      return;
+    }
+
     const fetchProductsAndVariants = async () => {
       setIsLoading(true);
-
       try {
         const res = await fetch('https://api.gumroad.com/v2/products', {
           headers: { Authorization: `Bearer ${accessToken}` },
@@ -49,10 +57,6 @@ export default function Products() {
         const data = await res.json();
 
         if (data.success) {
-          setAllProducts(data.products);
-          setProducts(data.products);
-          setPaginatedProducts(data.products.slice(0, pageSize));
-
           const map = {};
           const allVariantTitles = new Set();
 
@@ -67,22 +71,17 @@ export default function Products() {
                 if (dataCat.success) {
                   await Promise.all(
                     dataCat.variant_categories.map(async (cat) => {
-                      try {
-                        const resVar = await fetch(
-                          `https://api.gumroad.com/v2/products/${product.id}/variant_categories/${encodeURIComponent(
-                            cat.id
-                          )}/variants?access_token=${accessToken}`
-                        );
-                        const dataVar = await resVar.json();
-
-                        if (dataVar.success) {
-                          const titles = dataVar.variants.map((v) => v.name);
-                          if (!map[product.id]) map[product.id] = [];
-                          map[product.id].push(...titles);
-                          titles.forEach((t) => allVariantTitles.add(t));
-                        }
-                      } catch (err) {
-                        console.error(err);
+                      const resVar = await fetch(
+                        `https://api.gumroad.com/v2/products/${product.id}/variant_categories/${encodeURIComponent(
+                          cat.id
+                        )}/variants?access_token=${accessToken}`
+                      );
+                      const dataVar = await resVar.json();
+                      if (dataVar.success) {
+                        const titles = dataVar.variants.map((v) => v.name);
+                        if (!map[product.id]) map[product.id] = [];
+                        map[product.id].push(...titles);
+                        titles.forEach((t) => allVariantTitles.add(t));
                       }
                     })
                   );
@@ -93,8 +92,21 @@ export default function Products() {
             })
           );
 
+          const allCats = ['Discover', ...Array.from(allVariantTitles)];
+          setAllProducts(data.products);
+          setProducts(data.products);
+          setPaginatedProducts(data.products.slice(0, pageSize));
           setVariantsMap(map);
-          setCategories(['Discover', ...Array.from(allVariantTitles)]);
+          setCategories(allCats);
+
+          sessionStorage.setItem(
+            'gumroadProducts',
+            JSON.stringify({
+              products: data.products,
+              variantsMap: map,
+              categories: allCats,
+            })
+          );
         }
       } catch (err) {
         console.error(err);
@@ -106,41 +118,82 @@ export default function Products() {
     fetchProductsAndVariants();
   }, [accessToken]);
 
-  // ---------------- Filter Products ----------------
-  const filterProductsHandler = (category) => {
-    setCurrentPage(1);
-    setUserSearched(true);
-    if (category === 'Discover') {
-      setProducts(allProducts);
-      return;
-    }
-    const filtered = allProducts.filter((p) => variantsMap[p.id]?.includes(category));
-    setProducts(filtered);
-  };
+  // ---- Filter by Category ----
+  const filterProductsHandler = useCallback(
+    (category) => {
+      setCurrentPage(1);
+      setUserSearched(true);
+      if (category === 'Discover') {
+        setProducts(allProducts);
+        return;
+      }
+      const filtered = allProducts.filter((p) => variantsMap[p.id]?.includes(category));
+      setProducts(filtered);
+    },
+    [allProducts, variantsMap]
+  );
 
+  // ---- Debounce Search ----
   useEffect(() => {
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const timeout = setTimeout(() => {
+      const filtered = allProducts.filter((p) =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setProducts(filtered);
+      setCurrentPage(1);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [searchTerm, allProducts]);
+
+  // ---- Pagination logic ----
+  useEffect(() => {
     const endIndex = pageSize * currentPage;
     const startIndex = endIndex - pageSize;
-    setPaginatedProducts(filteredProducts.slice(startIndex, endIndex));
-  }, [currentPage, products, searchTerm]);
+    setPaginatedProducts(products.slice(startIndex, endIndex));
+  }, [currentPage, products]);
 
+  // ---- GSAP Animate ----
   useLayoutEffect(() => {
     if (!userSearched || paginatedProducts.length === 0) return;
-
     const ctx = gsap.context(() => {
-      gsap.from(productRefs.current, {
-        opacity: 0,
-        y: 20,
+      gsap.set(productRefs.current, { opacity: 0, y: 20 });
+      gsap.to(productRefs.current, {
+        opacity: 1,
+        y: 0,
         duration: 0.5,
         stagger: 0.1,
       });
     });
-
     return () => ctx.revert();
   }, [paginatedProducts, userSearched]);
+
+  // ---- Lazy Load Images ----
+  const LazyImage = ({ src, alt, style }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef();
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      if (ref.current) observer.observe(ref.current);
+      return () => observer.disconnect();
+    }, []);
+
+    return (
+      <div
+        ref={ref}
+        className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2"
+        style={{ ...style, backgroundImage: isVisible ? `url(${src})` : 'none' }}
+      />
+    );
+  };
 
   return (
     <>
@@ -163,15 +216,17 @@ export default function Products() {
         <div className="mt-28 flex items-center gap-7">
           <div className="relative w-full max-w-3xl">
             <input
-              type="email"
-              className="glassCard h-[46px] w-full focus:outline-none focus:ring-2 focus:ring-slate-800 rounded-3xl px-5 p-3 font-Neue-Montreal-Medium text-white"
+              type="text"
+              className="glassCard h-[46px] w-full rounded-3xl p-3 px-5 font-Neue-Montreal-Medium text-white focus:outline-none focus:ring-2 focus:ring-slate-800"
               placeholder="Search"
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                setUserSearched(true);
-              }}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <img src={rightArrow} alt="right arrow" className="absolute left-[80px] top-1/2 -translate-y-1/2 cursor-pointer" />
+            <img
+              src={rightArrow}
+              alt="right arrow"
+              loading="lazy"
+              className="absolute left-[80px] top-1/2 -translate-y-1/2 cursor-pointer"
+            />
           </div>
           {isLoading ? (
             <CategorySkeleton count={4} />
@@ -196,21 +251,15 @@ export default function Products() {
                   </div>
                 </div>
               ))
-            : paginatedProducts.map((product) => (
+            : paginatedProducts.map((product, i) => (
                 <Link
-                  ref={(el) => {
-                    if (el && !productRefs.current.includes(el)) {
-                      productRefs.current.push(el);
-                    }
-                  }}
+                  key={product.id}
+                  ref={(el) => (productRefs.current[i] = el)}
                   state={{ product, variants: variantsMap[product.id] }}
                   to={`/product/${product.id}`}
-                  key={product.id}
                 >
-                  <div
-                    className="model flex h-[350px] w-full rounded-[48px] bg-cover bg-center p-2 [text-shadow:_0_1px_10px_#000]"
-                    style={{ backgroundImage: `url(${product.preview_url})` }}
-                  >
+                  <LazyImage src={product.preview_url} alt={product.name} />
+                  <div className="relative -mt-[350px] flex h-[350px] w-full rounded-[48px] p-2">
                     <div className="flex w-full flex-col self-end">
                       <GlassElement
                         width={'100%'}
@@ -253,14 +302,14 @@ export default function Products() {
             >
               <img src={arrow} alt="arrow" />
             </li>
-            {pageNumbers.map((pagesNumber) => (
+            {pageNumbers.map((n) => (
               <li
-                onClick={() => changePaginate(pagesNumber + 1)}
-                className={`${pagesNumber + 1 === currentPage ? '' : 'cursor-pointer text-white'}`}
-                key={pagesNumber + 1}
+                key={n}
+                onClick={() => changePaginate(n + 1)}
+                className={`${n + 1 === currentPage ? '' : 'cursor-pointer text-white'}`}
               >
-                <button className="glassBtn flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white">
-                  {pagesNumber + 1}
+                <button className="glassBtn flex h-10 w-10 items-center justify-center rounded-xl font-Neue-Montreal-Medium text-lg text-white">
+                  {n + 1}
                 </button>
               </li>
             ))}

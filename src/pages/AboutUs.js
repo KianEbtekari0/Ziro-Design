@@ -1,6 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 import adobe from '../assets/images/icons/adobe.svg';
 import blender from '../assets/images/icons/blender.svg';
@@ -10,9 +8,9 @@ import turbo from '../assets/images/icons/turbo.png';
 import renderhub from '../assets/images/icons/renderhub.png';
 import sketchfab from '../assets/images/icons/sketchfab.svg';
 import patreon from '../assets/images/icons/patreon.svg';
-import projectImg1 from '../assets/images/projects/aboutus12.svg';
+import projectImg1 from '../assets/images/projects/aboutus12.webp';
 import projectImg2 from '../assets/images/projects/Rain-022.1038.webp';
-import projectImg3 from '../assets/images/projects/aboutusc==.svg';
+import projectImg3 from '../assets/images/projects/aboutusc==.webp';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import copyIcon from '../assets/images/icons/copy.svg';
 import star from '../assets/images/icons/star.svg';
@@ -22,73 +20,119 @@ import LogoLoop from '../components/LogoLoop';
 import { Link } from 'react-router-dom';
 
 export default function AboutUs() {
-  gsap.registerPlugin(ScrollTrigger);
   const counter1Ref = useRef();
   const counter2Ref = useRef();
+  const gsapRef = useRef(null);
+  const containerRef = useRef(null);
+  const timeoutRef = useRef(null);
 
-  const imageLogos = [
-    { src: adobe, alt: 'adobe', href: 'https://adobe.com' },
-    { src: artstation, alt: 'artstation', href: 'https://artstation.com' },
-    { src: blender, alt: 'blender', href: 'https://blender.com' },
-    { src: cgtrader, alt: 'cgtrader', href: 'https://cgtrader.com' },
-    { src: turbo, alt: 'turbo', href: 'https://turbo.com' },
-    { src: renderhub, alt: 'renderhub', href: 'https://renderhub.com' },
-    { src: sketchfab, alt: 'sketchfab', href: 'https://sketchfab.com' },
-    { src: patreon, alt: 'patreon', href: 'https://patreon.com' },
-  ];
+  const imageLogos = useMemo(
+    () => [
+      { src: adobe, alt: 'adobe', href: 'https://adobe.com' },
+      { src: artstation, alt: 'artstation', href: 'https://artstation.com' },
+      { src: blender, alt: 'blender', href: 'https://blender.com' },
+      { src: cgtrader, alt: 'cgtrader', href: 'https://cgtrader.com' },
+      { src: turbo, alt: 'turbo', href: 'https://turbo.com' },
+      { src: renderhub, alt: 'renderhub', href: 'https://renderhub.com' },
+      { src: sketchfab, alt: 'sketchfab', href: 'https://sketchfab.com' },
+      { src: patreon, alt: 'patreon', href: 'https://patreon.com' },
+    ],
+    []
+  );
 
   useEffect(() => {
-    gsap.to(counter1Ref.current, {
-      textContent: 31 + 'k',
-      duration: 3,
-      ease: 'power1.in',
-      snap: { textContent: 1 },
-      scrollTrigger: {
-        trigger: '.aboutSection',
-        start: 'top 70%',
-        toggleActions: 'play none none none',
-      },
-    });
+    // Dynamically import GSAP and ScrollTrigger so they're only loaded when
+    // this component mounts (reduces initial bundle size).
+    let ctx;
+    let gsapLocal;
 
-    gsap.to(counter2Ref.current, {
-      textContent: 72 + 'k',
-      duration: 3,
-      ease: 'power1.in',
-      snap: { textContent: 1 },
-      scrollTrigger: {
-        trigger: '.aboutSection',
-        start: 'top 60%',
-        toggleActions: 'play none none none',
-      },
-    });
+    (async () => {
+      const gsapModule = (await import('gsap')).default;
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsapModule.registerPlugin(ScrollTrigger);
+      gsapRef.current = gsapModule;
+      gsapLocal = gsapModule;
+
+      // scope animations to this component to make cleanup easy
+      ctx = gsapLocal.context(() => {
+        const aboutEl = containerRef.current?.querySelector('.aboutSection');
+
+        if (counter1Ref.current) {
+          gsapLocal.to(counter1Ref.current, {
+            textContent: '31k',
+            duration: 3,
+            ease: 'power1.in',
+            snap: { textContent: 1 },
+            scrollTrigger: {
+              trigger: aboutEl,
+              start: 'top 70%',
+              toggleActions: 'play none none none',
+            },
+          });
+        }
+
+        if (counter2Ref.current) {
+          gsapLocal.to(counter2Ref.current, {
+            textContent: '72k',
+            duration: 3,
+            ease: 'power1.in',
+            snap: { textContent: 1 },
+            scrollTrigger: {
+              trigger: aboutEl,
+              start: 'top 60%',
+              toggleActions: 'play none none none',
+            },
+          });
+        }
+      }, containerRef);
+    })();
+
+    return () => {
+      if (ctx && typeof ctx.revert === 'function') ctx.revert();
+      // Clear any timers used by handlers
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   const [copied, setCopied] = useState(false);
   const iconRef = useRef(null);
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText('zirodesign3D@gmail.com');
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText('zirodesign3D@gmail.com');
+      setCopied(true);
 
-    setCopied(true);
+      const g = gsapRef.current;
+      if (g && iconRef.current) {
+        g.fromTo(
+          iconRef.current,
+          { scale: 0, rotate: -90, opacity: 0 },
+          { scale: 1, rotate: 0, opacity: 1, duration: 0.4, ease: 'back.out(1.7)' }
+        );
+      }
 
-    gsap.fromTo(
-      iconRef.current,
-      { scale: 0, rotate: -90, opacity: 0 },
-      { scale: 1, rotate: 0, opacity: 1, duration: 0.4, ease: 'back.out(1.7)' }
-    );
-
-    setTimeout(() => {
-      setCopied(false);
-      gsap.fromTo(
-        iconRef.current,
-        { scale: 0, rotate: 90, opacity: 0 },
-        { scale: 1, rotate: 0, opacity: 1, duration: 0.4, ease: 'back.out(1.7)' }
-      );
-    }, 2000);
-  };
+      // hide copied after a little while
+      timeoutRef.current = setTimeout(() => {
+        setCopied(false);
+        if (g && iconRef.current) {
+          g.fromTo(
+            iconRef.current,
+            { scale: 0, rotate: 90, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.4, ease: 'back.out(1.7)' }
+          );
+        }
+      }, 2000);
+    } catch (e) {
+      // fallback: still toggle UI
+      setCopied(true);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
+    }
+  }, []);
 
   return (
-    <div className="container bg-black py-10 " id="aboutus">
+    <div className="container bg-black py-10" id="aboutus" ref={containerRef}>
       <div className="relative flex items-center justify-center overflow-hidden whitespace-nowrap px-8">
         <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-black from-50% to-transparent sm:w-32"></div>
         <img src={star} alt="star" className="absolute left-0 z-30 w-7 sm:w-9" />
@@ -108,7 +152,7 @@ export default function AboutUs() {
       </div>
       <div>
         <div className="mt-10 flex flex-col gap-4 xl:flex-row xl:justify-between">
-          <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:text-5xl sm:max-w-xl lg:max-w-3xl lg:text-6xl 2xl:max-w-4xl xl:text-6xl 2xl:text-7xl">
+          <h1 className="max-w-sm font-Neue-Montreal-Bold text-3xl uppercase tracking-3pct text-white sm:max-w-xl sm:text-5xl lg:max-w-3xl lg:text-6xl xl:text-6xl 2xl:max-w-4xl 2xl:text-7xl">
             Safarpoor 3D ARTIST Designer
           </h1>
           <p className="max-w-sm font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:max-w-xl sm:text-base xl:text-2xl">
