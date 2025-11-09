@@ -4,8 +4,9 @@ import trendUp from '../assets/images/icons/trend-up.svg';
 import dots from '../assets/images/icons/dots.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
 
-import bgVideo from '../assets/images/magas 2.webp';
-import bgVideoMobile from '../assets/images/magas 2 mobile.svg';
+// تصاویر فقط زمانی لود می‌شن که نیاز باشه
+const bgVideo = new URL('../assets/images/magas 2.webp', import.meta.url).href;
+const bgVideoMobile = new URL('../assets/images/magas 2 mobile.svg', import.meta.url).href;
 
 export default function Products() {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -18,6 +19,7 @@ export default function Products() {
   }, [isExpanded]);
 
   const toggleVideo = async () => {
+    // dynamic import برای GSAP
     const { gsap } = await import('gsap');
 
     if (!isExpanded) {
@@ -93,9 +95,9 @@ export default function Products() {
           className="h-full w-full object-cover"
           width={1920}
           height={1080}
-          loading="eager"
+          loading="lazy"
           decoding="async"
-          fetchpriority="high"
+          fetchpriority="low"
         />
       </picture>
 
@@ -104,6 +106,7 @@ export default function Products() {
         <h1 className="max-w-2xl px-5 font-Neue-Montreal-Bold text-4xl uppercase tracking-3pct text-white sm:text-5xl lg:max-w-[1100px] lg:text-6xl xl:text-8xl">
           Safarpoor 3D & Film Artist Designer
         </h1>
+
         <button
           className="flex h-[35px] w-[115px] cursor-pointer items-center justify-center rounded-3xl font-Neue-Montreal-Regular text-xs text-white sm:h-[43px] sm:w-[135px] sm:text-sm xl:h-[45px] xl:w-[157px] xl:text-base"
           aria-label="Explore projects"
@@ -127,6 +130,7 @@ export default function Products() {
             />
           </GlassElement>
         </button>
+
         {/* ✅ Video preview box */}
         <div
           ref={videoBoxRef}
@@ -148,9 +152,9 @@ export default function Products() {
                 className="video rounded-[30px] xl:w-[206px]"
                 src={bgVideo}
                 alt="popup background preview"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
-                fetchpriority="high"
+                fetchpriority="low"
               />
 
               {/* ✅ Right text section */}
