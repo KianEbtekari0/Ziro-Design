@@ -3,7 +3,6 @@ import playImg from '../assets/images/icons/play.svg';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import dots from '../assets/images/icons/dots.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
-import bgVideoMobile from '../assets/images/magas 2 mobile.svg'
 
 const bgVideo = new URL('../assets/images/magas 2.webp', import.meta.url).href;
 
@@ -86,19 +85,17 @@ export default function Products() {
   return (
     <div className="relative h-screen overflow-hidden">
       {/* ✅ Responsive background image */}
-      <picture>
-        <source media="(max-width: 640px)" srcSet={bgVideoMobile} />
-        <img
-          src={bgVideo}
-          alt="Hero Background"
-          className="h-full w-full object-cover"
-          width={1920}
-          height={1080}
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-        />
-      </picture>
+
+      <img
+        src={bgVideo}
+        alt="Hero Background"
+        className="h-full w-full object-cover"
+        width={1920}
+        height={1080}
+        loading="lazy"
+        decoding="async"
+        fetchPriority="low"
+      />
 
       {/* ✅ Overlay content */}
       <div className="absolute top-0 z-10 flex h-screen w-full flex-col items-center justify-center gap-4 text-center sm:gap-10">
