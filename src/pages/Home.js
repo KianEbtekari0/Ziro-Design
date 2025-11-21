@@ -3,10 +3,9 @@ import playImg from '../assets/images/icons/play.svg';
 import trendUp from '../assets/images/icons/trend-up.svg';
 import dots from '../assets/images/icons/dots.svg';
 import { GlassElement } from '../components/GlassElement/GlassElement';
+import bgVideoMobile from '../assets/images/magas 2 mobile.svg'
 
-// تصاویر فقط زمانی لود می‌شن که نیاز باشه
 const bgVideo = new URL('../assets/images/magas 2.webp', import.meta.url).href;
-const bgVideoMobile = new URL('../assets/images/magas 2 mobile.svg', import.meta.url).href;
 
 export default function Products() {
   const [isExpanded, setIsExpanded] = useState(true);
