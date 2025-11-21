@@ -25,7 +25,7 @@ function AllProjects() {
       </div>
 
       <div className="z-30 flex flex-col items-center justify-center">
-        <h1 className="z-30 mt-36 text-center font-Neue-Montreal-Bold text-3xl tracking-3pct text-white xs:text-4xl sm:max-w-3xl sm:text-6xl lg:text-7xl xl:mt-40 xl:max-w-[1100px] xl:text-8xl">
+        <h1 className="z-30 mt-24 sm:mt-36 text-center font-Neue-Montreal-Bold text-3xl tracking-3pct text-white xs:text-4xl sm:max-w-3xl sm:text-6xl lg:text-7xl xl:mt-40 xl:max-w-[1100px] xl:text-8xl">
           Gallery Of My Projects
         </h1>
         <p className="z-30 mt-3 max-w-xs text-center font-Neue-Montreal-Bold text-xs tracking-3pct text-white sm:mt-10 sm:max-w-xl sm:text-xl xl:max-w-3xl xl:text-3xl">

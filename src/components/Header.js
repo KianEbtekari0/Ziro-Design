@@ -330,7 +330,7 @@ export default React.memo(function Header() {
             </div>
             <div className="flex gap-2">
               <a
-                href="#aboutus"
+                href="/#aboutus"
                 onClick={() => setIsOpen(false)}
                 className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
@@ -340,7 +340,7 @@ export default React.memo(function Header() {
             </div>
             <div className="flex gap-2">
               <a
-                href="#projects"
+                href="/#projects"
                 onClick={() => setIsOpen(false)}
                 className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
@@ -361,7 +361,7 @@ export default React.memo(function Header() {
             <div className="flex gap-2">
               <a
                 onClick={() => setIsOpen(false)}
-                href="#contactus"
+                href="/#contactus"
                 className="font-Neue-Montreal-Bold text-5xl uppercase tracking-3pct xs:text-6xl sm:text-7xl"
               >
                 contact

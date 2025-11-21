@@ -168,7 +168,7 @@ export default function Products() {
   }, [paginatedProducts, userSearched]);
 
   // ---- Lazy Load Images ----
-  const LazyImage = ({ src, alt, style }) => {
+  const LazyImage = ({ src, style }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef();
 
@@ -197,7 +197,7 @@ export default function Products() {
 
   return (
     <>
-      <div style={{ width: '100%', height: '700px', position: 'absolute', top: '0px' }}>
+      <div style={{ width: '100%', height: '100%', position: 'absolute', top: '0px' }}>
         <RippleGrid />
       </div>
       <div className="container relative overflow-hidden">
@@ -213,7 +213,7 @@ export default function Products() {
         </div>
 
         {/* Search & Categories */}
-        <div className="mt-28 flex items-center gap-7">
+        <div className="mt-16 flex items-center gap-7 sm:mt-28">
           <div className="relative w-full max-w-3xl">
             <input
               type="text"
@@ -235,63 +235,75 @@ export default function Products() {
           )}
         </div>
 
+        {/* No Products Found Message */}
+        {!isLoading && searchTerm && products.length === 0 && (
+          <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 py-16">
+            <h2 className="font-Neue-Montreal-Bold text-2xl text-white">Products not found</h2>
+            <p className="text-center font-Neue-Montreal-Medium text-sm text-secondery">
+              No products match your search. Try using different keywords.
+            </p>
+          </div>
+        )}
+
         {/* Products Grid */}
-        <div className="relative z-10 mt-10 grid w-full grid-cols-1 gap-8 overflow-hidden lg:grid-cols-2 xl:grid-cols-3">
-          {isLoading
-            ? Array.from({ length: 9 }).map((_, i) => (
-                <div key={i} className="flex h-[350px] w-full rounded-[48px] bg-neutral-800 p-2">
-                  <div className="flex w-full flex-col self-end">
-                    <div className="h-[100px] w-full rounded-[38px] bg-white/10 p-4 backdrop-blur-md sm:p-[14px]">
-                      <Skeleton className="h-6 w-2/3 rounded-3xl" />
-                      <div className="mt-3 flex items-center justify-between">
-                        <Skeleton className="h-5 w-20 rounded-3xl" />
-                        <Skeleton className="h-10 w-[95px] rounded-3xl" />
+        {products.length > 0 && (
+          <div className="relative z-10 mt-10 grid w-full grid-cols-1 gap-8 overflow-hidden lg:grid-cols-2 xl:grid-cols-3">
+            {isLoading
+              ? Array.from({ length: 9 }).map((_, i) => (
+                  <div key={i} className="flex h-[350px] w-full rounded-[48px] bg-neutral-800 p-2">
+                    <div className="flex w-full flex-col self-end">
+                      <div className="h-[100px] w-full rounded-[38px] bg-white/10 p-4 backdrop-blur-md sm:p-[14px]">
+                        <Skeleton className="h-6 w-2/3 rounded-3xl" />
+                        <div className="mt-3 flex items-center justify-between">
+                          <Skeleton className="h-5 w-20 rounded-3xl" />
+                          <Skeleton className="h-10 w-[95px] rounded-3xl" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
-            : paginatedProducts.map((product, i) => (
-                <Link
-                  key={product.id}
-                  ref={(el) => (productRefs.current[i] = el)}
-                  state={{ product, variants: variantsMap[product.id] }}
-                  to={`/product/${product.id}`}
-                >
-                  <LazyImage src={product.preview_url} alt={product.name} />
-                  <div className="relative -mt-[350px] flex h-[350px] w-full rounded-[48px] p-2">
-                    <div className="flex w-full flex-col self-end">
-                      <GlassElement
-                        width={'100%'}
-                        height={'100px'}
-                        radius={38}
-                        depth={10}
-                        blur={4}
-                        chromaticAberration={3}
-                      >
-                        <div className="px-4 py-3 sm:px-[21px] sm:py-[14px]">
-                          <h1 className="font-Neue-Montreal-Bold text-xl text-white sm:text-2xl">
-                            {product.name}
-                          </h1>
-                          <div className="flex items-center justify-between sm:mt-1">
-                            <p className="font-Neue-Montreal-Bold text-base text-white sm:text-lg">
-                              {product.price}
-                              <span className="ml-2 font-Neue-Montreal-Regular text-sm text-white/50 sm:text-base">
-                                DOLLAR
-                              </span>
-                            </p>
-                            <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
-                              <img src={dotIcon} alt="Dot Icon" loading="lazy" />
-                              PRICE
-                            </button>
+                ))
+              : paginatedProducts.map((product, i) => (
+                  <Link
+                    key={product.id}
+                    ref={(el) => (productRefs.current[i] = el)}
+                    state={{ product, variants: variantsMap[product.id] }}
+                    to={`/product/${product.id}`}
+                  >
+                    <LazyImage src={product.preview_url} alt={product.name} />
+                    <div className="relative -mt-[350px] flex h-[350px] w-full rounded-[48px] p-2">
+                      <div className="flex w-full flex-col self-end">
+                        <GlassElement
+                          width={'100%'}
+                          height={'100px'}
+                          radius={38}
+                          depth={10}
+                          blur={4}
+                          chromaticAberration={3}
+                        >
+                          <div className="px-4 py-3 sm:px-[21px] sm:py-[14px]">
+                            <h1 className="font-Neue-Montreal-Bold text-xl text-white sm:text-2xl">
+                              {product.name}
+                            </h1>
+                            <div className="flex items-center justify-between sm:mt-1">
+                              <p className="font-Neue-Montreal-Bold text-base text-white sm:text-lg">
+                                {product.price}
+                                <span className="ml-2 font-Neue-Montreal-Regular text-sm text-white/50 sm:text-base">
+                                  DOLLAR
+                                </span>
+                              </p>
+                              <button className="flex h-[40px] w-[95px] items-center justify-center gap-1.5 rounded-3xl bg-white font-Neue-Montreal-Bold text-sm text-[#262626]">
+                                <img src={dotIcon} alt="Dot Icon" loading="lazy" />
+                                PRICE
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </GlassElement>
+                        </GlassElement>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-        </div>
+                  </Link>
+                ))}
+          </div>
+        )}
 
         {/* Pagination */}
         <nav className="mt-9">

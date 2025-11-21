@@ -9,7 +9,7 @@ import linkedin from '../assets/images/icons/linkedin.svg';
 export default function Footer() {
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <footer className="z-10 flex w-full max-w-[1500px] flex-wrap items-center justify-center gap-y-10 px-10 py-16 xs:justify-between md:flex-nowrap md:gap-y-0 md:py-20">
+      <footer className="z-10 relative flex w-full max-w-[1500px] flex-wrap items-center justify-center gap-y-10 px-10 py-16 xs:justify-between md:flex-nowrap md:gap-y-0 md:py-20">
         <div className="w-[200px] text-center">
           <h1 className="font-Neue-Montreal-Bold text-xl text-white xl:text-2xl">FAQ</h1>
           <div className="mt-2 flex flex-col gap-1 text-sm xl:text-base">

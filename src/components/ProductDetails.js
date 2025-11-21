@@ -91,7 +91,7 @@ export default function ProductDetails() {
 
   return (
     <section className="container flex flex-col gap-8">
-      <div className="flex items-center gap-2 mt-36">
+      <div className="flex items-center gap-2 mt-24 sm:mt-36">
         <img src={rightArrow} alt="right arrow" className="rotate-180" />
         <Link
           to="/products"
