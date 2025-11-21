@@ -27,7 +27,7 @@ function AllProjects() {
   }, []);
 
   return (
-    <div className="container overflow-x-hidden">
+    <div className="container">
       <div className="absolute left-0 top-0 z-0 h-[300px] w-full lg:h-[500px]">
         <DarkVeil speed={0.75} scanlineFrequency={5} scanlineIntensity={0} warpAmount={4} />
       </div>
